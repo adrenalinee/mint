@@ -1,0 +1,47 @@
+{
+  "name" : "promotion_api",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway.coupangdev.com:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "5892980121a24a88459a269d",
+    "revision" : "5892980121a24a88459a26a0",
+    "type" : "SINGLE",
+    "path" : "/api/download-coupon/v1/promotion/{promotionId}/vendoritems",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58d32913ddcd4e863916bb4a",
+    "revision" : "58f4436fcb420a753c89142f",
+    "type" : "SINGLE",
+    "path" : "/api/download-promotion/v1/promotions/{id}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58d32913ddcd4e863916bb4f",
+    "revision" : "58d32913ddcd4e863916bb52",
+    "type" : "SINGLE",
+    "path" : "/api/download-promotion/v1/promotions/{id}/promotional-items",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  } ]
+}

@@ -1,0 +1,533 @@
+{
+  "name" : "product_review",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway-dev.coupang.net:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "57bea9f86fd89ecc6b801886",
+    "revision" : "57bea9f86fd89ecc6b801888",
+    "type" : "SINGLE",
+    "path" : "/api/productreview/v1/blockmember/memberId/{memberId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a24982e9a7c61e1324",
+    "revision" : "58465757186af774f880c05c",
+    "type" : "SINGLE",
+    "path" : "/api/v1/adventurers/view",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a24982e9a7c61e1329",
+    "revision" : "580dd2a24982e9a7c61e132c",
+    "type" : "SINGLE",
+    "path" : "/api/v1/adventurers/view/banner",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a24982e9a7c61e132e",
+    "revision" : "58f70afbcf2a061c142b112c",
+    "type" : "SINGLE",
+    "path" : "/api/v1/adventurers/view/products/{adventurerProductId}/reviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a24982e9a7c61e1333",
+    "revision" : "5865fe5cc131e1a998554800",
+    "type" : "SINGLE",
+    "path" : "/api/v1/attachments/{productId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a34982e9a7c61e1388",
+    "revision" : "58f70afbcf2a061c142b114b",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/bestreviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a34982e9a7c61e13fb",
+    "revision" : "580dd2a34982e9a7c61e13fe",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/products/{productId}/ratingSummary",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a34982e9a7c61e1405",
+    "revision" : "58b8f647f3f7be5202d8eb58",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/products/{productId}/reviewTemplate",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a44982e9a7c61e142d",
+    "revision" : "580dd2a44982e9a7c61e1430",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/guideLine",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a44982e9a7c61e145a",
+    "revision" : "580dd2a44982e9a7c61e145d",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}/helpful/count",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a44982e9a7c61e149b",
+    "revision" : "580dd2a44982e9a7c61e149e",
+    "type" : "SINGLE",
+    "path" : "/api/v1/ratingaverage/productwithinfo",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a44982e9a7c61e14a0",
+    "revision" : "580dd2a44982e9a7c61e14a3",
+    "type" : "SINGLE",
+    "path" : "/api/v1/ratingaverage/simple",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a44982e9a7c61e14a5",
+    "revision" : "580dd2a44982e9a7c61e14a8",
+    "type" : "SINGLE",
+    "path" : "/api/v1/recommendProduct/displayCategory/reviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a54982e9a7c61e1504",
+    "revision" : "58f70afdcf2a061c142b11cf",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer/{reviewerMemberId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a54982e9a7c61e150e",
+    "revision" : "58b8f649f3f7be5202d8eb9d",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer/{reviewerMemberId}/onlyReviewContents",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a54982e9a7c61e1513",
+    "revision" : "58b8f649f3f7be5202d8eba0",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer/{reviewerMemberId}/withReviewContents",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a54982e9a7c61e1518",
+    "revision" : "58f70afecf2a061c142b11e5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewhome/template",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a64982e9a7c61e154a",
+    "revision" : "58f70afecf2a061c142b1205",
+    "type" : "SINGLE",
+    "path" : "/api/v1/top-reviewers",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "580dd2a54982e9a7c61e1509",
+    "revision" : "5865fe5dc131e1a99855481b",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer/{reviewerMemberId}/includedBlindedReview",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd018",
+    "revision" : "58f70afccf2a061c142b115a",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/mycoupang/reviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd01d",
+    "revision" : "5866006d3faf51e2d8fbd020",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/mycoupang/reviews/visited",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd022",
+    "revision" : "5866006d3faf51e2d8fbd025",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/mycoupang/reviews/visited",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd02c",
+    "revision" : "5866006d3faf51e2d8fbd02f",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/mycoupang/writableEnableReviews/condition",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd036",
+    "revision" : "5866006d3faf51e2d8fbd039",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/mycoupang/writableLaterReview/{completedOrderVendorItemId}",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd03b",
+    "revision" : "5866006d3faf51e2d8fbd03e",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/mycoupang/writableLaterReviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd04a",
+    "revision" : "58b8f648f3f7be5202d8eb7f",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/products/{productId}/productReviewTemplate",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866006d3faf51e2d8fbd04f",
+    "revision" : "58b8f648f3f7be5202d8eb82",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/products/{productId}/productReviewTemplateResult",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866015dc131e1a998554837",
+    "revision" : "5866015dc131e1a99855483a",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/products/{productId}/reviewCategory",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866015dc131e1a99855483c",
+    "revision" : "58f70afccf2a061c142b1160",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/products/{productId}/reviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866015dc131e1a998554846",
+    "revision" : "5866015dc131e1a998554849",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/products/{productId}/surveySummary",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866015dc131e1a99855484b",
+    "revision" : "58b8f647f3f7be5202d8eb52",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866015ec131e1a99855485a",
+    "revision" : "58b8f648f3f7be5202d8eb85",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/completedOrderOnly",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c4178",
+    "revision" : "58f70afccf2a061c142b116f",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/withoutComments",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c417d",
+    "revision" : "58f70afccf2a061c142b1172",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c4182",
+    "revision" : "58b8f648f3f7be5202d8eb8b",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c4187",
+    "revision" : "586603a25594daa0989c418a",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}",
+    "method" : "delete",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c4194",
+    "revision" : "586603a25594daa0989c4197",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}/helpful",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c4199",
+    "revision" : "586603a25594daa0989c419c",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}/helpful",
+    "method" : "delete",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c419e",
+    "revision" : "586603a25594daa0989c41a1",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}/helpful/returnDto",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c41a8",
+    "revision" : "586603a25594daa0989c41ab",
+    "type" : "SINGLE",
+    "path" : "/api/v1/myadventurer/product",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c41ad",
+    "revision" : "586603a25594daa0989c41b0",
+    "type" : "SINGLE",
+    "path" : "/api/v1/myadventurer/productAllPage",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586603a25594daa0989c41b2",
+    "revision" : "586603a25594daa0989c41b5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/myadventurer/productPage",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586605193faf51e2d8fbd061",
+    "revision" : "58f70afdcf2a061c142b11bd",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer-search/{reviewer}/profile-with-reviews/m",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586605193faf51e2d8fbd066",
+    "revision" : "58f70afdcf2a061c142b11c0",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer-search/{reviewer}/reviews/m",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586605193faf51e2d8fbd07a",
+    "revision" : "586605193faf51e2d8fbd07d",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer/resetDisplayImage",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586605193faf51e2d8fbd07f",
+    "revision" : "586605193faf51e2d8fbd082",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer/updateDisplayImage",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586605193faf51e2d8fbd084",
+    "revision" : "586605193faf51e2d8fbd087",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviewer/updatePrivateDisplayImage/{privateDisplayImage}",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866051a3faf51e2d8fbd0a2",
+    "revision" : "5866051a3faf51e2d8fbd0a5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/sellerreview",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5866051a3faf51e2d8fbd0a7",
+    "revision" : "5866051a3faf51e2d8fbd0aa",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviews-search/smart-filters",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f70afbcf2a061c142b112e",
+    "revision" : "58f70afbcf2a061c142b1131",
+    "type" : "SINGLE",
+    "path" : "/api/v1/attachments/gallery/{productId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f70afbcf2a061c142b1133",
+    "revision" : "58f70afbcf2a061c142b1136",
+    "type" : "SINGLE",
+    "path" : "/api/v1/attachments/video/{productId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f71dd7cf2a061c142b126b",
+    "revision" : "58f71dd7cf2a061c142b126e",
+    "type" : "SINGLE",
+    "path" : "/api/v1/reviews-search/summary-reviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f7299949c31ab326ddca00",
+    "revision" : "58f7299949c31ab326ddca03",
+    "type" : "SINGLE",
+    "path" : "/api/v1/histories/count",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f7299949c31ab326ddca05",
+    "revision" : "58fea97539fdca396d96bc2b",
+    "type" : "SINGLE",
+    "path" : "/api/v1/histories/{interactionHistoryId}",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f86fc0ccf5ea61fd1aa72d",
+    "revision" : "58fea97539fdca396d96bc28",
+    "type" : "SINGLE",
+    "path" : "/api/v1/histories",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f9d5555e9588056d82f644",
+    "revision" : "58f9d5555e9588056d82f647",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/mycoupang/writeEnableReviews",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5900751fd036687f10abdce2",
+    "revision" : "5900751fd036687f10abdce5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/mobile/reviews/{reviewId}/video",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  } ]
+}

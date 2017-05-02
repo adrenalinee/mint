@@ -1,0 +1,38 @@
+{
+  "name" : "search_features",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway.coupangdev.com:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "58ff48d0098117577a770b33",
+    "revision" : "58ff48d0098117577a770b36",
+    "type" : "SINGLE",
+    "path" : "/api/hotkeyword",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58ff48d0098117577a770b3d",
+    "revision" : "58ff48d0098117577a770b40",
+    "type" : "SINGLE",
+    "path" : "/api/relatedkeyword",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  } ]
+}

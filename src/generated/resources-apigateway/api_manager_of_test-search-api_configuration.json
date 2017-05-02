@@ -1,0 +1,29 @@
+{
+  "name" : "api_manager",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway-dev.coupang.net:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "5758c6a23086cabe72b2b96f",
+    "revision" : "5758c6a23086cabe72b2b971",
+    "type" : "SINGLE",
+    "path" : "/api/regression/2/query",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ ],
+    "timeout" : 50
+  } ]
+}

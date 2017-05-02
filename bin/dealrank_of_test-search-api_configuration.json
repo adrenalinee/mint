@@ -1,0 +1,47 @@
+{
+  "name" : "dealrank",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway-dev.coupang.net:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "57f2e5990b3b294253024bf0",
+    "revision" : "57f2e5990b3b294253024bf3",
+    "type" : "SINGLE",
+    "path" : "/v3/segments/plp/sections/items/categories/{categoryId}/users/{userId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ ],
+    "timeout" : 10000
+  }, {
+    "id" : "57f2e5990b3b294253024bf5",
+    "revision" : "57f2e5990b3b294253024bf8",
+    "type" : "SINGLE",
+    "path" : "/v3/segments/plp/sections/trending/categories/{categoryId}/users/{userId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ ],
+    "timeout" : 10000
+  }, {
+    "id" : "57f2e920b8ce444b53210c05",
+    "revision" : "57f2e920b8ce444b53210c11",
+    "type" : "SINGLE",
+    "path" : "/v3/ranks/brand/sections/trending/categories/{categoryId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ ],
+    "timeout" : 10000
+  } ]
+}

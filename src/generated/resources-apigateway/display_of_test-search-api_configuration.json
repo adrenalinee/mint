@@ -1,0 +1,416 @@
+{
+  "name" : "display",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway.coupangdev.com:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "57c3e96a64bd1687d7a2ed4e",
+    "revision" : "57c3e96a64bd1687d7a2ed50",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/categories/bycategorycode",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96a64bd1687d7a2ed8a",
+    "revision" : "58e7343c81fa8e08bae940d2",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/components/byitemcategorycode",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96a64bd1687d7a2ed8f",
+    "revision" : "58e7343c81fa8e08bae940d5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/components/byitemcategoryid",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2edcb",
+    "revision" : "57c3e96b64bd1687d7a2edcd",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybanner/searchbannerkeywordlist/{bannerCode}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ede4",
+    "revision" : "57c3e96b64bd1687d7a2ede6",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaydocument/lastwithprev/{documentCode}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee16",
+    "revision" : "58e7357481fa8e08bae94157",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/flexiblebanner/bannerCodes/{targetDeviceType}/{sectionCode}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee1b",
+    "revision" : "58e7357481fa8e08bae9415a",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/flexiblebanner/bannerCodesByDynamicSection/{targetDeviceType}/{listId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee2f",
+    "revision" : "58d1e83f7472105d324072cb",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displaybanner/banneridlistbyassetkeyandvalue/{bannerCode}/{assetKey}/{assetValue}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee34",
+    "revision" : "58d1e83f7472105d324072c8",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displaybanner/bybannerids/{bannerIds}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee48",
+    "revision" : "58d1e83f7472105d324072bc",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displaybanner/{bannerCode}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee4d",
+    "revision" : "58a2500c90668ca7d556675b",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displaybrand",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee52",
+    "revision" : "58d22e0b93a730c0b69b15b1",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displayitem/itembylistcode/{targetDeviceType}/{itemlistCode}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96b64bd1687d7a2ee5c",
+    "revision" : "58d22e7ee648fe58322006ae",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displayitem/itembylistid/{targetDeviceType}/{listId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96c64bd1687d7a2ee6b",
+    "revision" : "58d1e83f7472105d324072b3",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displayitemlist/dtobylistcode/{targetDeviceType}/{itemlistCode}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96c64bd1687d7a2ee75",
+    "revision" : "58d1e83f7472105d324072b9",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displayitemlist/dtosbylistcode/{targetDeviceType}/{itemlistCode}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96c64bd1687d7a2ee98",
+    "revision" : "57c3e96c64bd1687d7a2ee9a",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/mobileSection/sectionList",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57c3e96c64bd1687d7a2ee9d",
+    "revision" : "57c3e96c64bd1687d7a2ee9f",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/searchbar",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5810747a4982e9a7c61e16a9",
+    "revision" : "58e7343c81fa8e08bae940c9",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/componentMap",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5810747a4982e9a7c61e16ae",
+    "revision" : "58f71e41d354b36b633b7949",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/components/bundles/{bundleId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5810747a4982e9a7c61e16b3",
+    "revision" : "58f71e41d354b36b633b794c",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/components/bundlesbybundlekey/{bundleKey}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5810747a4982e9a7c61e16d6",
+    "revision" : "58a24dbf90668ca7d556674b",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybrand",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5810747a4982e9a7c61e16db",
+    "revision" : "58a135ffd52df5b0d5d85093",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybrand/all",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5810747a4982e9a7c61e16e5",
+    "revision" : "58a135ffd52df5b0d5d8509f",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybrand/{brandId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5810747a4982e9a7c61e16f3",
+    "revision" : "584a0612b4c3af4c1e09dfe3",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displayexhibition/list/{exhibitionCode}/{targetDeviceType}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5833adc2e1e0a7c88d88171d",
+    "revision" : "5833adc2e1e0a7c88d881720",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybrand/internalcategory",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "584a0612b4c3af4c1e09dfe5",
+    "revision" : "58a135ffd52df5b0d5d8509c",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybrand/names",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58588b0fff778651ae620710",
+    "revision" : "58a135ffd52df5b0d5d85096",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybrand/all/aftermodifiedat",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "586c96e29bb58f1ecf50c305",
+    "revision" : "58d22fe66c5f2d162cbd7fd5",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displayexhibition/all/{targetDeviceType}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5886ae467472c990b3e2589e",
+    "revision" : "58999133ab75d618982afba4",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/display-brand/collection/list",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5887327547d2bf7f45143309",
+    "revision" : "58999133ab75d618982afba7",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/display-brand/rank/list",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58a43855d52df5b0d5d85269",
+    "revision" : "58e7343d81fa8e08bae94108",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/displaybrand/bycomponent/{componentId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58a6766a2305b46503bcfde3",
+    "revision" : "58a6766ad52df5b0d5d8535a",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/display-brand/code/{codeId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58c0e283ad677f38cc22942b",
+    "revision" : "58e7357481fa8e08bae94160",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displayexhibition/detailbybenefit/{listId}/{benefitType}/{targetDeviceType}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58c0e283ad677f38cc229430",
+    "revision" : "58e7357481fa8e08bae9415d",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displayexhibition/detail/{listId}/{targetDeviceType}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58cfc2ee72c46e45296192e0",
+    "revision" : "58cfc2ee72c46e45296192e3",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/module-registry/pages/{name}/modules",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58d1e3ca6eb51666325389e3",
+    "revision" : "58d1e3ca6eb51666325389e6",
+    "type" : "SINGLE",
+    "path" : "/api/v1/badgeimage/getbadgeimages/{badgeImageOs}/{badgeImageDomain}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58d4725f3d43f67907456e5d",
+    "revision" : "58ec66b76cf2098466a8f56b",
+    "type" : "SINGLE",
+    "path" : "/api/v1/attributetypefilter/getattributetypefilters",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58d4725f3d43f67907456e62",
+    "revision" : "58d47560ddcd4e863916bb94",
+    "type" : "SINGLE",
+    "path" : "/api/v1/attributetypefilter/getkeywordexceptions/{keyword}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58dc848d1f6a12cbbc27391c",
+    "revision" : "58dc848d1f6a12cbbc27391f",
+    "type" : "SINGLE",
+    "path" : "/api/v1/cms/module-registry/pages/{name}/module-names",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f44717a3c67264648c98e2",
+    "revision" : "58f44717a3c67264648c98e5",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/mobileSection/filterKeyword/{sectionId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f44717a3c67264648c98e7",
+    "revision" : "58f44717a3c67264648c98ea",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/mobileSection/filterList/{sectionId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f725a628086759639398c2",
+    "revision" : "58f725a628086759639398c5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/attributefilter/getfilters",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58f725a628086759639398c7",
+    "revision" : "58f725a628086759639398ca",
+    "type" : "SINGLE",
+    "path" : "/api/v1/attributefilter/getkeywordexceptions/{keyword}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58fd99bab15ba6f9736768a5",
+    "revision" : "58fd99bab15ba6f9736768a8",
+    "type" : "SINGLE",
+    "path" : "/api/v2/cms/displaybrand/code/{codeId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  } ]
+}

@@ -1,0 +1,299 @@
+{
+  "name" : "product_api",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway-dev.coupang.net:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "57a427e900f952f2d5ecd4c5",
+    "revision" : "58c105957f7941d23d648ad2",
+    "type" : "SINGLE",
+    "path" : "/api/v1/deals",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427e900f952f2d5ecd4ca",
+    "revision" : "57a427e900f952f2d5ecd4cc",
+    "type" : "SINGLE",
+    "path" : "/api/v1/displaydetail/vendoritems/{vendorItemPackageId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427e900f952f2d5ecd4cf",
+    "revision" : "5846246a186af774f880bccc",
+    "type" : "SINGLE",
+    "path" : "/api/v1/displaydetail/vendoritems/{vendorItemPackageId}/{vendorItemId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427e900f952f2d5ecd4d4",
+    "revision" : "58dc95541f6a12cbbc273932",
+    "type" : "SINGLE",
+    "path" : "/api/v1/displaydetail/{vendorItemPackageId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ea00f952f2d5ecd4de",
+    "revision" : "5846246a186af774f880bcd5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/displayitems",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ea00f952f2d5ecd4e8",
+    "revision" : "58ad38942d769eff7785ed7e",
+    "type" : "SINGLE",
+    "path" : "/api/v1/get/vendoritems/withinfos",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ec00f952f2d5ecd6a6",
+    "revision" : "58ad38972d769eff7785ee96",
+    "type" : "SINGLE",
+    "path" : "/api/v1/vendoritempackage/{id}/vendoritems",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ec00f952f2d5ecd6d3",
+    "revision" : "5846246f186af774f880bf62",
+    "type" : "SINGLE",
+    "path" : "/api/v1/vendoritempackages/{ids}/places",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ed00f952f2d5ecd6f1",
+    "revision" : "57a427ed00f952f2d5ecd6f3",
+    "type" : "SINGLE",
+    "path" : "/api/v1/vendoritems/price",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ed00f952f2d5ecd6f6",
+    "revision" : "5846246f186af774f880bf73",
+    "type" : "SINGLE",
+    "path" : "/api/v1/vendoritems/price/with/unitprice",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ed00f952f2d5ecd732",
+    "revision" : "58ad38982d769eff7785eeb7",
+    "type" : "SINGLE",
+    "path" : "/api/v1/vendoritems/{vendoritemids}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ed00f952f2d5ecd746",
+    "revision" : "57a427ed00f952f2d5ecd748",
+    "type" : "SINGLE",
+    "path" : "/api/v1/vendoritems/{vendoritempackageid}/vendoritemids-valid",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ee00f952f2d5ecd7af",
+    "revision" : "58462471186af774f880c016",
+    "type" : "SINGLE",
+    "path" : "/api/v2/vendoritempackages",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "57a427ee00f952f2d5ecd7dc",
+    "revision" : "57a427ee00f952f2d5ecd7de",
+    "type" : "SINGLE",
+    "path" : "/api/v2/vendoritems/quantity",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "581a93910afce1108430d5bf",
+    "revision" : "5846246f186af774f880bf79",
+    "type" : "SINGLE",
+    "path" : "/api/v1/vendoritems/properties",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5832a2a992d14c264b2a9dc5",
+    "revision" : "58dc6acc9a8ddfaf41c3916e",
+    "type" : "SINGLE",
+    "path" : "/api/v1/coupon/ddp/{vendorItemPackageId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58462466186af774f880bab6",
+    "revision" : "58462466186af774f880bab9",
+    "type" : "SINGLE",
+    "path" : "/api/v1/core/item/basic/by-productid/{productId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58462467186af774f880bacf",
+    "revision" : "58462467186af774f880bad2",
+    "type" : "SINGLE",
+    "path" : "/api/v1/core/item/by_itemid/{itemId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58462468186af774f880bb51",
+    "revision" : "58462468186af774f880bb54",
+    "type" : "SINGLE",
+    "path" : "/api/v1/core/product/list",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58462468186af774f880bb6a",
+    "revision" : "58462468186af774f880bb6d",
+    "type" : "SINGLE",
+    "path" : "/api/v1/core/product/{productId}/all",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58462469186af774f880bbf0",
+    "revision" : "58462469186af774f880bbf3",
+    "type" : "SINGLE",
+    "path" : "/api/v1/coupon/ddp/{vendorItemPackageId}/rangeOptions/{rangeVendorItemIds}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5846246b186af774f880bd6e",
+    "revision" : "5846246b186af774f880bd71",
+    "type" : "SINGLE",
+    "path" : "/api/v1/meta/category/{categoryId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5846246c186af774f880be0a",
+    "revision" : "58ad38952d769eff7785edb5",
+    "type" : "SINGLE",
+    "path" : "/api/v1/product-detail/vendor-items/{vendorItemId}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "5846246d186af774f880be2d",
+    "revision" : "5850fe1e2778e9d50f5e4f68",
+    "type" : "SINGLE",
+    "path" : "/api/v1/rentalcar/filters",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58ad38942d769eff7785ed63",
+    "revision" : "58ad38942d769eff7785ed66",
+    "type" : "SINGLE",
+    "path" : "/api/v1/coupon/ddp/{vendorItemPackageId}/advertised_tour_options",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58ad38942d769eff7785ed68",
+    "revision" : "58ad38942d769eff7785ed6b",
+    "type" : "SINGLE",
+    "path" : "/api/v1/coupon/ddp/{vendorItemPackageId}/advertised_tour_options/{vendorItemId}/{findDepth}",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58ad38952d769eff7785eda3",
+    "revision" : "58ad38952d769eff7785eda6",
+    "type" : "SINGLE",
+    "path" : "/api/v1/meta/unitprice/getunitpriceinfo",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58e198158587231490454916",
+    "revision" : "58e198158587231490454919",
+    "type" : "SINGLE",
+    "path" : "/api/v1/coupon/todaybooking/soldout/vipids",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58e1cb59a582a4ca846453fc",
+    "revision" : "58e1cb59a582a4ca846453ff",
+    "type" : "SINGLE",
+    "path" : "/api/v1/rentalcar/vendor-item-list",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58e1cb59a582a4ca84645401",
+    "revision" : "58e1cb59a582a4ca84645404",
+    "type" : "SINGLE",
+    "path" : "/api/v1/rentalcar/item-list",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58edae5fbf43cbf61fc7d5b4",
+    "revision" : "58edae60bf43cbf61fc7d5b7",
+    "type" : "SINGLE",
+    "path" : "/api/v2/vendoritempackage/{vendorItemPackageId}/contents",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  } ]
+}

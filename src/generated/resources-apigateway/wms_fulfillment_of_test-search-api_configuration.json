@@ -1,0 +1,38 @@
+{
+  "name" : "wms_fulfillment",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway-dev.coupang.net:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80", "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "58a3f75f90668ca7d556683d",
+    "revision" : "58ededc3d9003634745ba9ff",
+    "type" : "SINGLE",
+    "path" : "/api/v2/pdd/eachvi",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  }, {
+    "id" : "58a3f75f90668ca7d5566842",
+    "revision" : "58ededc3d9003634745baa02",
+    "type" : "SINGLE",
+    "path" : "/api/v2/pdd/rangeQuantity",
+    "method" : "post",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  } ]
+}

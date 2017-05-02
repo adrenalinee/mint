@@ -1,0 +1,29 @@
+{
+  "name" : "vendor",
+  "zones" : [ {
+    "profile" : "DEV",
+    "getewayHosts" : [ "http://api-gateway.coupangdev.com:80" ]
+  }, {
+    "profile" : "IT",
+    "getewayHosts" : [ "http://api-gateway.coupangit.com:80" ]
+  }, {
+    "profile" : "AC",
+    "getewayHosts" : [ "http://10.255.10.201:80" ]
+  }, {
+    "profile" : "PERF",
+    "getewayHosts" : [ "http://api-gateway-perf.coupang.net:80" ]
+  }, {
+    "profile" : "PROD",
+    "getewayHosts" : [ "http://api-gateway.coupang.net:80", "http://aws-api-gateway.coupang.net:80" ]
+  } ],
+  "specifications" : [ {
+    "id" : "57a8160e8abc3cfbd583e9f2",
+    "revision" : "581c1486a59894273d81b239",
+    "type" : "SINGLE",
+    "path" : "/api/v2/vendors/find-by-vendor-ids",
+    "method" : "get",
+    "produces" : [ ],
+    "consumes" : [ "application/json" ],
+    "timeout" : 10000
+  } ]
+}
