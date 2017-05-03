@@ -2,25 +2,69 @@
   <div>
     <md-select fxFlexAlign="center">
       <md-option>GET</md-option>
+      <md-option>POST</md-option>
+      <md-option>PUT</md-option>
+      <md-option>PATCH</md-option>
+      <md-option>DELETE</md-option>
     </md-select>
     <md-input-container fxFlex>
       <input mdInput placeholder="Request URL" />
     </md-input-container>
     <div fxFlexAlign="center">
+      <button md-raised-button>Params</button>
       <button md-raised-button color="primary">Send</button>
     </div>
   </div>
   <md-tab-group>
-    <md-tab label="Headers">
+    <md-tab label="Url">
       <div>
         <md-input-container fxFlex>
-          <input mdInput placeholder="Key" />
+          <input mdInput placeholder="Name" />
         </md-input-container>
         <md-input-container fxFlex>
           <input mdInput placeholder="Value" />
         </md-input-container>
       </div>
     </md-tab>
-    <md-tab label="Body">Content 2</md-tab>
+    <md-tab label="Query">
+      <div>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Name" />
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Value" />
+        </md-input-container>
+      </div>
+    </md-tab>
+  </md-tab-group>
+
+
+  <md-tab-group>
+    <md-tab label="Headers">
+      <div>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Name" />
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Value" />
+        </md-input-container>
+      </div>
+    </md-tab>
+    <md-tab label="Body">
+      <div>
+        <span>Content type</span>
+        <md-select fxFlexAlign="center" style="width: 200px">
+          <md-option>text/plain</md-option>
+          <md-option>text/html</md-option>
+          <md-option>application/json</md-option>
+          <md-option>application/xml</md-option>
+        </md-select>
+      </div>
+      <div ace-editor
+        [text]="text"
+        [mode]="'json'"
+        [theme]="'tomorrow_night_eighties'"
+        style="display: block; width: 100%; height: 40vh;"></div>
+    </md-tab>
   </md-tab-group>
 </div>
