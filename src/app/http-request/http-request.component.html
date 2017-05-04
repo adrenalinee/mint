@@ -56,7 +56,7 @@
     </md-tab>
     <md-tab label="Headers">
       <div style="padding: 1em;">
-        <button md-raised-button color="accent">Authorization</button>
+        <!--<button md-raised-button color="accent">Authorization</button>-->
         <div fxLayoutGap="1em" *ngFor="let header of requestInfo.headers; index as i">
           <md-input-container fxFlex>
             <input mdInput placeholder="Name" [(ngModel)]="header.name" />
@@ -68,6 +68,8 @@
           </md-input-container>
         </div>
       </div>
+    </md-tab>
+    <md-tab label="Autorization">
     </md-tab>
   </md-tab-group>
 </div>

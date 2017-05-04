@@ -15,9 +15,10 @@
     <md-checkbox>Wrap</md-checkbox>
     </div>
     <div ace-editor
-      [text]="text"
+      [text]="requestInfo.response.body"
       [mode]="'json'"
       [theme]="'tomorrow_night_eighties'"
+      [readOnly]="true"
       style="display: block; width: 100%; height: 20vh;"></div>
   </md-tab>
   <md-tab label="Headers">

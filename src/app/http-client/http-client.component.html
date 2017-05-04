@@ -11,7 +11,7 @@
         <p></p>
         <div style="background-color: #f2f4f6; padding: 1em;" *ngIf="requestInfo.isOpenResponse">
           Response
-          <app-http-response></app-http-response>
+          <app-http-response [requestInfo]="requestInfo"></app-http-response>
         </div>
     </div>
   </md-tab>

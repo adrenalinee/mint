@@ -1,32 +1,61 @@
 import { Component, OnInit, Input } from '@angular/core';
+// import {FormControl} from '@angular/forms';
+// import 'rxjs/add/operator/startWith';
+
 import { NameValue } from '../nameValue';
+import { ResponseInfo } from '../request-info';
+import { HttpClientService } from '../http-client.service';
 
 @Component({
   selector: 'app-http-request',
   templateUrl: './http-request.component.html',
-  styleUrls: ['./http-request.component.css']
+  styleUrls: ['./http-request.component.css'],
+  providers: [HttpClientService]
 })
 export class HttpRequestComponent implements OnInit {
   @Input() requestInfo: RequestInfo;
 
   httpMethods: string[];
   contentTypes: string[];
+  requestHeaders: string[];
+  
+  // filteredHeaders: any;
 
-  constructor() { }
+
+  constructor(private httpClient: HttpClientService) { }
 
   ngOnInit() {
-    this.httpMethods = ["GET", "POST", "PUT", "PATCH", "DELETE"];
+    this.httpMethods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
     this.contentTypes = [
-      "text/plain",
-      "text/html",
-      "application/json",
-      "application/xml"
+      'text/plain',
+      'text/html',
+      'application/json',
+      'application/xml'
+    ];
+    this.requestHeaders = [
+      'Accept',
+      'Authorization',
+      'Cache-Control',
+      'Content-Type',
+      'Host',
+      'Origin'
     ];
   }
 
   send() {
-    console.log("send!");
-    this.requestInfo['isOpenResponse'] = !this.requestInfo['isOpenResponse'];
+    console.log('send!');
+
+    this.httpClient.get(this.requestInfo['url'])
+      .subscribe(
+        response => {
+          console.log(response);
+          let responseInfo = new ResponseInfo();
+          responseInfo.body = response;
+          this.requestInfo['response'] = responseInfo;
+
+          this.requestInfo['isOpenResponse'] = !this.requestInfo['isOpenResponse'];
+        });
+
   }
 
 
