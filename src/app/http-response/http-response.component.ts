@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-http-response',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./http-response.component.css']
 })
 export class HttpResponseComponent implements OnInit {
+  @Input() requestInfo: RequestInfo;
+  displayMethod: string[];
 
   constructor() { }
 

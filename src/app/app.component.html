@@ -1,14 +1,8 @@
 <app-header></app-header>
 
-<md-tab-group class="content-container content">
-  <md-tab label="Request-1">
-    <div fxLayout="column">
-        <app-http-request></app-http-request>
-        
-        Response
-        <app-http-response></app-http-response>
-    </div>
-  </md-tab>
-  <md-tab label="Request-2">
-  </md-tab>
-</md-tab-group>
+<span class="app-action">
+  <button md-fab ><md-icon>add</md-icon></button>
+</span>
+<div class="content-container content">
+  <app-http-client></app-http-client>
+</div>

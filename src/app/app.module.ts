@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpRequestComponent } from './http-request/http-request.component';
 import { HttpResponseComponent } from './http-response/http-response.component';
+import { HttpClientComponent } from './http-client/http-client.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpResponseComponent } from './http-response/http-response.component';
     AppComponent,
     HeaderComponent,
     HttpRequestComponent,
-    HttpResponseComponent
+    HttpResponseComponent,
+    HttpClientComponent
   ],
   imports: [
     BrowserAnimationsModule,
