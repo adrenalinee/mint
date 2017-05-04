@@ -1,6 +1,6 @@
 <div fxLayout="column">
-  <div>
-    <md-select fxFlexAlign="center">
+  <div fxLayoutGap="1rem">
+    <md-select fxFlexAlign="center" placeholder="GET">
       <md-option>GET</md-option>
       <md-option>POST</md-option>
       <md-option>PUT</md-option>
@@ -12,12 +12,12 @@
     </md-input-container>
     <div fxFlexAlign="center">
       <button md-raised-button>Params</button>
-      <button md-raised-button color="primary">Send</button>
+      <button md-raised-button color="accent">Send</button>
     </div>
   </div>
   <md-tab-group>
-    <md-tab label="Url">
-      <div>
+    <md-tab label="Query">
+      <div fxLayoutGap="1rem">
         <md-input-container fxFlex>
           <input mdInput placeholder="Name" />
         </md-input-container>
@@ -26,8 +26,8 @@
         </md-input-container>
       </div>
     </md-tab>
-    <md-tab label="Query">
-      <div>
+    <md-tab label="Url">
+      <div fxLayoutGap="1rem">
         <md-input-container fxFlex>
           <input mdInput placeholder="Name" />
         </md-input-container>
@@ -40,20 +40,10 @@
 
 
   <md-tab-group>
-    <md-tab label="Headers">
-      <div>
-        <md-input-container fxFlex>
-          <input mdInput placeholder="Name" />
-        </md-input-container>
-        <md-input-container fxFlex>
-          <input mdInput placeholder="Value" />
-        </md-input-container>
-      </div>
-    </md-tab>
     <md-tab label="Body">
-      <div>
+      <div fxLayoutGap="1rem">
         <span>Content type</span>
-        <md-select fxFlexAlign="center" style="width: 200px">
+        <md-select fxFlexAlign="center" placeholder="application/json" style="width: 200px">
           <md-option>text/plain</md-option>
           <md-option>text/html</md-option>
           <md-option>application/json</md-option>
@@ -64,7 +54,18 @@
         [text]="text"
         [mode]="'json'"
         [theme]="'tomorrow_night_eighties'"
-        style="display: block; width: 100%; height: 40vh;"></div>
+        style="display: block; width: 100%; height: 20vh;"></div>
+    </md-tab>
+    <md-tab label="Headers">
+      <button md-raised-button>Authorization</button>
+      <div fxLayoutGap="1rem">
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Name" />
+        </md-input-container>
+        <md-input-container fxFlex>
+          <input mdInput placeholder="Value" />
+        </md-input-container>
+      </div>
     </md-tab>
   </md-tab-group>
 </div>

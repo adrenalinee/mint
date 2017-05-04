@@ -1,9 +1,14 @@
 <app-header></app-header>
 
-<div fxLayout="column">
-    Request
-    <app-http-request></app-http-request>
-    
-    Response
-    <app-http-response></app-http-response>
-</div>
+<md-tab-group class="content-container content">
+  <md-tab label="Request-1">
+    <div fxLayout="column">
+        <app-http-request></app-http-request>
+        
+        Response
+        <app-http-response></app-http-response>
+    </div>
+  </md-tab>
+  <md-tab label="Request-2">
+  </md-tab>
+</md-tab-group>
