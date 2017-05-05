@@ -1,27 +1,42 @@
+<div fxLayout="row" fxLayoutGap="1em">
+    <p>Status: <span>{{requestView.response.status}}</span></p>
+    <p>Status text: <span>{{requestView.response.statusText}}</span></p>
+</div>
+
 <md-tab-group>
   <md-tab label="Body">
-    <div  fxLayoutGap="1rem">
-    <md-radio-group>
-      <md-radio-button>Formatted</md-radio-button>
-      <md-radio-button>Raw</md-radio-button>
-    </md-radio-group>
+    <div  fxLayoutGap="1em">
+      <md-radio-group [(ngModel)]="requestView.resDisplayMethod">
+        <md-radio-button [value]="'formatted'">Formatted</md-radio-button>
+        <md-radio-button [value]="'raw'">Raw</md-radio-button>
+      </md-radio-group>
 
-    <md-select placeholder="JSON">
-      <md-option>JSON</md-option>
-      <md-option>XML</md-option>
-      <md-option>HTML</md-option>
-      <md-option>text</md-option>
-    </md-select>
-    <md-checkbox>Wrap</md-checkbox>
+      <md-select placeholder="JSON">
+        <md-option>JSON</md-option>
+        <md-option>XML</md-option>
+        <md-option>HTML</md-option>
+        <md-option>css</md-option>
+        <md-option>javascript</md-option>
+        <md-option>text</md-option>
+      </md-select>
+      <!--<md-checkbox>Wrap</md-checkbox>-->
     </div>
-    <div ace-editor
-      [text]="requestInfo.response.body"
+    <div *ngIf="requestView.resDisplayMethod == 'formatted'"
+      ace-editor
+      [text]="requestView.response.body"
       [mode]="'json'"
       [theme]="'tomorrow_night_eighties'"
       [readOnly]="true"
       style="display: block; width: 100%; height: 20vh;"></div>
+      
+    <div *ngIf="requestView.resDisplayMethod == 'raw'">
+      {{requestView.response.body}}
+    </div>
+
   </md-tab>
   <md-tab label="Headers">
-    content-type: application/json
+    <p *ngFor="let header of requestView.response.headers">
+      <b>{{header.name}}</b>: {{header.value}}
+    </p>
   </md-tab>
 </md-tab-group>

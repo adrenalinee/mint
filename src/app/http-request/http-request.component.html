@@ -1,39 +1,39 @@
 <div fxLayout="column">
   <div fxLayoutGap="1em">
-    <md-select fxFlexAlign="center" [(ngModel)]="requestInfo.method">
+    <md-select fxFlexAlign="center" [(ngModel)]="requestView.request.method">
       <md-option *ngFor="let method of httpMethods" [value]="method">{{method}}</md-option>
     </md-select>
     <md-input-container fxFlex>
-      <input mdInput [(ngModel)]="requestInfo.url" placeholder="Request URL" />
+      <input mdInput [(ngModel)]="requestView.request.url" placeholder="Request URL" />
     </md-input-container>
     <div fxFlexAlign="center">
-      <button md-raised-button (click)="requestInfo.isOpenParams = !requestInfo.isOpenParams">Params</button>
+      <button md-raised-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
       <button md-raised-button color="primary" (click)="send()">Send</button>
     </div>
   </div>
-  <div style="background-color: #f2f4f6; padding: 1em;" *ngIf="requestInfo.isOpenParams">
+  <div style="background-color: #f2f4f6; padding: 1em" *ngIf="requestView.isOpenParams">
     <md-tab-group>
       <md-tab label="Query">
-        <div fxLayoutGap="1em" *ngFor="let param of requestInfo.queryParams; index as i">
+        <div fxLayoutGap="1em" *ngFor="let param of requestView.request.queryParams; index as i">
           <md-input-container fxFlex>
             <input mdInput placeholder="Name" [(ngModel)]="param.name" />
           </md-input-container>
           <md-input-container fxFlex>
             <input mdInput placeholder="Value" [(ngModel)]="param.value"
-              (focus)="addNameValue(i, requestInfo.queryParams)"
-              (blur)="checkForNext(i, requestInfo.queryParams)" />
+              (focus)="addNameValue(i, requestView.request.queryParams)"
+              (blur)="checkForNext(i, requestView.request.queryParams)" />
           </md-input-container>
         </div>
       </md-tab>
       <md-tab label="Url">
-        <div fxLayoutGap="1em" *ngFor="let param of requestInfo.urlParams; index as i">
+        <div fxLayoutGap="1em" *ngFor="let param of requestView.request.urlParams; index as i">
           <md-input-container fxFlex>
             <input mdInput placeholder="Name" [(ngModel)]="param.name" />
           </md-input-container>
           <md-input-container fxFlex>
             <input mdInput placeholder="Value" [(ngModel)]="param.value"
-              (focus)="addNameValue(i, requestInfo.urlParams)"
-              (blur)="checkForNext(i, requestInfo.urlParams)" />
+              (focus)="addNameValue(i, requestView.request.urlParams)"
+              (blur)="checkForNext(i, requestView.request.urlParams)" />
           </md-input-container>
         </div>
       </md-tab>
@@ -42,34 +42,36 @@
 
   <md-tab-group>
     <md-tab label="Body">
-      <div fxLayoutGap="1em">
-        <span>Content type</span>
-        <md-select fxFlexAlign="center" [(ngModel)]="requestInfo.contentType" style="width: 200px">
-          <md-option *ngFor="let type of contentTypes" [value]="type">{{type}}</md-option>
-        </md-select>
+      <div style="padding: 1em">
+        <div fxLayoutGap="1em">
+          <span>Content type</span>
+          <md-select fxFlexAlign="center" [(ngModel)]="requestView.contentType" style="width: 200px">
+            <md-option *ngFor="let type of contentTypes" [value]="type">{{type}}</md-option>
+          </md-select>
+        </div>
+        <div ace-editor
+          [text]="text"
+          [mode]="'json'"
+          [theme]="'tomorrow_night_eighties'"
+          style="display: block; width: 100%; height: 20vh;"></div>
       </div>
-      <div ace-editor
-        [text]="text"
-        [mode]="'json'"
-        [theme]="'tomorrow_night_eighties'"
-        style="display: block; width: 100%; height: 20vh;"></div>
     </md-tab>
     <md-tab label="Headers">
-      <div style="padding: 1em;">
+      <div style="padding: 1em">
         <!--<button md-raised-button color="accent">Authorization</button>-->
-        <div fxLayoutGap="1em" *ngFor="let header of requestInfo.headers; index as i">
+        <div fxLayoutGap="1em" *ngFor="let header of requestView.request.headers; index as i">
           <md-input-container fxFlex>
             <input mdInput placeholder="Name" [(ngModel)]="header.name" />
           </md-input-container>
           <md-input-container fxFlex>
             <input mdInput placeholder="Value" [(ngModel)]="header.value"
-              (focus)="addNameValue(i, requestInfo.headers)"
-              (blur)="checkForNext(i, requestInfo.headers)" />
+              (focus)="addNameValue(i, requestView.request.headers)"
+              (blur)="checkForNext(i, requestView.request.headers)" />
           </md-input-container>
         </div>
       </div>
     </md-tab>
-    <md-tab label="Autorization">
-    </md-tab>
+    <!--<md-tab label="Authorization">
+    </md-tab>-->
   </md-tab-group>
 </div>

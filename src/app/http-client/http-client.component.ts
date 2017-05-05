@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestInfo } from '../request-info';
+import { RequestView } from '../request-info';
 
 @Component({
   selector: 'app-http-client',
@@ -7,7 +7,7 @@ import { RequestInfo } from '../request-info';
   styleUrls: ['./http-client.component.css']
 })
 export class HttpClientComponent implements OnInit {
-  requestInfo: RequestInfo = new RequestInfo();
+  requestView: RequestView = new RequestView();
 
   constructor() { }
 

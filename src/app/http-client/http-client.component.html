@@ -1,17 +1,17 @@
-<md-tab-group>
+<md-tab-group dynamicHeight="true">
   <md-tab label="Request-1">
-    <div fxLayout="column">
-        <app-http-request [requestInfo]="requestInfo"></app-http-request>
+    <div fxLayout="column" style="padding: 1em">
+        <app-http-request [requestView]="requestView"></app-http-request>
         
-        <p *ngIf="!requestInfo.isOpenResponse">
+        <p *ngIf="!requestView.isOpenResponse">
           please hit the 
           <button md-raised-button disabled>Send</button>
           button to get a response
         </p>
         <p></p>
-        <div style="background-color: #f2f4f6; padding: 1em;" *ngIf="requestInfo.isOpenResponse">
+        <div style="background-color: #f2f4f6; padding: 1em;" *ngIf="requestView.isOpenResponse">
           Response
-          <app-http-response [requestInfo]="requestInfo"></app-http-response>
+          <app-http-response [requestView]="requestView"></app-http-response>
         </div>
     </div>
   </md-tab>

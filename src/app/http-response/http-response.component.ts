@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RequestView } from '../request-info';
 
 @Component({
   selector: 'app-http-response',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./http-response.component.css']
 })
 export class HttpResponseComponent implements OnInit {
-  @Input() requestInfo: RequestInfo;
+  @Input() requestView: RequestView;
   displayMethod: string[];
 
   constructor() { }

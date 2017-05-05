@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 // import 'rxjs/add/operator/startWith';
 
 import { NameValue } from '../nameValue';
-import { ResponseInfo } from '../request-info';
+import { RequestView } from '../request-info';
 import { HttpClientService } from '../http-client.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { HttpClientService } from '../http-client.service';
   providers: [HttpClientService]
 })
 export class HttpRequestComponent implements OnInit {
-  @Input() requestInfo: RequestInfo;
+  @Input() requestView: RequestView;
 
   httpMethods: string[];
   contentTypes: string[];
@@ -45,15 +45,13 @@ export class HttpRequestComponent implements OnInit {
   send() {
     console.log('send!');
 
-    this.httpClient.get(this.requestInfo['url'])
+    this.httpClient.execute(this.requestView.request)
       .subscribe(
         response => {
           console.log(response);
-          let responseInfo = new ResponseInfo();
-          responseInfo.body = response;
-          this.requestInfo['response'] = responseInfo;
 
-          this.requestInfo['isOpenResponse'] = !this.requestInfo['isOpenResponse'];
+          this.requestView.response = response;
+          this.requestView['isOpenResponse'] = true;
         });
 
   }
