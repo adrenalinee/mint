@@ -9,11 +9,25 @@
     <div fxFlexAlign="center">
       <button md-raised-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
       <button md-raised-button color="primary" (click)="send()">Send</button>
+      <!--<button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item>
+          <span>Action</span>
+        </button>
+      </md-menu> TODO -->
     </div>
   </div>
   <div style="background-color: #f2f4f6; padding: 1em" *ngIf="requestView.isOpenParams">
     <md-tab-group>
-      <md-tab label="Query">
+      <md-tab>
+        <ng-template md-tab-label>
+          Query
+          <span *ngIf="requestView.request.queryParams.length > 1">
+            ({{requestView.request.queryParams.length - 1}})
+          </span>
+        </ng-template>
         <div fxLayoutGap="1em" *ngFor="let param of requestView.request.queryParams; index as i">
           <md-input-container fxFlex>
             <input mdInput placeholder="Name" [(ngModel)]="param.name" />
@@ -25,7 +39,13 @@
           </md-input-container>
         </div>
       </md-tab>
-      <md-tab label="Url">
+      <md-tab>
+        <ng-template md-tab-label>
+          Url
+          <span *ngIf="requestView.request.urlParams.length > 1">
+            ({{requestView.request.urlParams.length - 1}})
+          </span>
+        </ng-template>
         <div fxLayoutGap="1em" *ngFor="let param of requestView.request.urlParams; index as i">
           <md-input-container fxFlex>
             <input mdInput placeholder="Name" [(ngModel)]="param.name" />
@@ -41,9 +61,15 @@
   </div>
 
   <md-tab-group>
-    <md-tab label="Body">
+    <md-tab>
+      <ng-template md-tab-label>
+        <span fxLayoutAlign="center center">
+          Body <md-icon *ngIf="requestView.request.body != null">done</md-icon>
+        </span>
+      </ng-template>
       <div style="padding: 1em">
-        <div fxLayoutGap="1em">
+        <div fxLayoutGap="1em" fxLayoutAlign="start center">
+          <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
           <span>Content type</span>
           <md-select fxFlexAlign="center" [(ngModel)]="requestView.contentType" style="width: 200px">
             <md-option *ngFor="let type of contentTypes" [value]="type">{{type}}</md-option>
@@ -52,11 +78,22 @@
         <div ace-editor
           [text]="text"
           [mode]="'json'"
-          [theme]="'tomorrow_night_eighties'"
+          [theme]="'idle_fingers'"
+          [options]="{
+            minLines: 10,
+            maxLines: 'Infinity',
+            wrap: requestView.reqBodyWrap
+          }"
           style="display: block; width: 100%; height: 20vh;"></div>
       </div>
     </md-tab>
-    <md-tab label="Headers">
+    <md-tab>
+      <ng-template md-tab-label>
+        Headers
+        <span *ngIf="requestView.request.headers.length > 1">
+          ({{requestView.request.headers.length - 1}})
+        </span>
+      </ng-template>
       <div style="padding: 1em">
         <!--<button md-raised-button color="accent">Authorization</button>-->
         <div fxLayoutGap="1em" *ngFor="let header of requestView.request.headers; index as i">
@@ -71,7 +108,5 @@
         </div>
       </div>
     </md-tab>
-    <!--<md-tab label="Authorization">
-    </md-tab>-->
   </md-tab-group>
 </div>

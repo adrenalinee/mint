@@ -18,9 +18,6 @@ export class HttpRequestComponent implements OnInit {
   httpMethods: string[];
   contentTypes: string[];
   requestHeaders: string[];
-  
-  // filteredHeaders: any;
-
 
   constructor(private httpClient: HttpClientService) { }
 
@@ -51,7 +48,21 @@ export class HttpRequestComponent implements OnInit {
           console.log(response);
 
           this.requestView.response = response;
-          this.requestView['isOpenResponse'] = true;
+          this.requestView.isOpenResponse = true;
+
+          response.headers
+          .filter(h => h.name == 'Content-Type')
+          .forEach(h => {
+            if (h.value.startsWith('application/json')) {
+              this.requestView.resDisplayMode = 'json';
+            } else if (h.value.startsWith('application/xml')) {
+              this.requestView.resDisplayMode = 'xml';
+            } else if (h.value.startsWith('text/xml')) {
+              this.requestView.resDisplayMode = 'xml';
+            } else if (h.value.startsWith('text/html')) {
+              this.requestView.resDisplayMode = 'html';
+            }
+          });
         });
 
   }

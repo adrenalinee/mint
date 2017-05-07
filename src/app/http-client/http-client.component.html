@@ -1,5 +1,11 @@
 <md-tab-group dynamicHeight="true">
-  <md-tab label="Request-1">
+  <md-tab>
+    <ng-template md-tab-label>
+      Request-1
+      <!--<button md-icon-button (click)="closeTab()">
+        <md-icon>clear</md-icon>
+      </button> TODO -->
+    </ng-template>
     <div fxLayout="column" style="padding: 1em">
         <app-http-request [requestView]="requestView"></app-http-request>
         
@@ -8,8 +14,10 @@
           <button md-raised-button disabled>Send</button>
           button to get a response
         </p>
-        <p></p>
-        <div style="background-color: #f2f4f6; padding: 1em;" *ngIf="requestView.isOpenResponse">
+        <!--<p></p>-->
+        <hr>
+        <!--style="background-color: #f2f4f6; padding: 1em;"-->
+        <div *ngIf="requestView.isOpenResponse">
           Response
           <app-http-response [requestView]="requestView"></app-http-response>
         </div>

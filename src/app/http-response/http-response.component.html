@@ -3,25 +3,45 @@
     <p>Status text: <span>{{requestView.response.statusText}}</span></p>
 </div>
 
-<md-tab-group>
-  <md-tab label="Body">
-    <div  fxLayoutGap="1em">
-      <md-radio-group [(ngModel)]="requestView.resDisplayMethod">
-        <md-radio-button [value]="'formatted'">Formatted</md-radio-button>
-        <md-radio-button [value]="'raw'">Raw</md-radio-button>
-      </md-radio-group>
+<md-tab-group dynamicHeight="true">
+  <md-tab>
+    <ng-template md-tab-label>
+      <span fxLayoutAlign="center center">
+        Body <!--<md-icon *ngIf="requestView.response.body != null">done</md-icon>-->
+      </span>
+    </ng-template>
+    <div  style="padding: 1em">
+      <div fxLayoutGap="1em" fxLayoutAlign="start center">
+        <!--<md-radio-group [(ngModel)]="requestView.resDisplayMethod">
+          <md-radio-button [value]="'formatted'">Formatted</md-radio-button>
+          <md-radio-button [value]="'raw'">Raw</md-radio-button>
+        </md-radio-group>
 
-      <md-select placeholder="JSON">
-        <md-option>JSON</md-option>
-        <md-option>XML</md-option>
-        <md-option>HTML</md-option>
-        <md-option>css</md-option>
-        <md-option>javascript</md-option>
-        <md-option>text</md-option>
-      </md-select>
-      <!--<md-checkbox>Wrap</md-checkbox>-->
+        <md-select [(ngModel)]="requestView.resDisplayMode">
+          <md-option *ngFor="let method of resDisplayModes" [value]="method">{{method}}</md-option>
+        </md-select>-->
+        <!--<md-checkbox>Wrap</md-checkbox>-->
+
+        <md-checkbox>Pretty</md-checkbox>
+        <md-checkbox [(ngModel)]="requestView.resBodyWrap">Wrap</md-checkbox>
+        <md-checkbox>Syntax Hightligh</md-checkbox>
+        <md-select [(ngModel)]="requestView.resDisplayMode">
+          <md-option *ngFor="let method of resDisplayModes" [value]="method">{{method}}</md-option>
+        </md-select>
+      </div>
+
+      <div ace-editor
+        [text]="requestView.response.body"
+        [mode]="requestView.resDisplayMode"
+        [theme]="'idle_fingers'"
+        [readOnly]="true"
+        [options]="{
+          maxLines: 'Infinity',
+          wrap: requestView.resBodyWrap
+        }"
+        style="display: block; width: 100%; height: 100%"></div>
     </div>
-    <div *ngIf="requestView.resDisplayMethod == 'formatted'"
+    <!--<div *ngIf="requestView.resDisplayMethod == 'formatted'"
       ace-editor
       [text]="requestView.response.body"
       [mode]="'json'"
@@ -31,10 +51,13 @@
       
     <div *ngIf="requestView.resDisplayMethod == 'raw'">
       {{requestView.response.body}}
-    </div>
+    </div>-->
 
   </md-tab>
-  <md-tab label="Headers">
+  <md-tab>
+    <ng-template md-tab-label>
+      Headers ({{requestView.response.headers.length}})
+    </ng-template>
     <p *ngFor="let header of requestView.response.headers">
       <b>{{header.name}}</b>: {{header.value}}
     </p>

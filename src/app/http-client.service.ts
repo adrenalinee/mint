@@ -30,7 +30,7 @@ export class HttpClientService {
 
     return this.http.request(finalUrl, requestOptions)
       .map(response => {
-        console.log(response);
+        // console.log(response);
         let responseInfo: ResponseInfo = new ResponseInfo();
         responseInfo.status = response.status;
         responseInfo.statusText = response.statusText;
@@ -39,7 +39,7 @@ export class HttpClientService {
           responseInfo.headers.push(new NameValue(k, response.headers.get(k)));
         });
 
-        responseInfo.body = response.text();
+        responseInfo.body = response.text() == "" ? null : response.text();
 
         return responseInfo;
       });

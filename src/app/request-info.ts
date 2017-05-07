@@ -4,14 +4,16 @@ export class RequestView {
     title: string;
     contentType: string = "application/json";
 
+    reqBodyWrap: boolean = true;
+
     request: RequestInfo = new RequestInfo();
     response: ResponseInfo = new ResponseInfo();
 
     isOpenParams: boolean;
     isOpenResponse: boolean;
 
-    resFormat: string = "JSON";
-    resDisplayMethod: string = "formatted";
+    resDisplayMode: string = "text";
+    resBodyWrap: boolean = true;
 }
 
 export class RequestInfo {

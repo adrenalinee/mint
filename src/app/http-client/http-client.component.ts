@@ -14,4 +14,7 @@ export class HttpClientComponent implements OnInit {
   ngOnInit() {
   }
 
+  closeTab() {
+    console.log('closeTab');
+  }
 }

@@ -7,8 +7,10 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AceEditorDirective } from 'ng2-ace';
-import 'brace/theme/tomorrow_night_eighties';
+import 'brace/theme/idle_fingers';
 import 'brace/mode/json';
+import 'brace/mode/xml';
+import 'brace/mode/html';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 

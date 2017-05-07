@@ -8,11 +8,19 @@ import { RequestView } from '../request-info';
 })
 export class HttpResponseComponent implements OnInit {
   @Input() requestView: RequestView;
-  displayMethod: string[];
+  resDisplayModes: string[];
 
   constructor() { }
 
   ngOnInit() {
+    this.resDisplayModes = [
+      'text',
+      'json',
+      'xml',
+      'html',
+      'css',
+      'javascript'
+    ];
   }
 
 }
