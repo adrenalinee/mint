@@ -3,6 +3,7 @@ import { NameValue } from './nameValue';
 export class RequestView {
     title: string;
     contentType: string = "application/json";
+    reqDisplayMode: string = "text";
 
     reqBodyWrap: boolean = true;
 

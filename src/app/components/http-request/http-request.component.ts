@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 // import {FormControl} from '@angular/forms';
 // import 'rxjs/add/operator/startWith';
 
-import { NameValue } from '../nameValue';
-import { RequestView } from '../request-info';
-import { HttpClientService } from '../http-client.service';
+import { NameValue } from 'app/nameValue';
+import { RequestView } from 'app/request-info';
+import { HttpClientService } from 'app/services/http-client.service';
 
 @Component({
   selector: 'app-http-request',
@@ -18,11 +18,18 @@ export class HttpRequestComponent implements OnInit {
   httpMethods: string[];
   contentTypes: string[];
   requestHeaders: string[];
+  displayModes: string[];
 
   constructor(private httpClient: HttpClientService) { }
 
   ngOnInit() {
-    this.httpMethods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
+    this.httpMethods = [
+      'GET',
+      'POST',
+      'PUT',
+      'PATCH',
+      'DELETE'
+    ];
     this.contentTypes = [
       'text/plain',
       'text/html',
@@ -36,6 +43,11 @@ export class HttpRequestComponent implements OnInit {
       'Content-Type',
       'Host',
       'Origin'
+    ];
+    this.displayModes = [
+      'text',
+      'json',
+      'xml'
     ];
   }
 

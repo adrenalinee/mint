@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RequestView } from '../request-info';
+import { RequestView } from '../../request-info';
 
 @Component({
   selector: 'app-http-response',
@@ -8,12 +8,13 @@ import { RequestView } from '../request-info';
 })
 export class HttpResponseComponent implements OnInit {
   @Input() requestView: RequestView;
-  resDisplayModes: string[];
+  
+  displayModes: string[];
 
   constructor() { }
 
   ngOnInit() {
-    this.resDisplayModes = [
+    this.displayModes = [
       'text',
       'json',
       'xml',

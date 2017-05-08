@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { NameValue } from './nameValue';
-import { RequestInfo, ResponseInfo } from './request-info';
+import { NameValue } from '../nameValue';
+import { RequestInfo, ResponseInfo } from '../request-info';
 
 @Injectable()
 export class HttpClientService {

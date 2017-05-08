@@ -15,10 +15,10 @@ import 'brace/mode/html';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HttpRequestComponent } from './http-request/http-request.component';
-import { HttpResponseComponent } from './http-response/http-response.component';
-import { HttpClientComponent } from './http-client/http-client.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HttpRequestComponent } from './components/http-request/http-request.component';
+import { HttpResponseComponent } from './components/http-response/http-response.component';
+import { HttpClientComponent } from './components/http-client/http-client.component';
 
 @NgModule({
   declarations: [

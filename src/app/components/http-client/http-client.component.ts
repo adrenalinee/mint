@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestView } from '../request-info';
+import { RequestView } from '../../request-info';
 
 @Component({
   selector: 'app-http-client',

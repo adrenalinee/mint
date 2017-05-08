@@ -70,6 +70,11 @@
       <div style="padding: 1em">
         <div fxLayoutGap="1em" fxLayoutAlign="start center">
           <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
+          <md-checkbox>Syntax Hightligh</md-checkbox>
+          <md-select [(ngModel)]="requestView.reqDisplayMode">
+            <md-option *ngFor="let method of displayModes" [value]="method">{{method}}</md-option>
+          </md-select>
+
           <span>Content type</span>
           <md-select fxFlexAlign="center" [(ngModel)]="requestView.contentType" style="width: 200px">
             <md-option *ngFor="let type of contentTypes" [value]="type">{{type}}</md-option>
@@ -77,7 +82,7 @@
         </div>
         <div ace-editor
           [text]="text"
-          [mode]="'json'"
+          [mode]="requestView.reqDisplayMode"
           [theme]="'idle_fingers'"
           [options]="{
             minLines: 10,
