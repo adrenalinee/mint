@@ -67,7 +67,7 @@
           Body <md-icon *ngIf="requestView.request.body != null">done</md-icon>
         </span>
       </ng-template>
-      <div style="padding: 1em">
+      <div style="padding: 0.5em">
         <div fxLayoutGap="1em" fxLayoutAlign="start center">
           <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
           <md-checkbox>Syntax Hightligh</md-checkbox>
@@ -99,11 +99,11 @@
           ({{requestView.request.headers.length - 1}})
         </span>
       </ng-template>
-      <div style="padding: 1em">
+      <div style="padding: 0.5em">
         <!--<button md-raised-button color="accent">Authorization</button>-->
         <div fxLayoutGap="1em" *ngFor="let header of requestView.request.headers; index as i">
           <md-input-container fxFlex>
-            <input mdInput placeholder="Name" [(ngModel)]="header.name" />
+            <input mdInput placeholder="Name" [(ngModel)]="header.name" (keyup)="" />
           </md-input-container>
           <md-input-container fxFlex>
             <input mdInput placeholder="Value" [(ngModel)]="header.value"

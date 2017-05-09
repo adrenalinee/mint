@@ -79,6 +79,9 @@ export class HttpRequestComponent implements OnInit {
 
   }
 
+  findHeaderBuilder(headerName) {
+    // this.requestView.headerBuilders.filter(hb => hb);
+  }
 
   addNameValue(selectedIndex, nameValues: NameValue[]) {
     if (selectedIndex == nameValues.length - 1) {

@@ -10,7 +10,7 @@
         Body <!--<md-icon *ngIf="requestView.response.body != null">done</md-icon>-->
       </span>
     </ng-template>
-    <div  style="padding: 1em">
+    <div style="padding: 0.5em">
       <div fxLayoutGap="1em" fxLayoutAlign="start center">
         <!--<md-radio-group [(ngModel)]="requestView.resDisplayMethod">
           <md-radio-button [value]="'formatted'">Formatted</md-radio-button>
@@ -59,8 +59,10 @@
     <ng-template md-tab-label>
       Headers ({{requestView.response.headers.length}})
     </ng-template>
-    <p *ngFor="let header of requestView.response.headers">
-      <b>{{header.name}}</b>: {{header.value}}
-    </p>
+    <div style="padding: 0.5em">
+      <p *ngFor="let header of requestView.response.headers">
+        <b>{{header.name}}</b>: {{header.value}}
+      </p>
+    </div>
   </md-tab>
 </md-tab-group>

@@ -2,19 +2,24 @@ import { NameValue } from './nameValue';
 
 export class RequestView {
     title: string;
-    contentType: string = "application/json";
-    reqDisplayMode: string = "text";
 
+    contentType: string = "application/json";
+    isOpenParams: boolean;
+    reqDisplayMode: string = "text";
     reqBodyWrap: boolean = true;
+    headerBuilders: [string, string];
+
+
+    isOpenResponse: boolean;
+    resDisplayMode: string = "text";
+    resBodyWrap: boolean = true;
 
     request: RequestInfo = new RequestInfo();
     response: ResponseInfo = new ResponseInfo();
 
-    isOpenParams: boolean;
-    isOpenResponse: boolean;
-
-    resDisplayMode: string = "text";
-    resBodyWrap: boolean = true;
+    constructor(title: string) {
+        this.title = title;
+    }
 }
 
 export class RequestInfo {

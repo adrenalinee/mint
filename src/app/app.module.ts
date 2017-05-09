@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HttpRequestComponent } from './components/http-request/http-request.component';
 import { HttpResponseComponent } from './components/http-response/http-response.component';
-import { HttpClientComponent } from './components/http-client/http-client.component';
+import { HttpClientsComponent } from './components/http-clients/http-clients.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { HttpClientComponent } from './components/http-client/http-client.compon
     HeaderComponent,
     HttpRequestComponent,
     HttpResponseComponent,
-    HttpClientComponent
+    HttpClientsComponent
   ],
   imports: [
     BrowserAnimationsModule,
