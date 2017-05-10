@@ -110,6 +110,9 @@
               (focus)="addNameValue(i, requestView.request.headers)"
               (blur)="checkForNext(i, requestView.request.headers)" />
           </md-input-container>
+          <div fxFlexAlign="center">
+           <button md-raised-button color="accent" *ngIf="header.builder">Build</button>
+          </div>
         </div>
       </div>
     </md-tab>
