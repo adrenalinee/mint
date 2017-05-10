@@ -7,7 +7,7 @@ export class RequestView {
     isOpenParams: boolean;
     reqDisplayMode: string = "text";
     reqBodyWrap: boolean = true;
-    headerBuilders: [string, string];
+    headerBuilders: Array<NameValue> = new Array();
 
 
     isOpenResponse: boolean;
@@ -25,17 +25,17 @@ export class RequestView {
 export class RequestInfo {
     url: string = "http://localhost:4200/assets/test.json";
     method: string = "GET";
-    queryParams: NameValue[] = [new NameValue(null, null)];
-    urlParams: NameValue[] = [new NameValue(null, null)];
+    queryParams: Array<NameValue> = [new NameValue(null, null)];
+    urlParams: Array<NameValue> = [new NameValue(null, null)];
 
-    headers: NameValue[] = [new NameValue(null, null)];
+    headers: Array<NameValue> = [new NameValue(null, null)];
     body: string;
 }
 
 export class ResponseInfo {
     status: number;
     statusText: string;
-    headers: NameValue[] = [];
+    headers: Array<NameValue> = new Array();
 
     body: string;
 }

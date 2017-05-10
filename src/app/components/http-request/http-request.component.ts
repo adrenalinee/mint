@@ -79,8 +79,10 @@ export class HttpRequestComponent implements OnInit {
 
   }
 
-  findHeaderBuilder(headerName) {
-    // this.requestView.headerBuilders.filter(hb => hb);
+  findHeaderBuilder(headerName: string) {
+    //TODO rxjs 로 변경 예정
+    let r = this.requestView.headerBuilders.filter(hb => hb.name == headerName)
+    console.log(r);
   }
 
   addNameValue(selectedIndex, nameValues: NameValue[]) {

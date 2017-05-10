@@ -103,7 +103,7 @@
         <!--<button md-raised-button color="accent">Authorization</button>-->
         <div fxLayoutGap="1em" *ngFor="let header of requestView.request.headers; index as i">
           <md-input-container fxFlex>
-            <input mdInput placeholder="Name" [(ngModel)]="header.name" (keyup)="" />
+            <input mdInput placeholder="Name" [(ngModel)]="header.name" (keyup)="findHeaderBuilder(header.name)" />
           </md-input-container>
           <md-input-container fxFlex>
             <input mdInput placeholder="Value" [(ngModel)]="header.value"
