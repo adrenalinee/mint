@@ -7,12 +7,14 @@ export class RequestView {
     isOpenParams: boolean;
     reqDisplayMode: string = "text";
     reqBodyWrap: boolean = true;
+    reqSyntaxHightlight: boolean = false;
     headerBuilders: Array<NameValue> = new Array();
 
 
     isOpenResponse: boolean;
     resDisplayMode: string = "text";
     resBodyWrap: boolean = true;
+    resSyntaxHightlight: boolean = false;
 
     request: RequestInfo = new RequestInfo();
     response: ResponseInfo = new ResponseInfo();

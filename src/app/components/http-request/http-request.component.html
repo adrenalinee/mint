@@ -102,8 +102,8 @@
       <div style="padding: 0.5em">
         <!--<button md-raised-button color="accent">Authorization</button>-->
         <div fxLayoutGap="1em" *ngFor="let header of requestView.request.headers; index as i">
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Name" [(ngModel)]="header.name" (keyup)="findHeaderBuilder(header.name)" />
+          <md-input-container fxFlex="40">
+            <input mdInput placeholder="Name" [(ngModel)]="header.name" (keyup)="findHeaderBuilder(i)" />
           </md-input-container>
           <md-input-container fxFlex>
             <input mdInput placeholder="Value" [(ngModel)]="header.value"
@@ -111,7 +111,7 @@
               (blur)="checkForNext(i, requestView.request.headers)" />
           </md-input-container>
           <div fxFlexAlign="center">
-           <button md-raised-button color="accent" *ngIf="header.builder">Build</button>
+           <button md-raised-button color="accent" *ngIf="header.builder" (click)="openHeaderBuilder(header)">Build</button>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-request-header-authorization',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestHeaderAuthorizationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MdDialogRef<RequestHeaderAuthorizationComponent>) { }
 
   ngOnInit() {
   }

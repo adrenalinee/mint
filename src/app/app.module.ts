@@ -11,6 +11,7 @@ import 'brace/theme/idle_fingers';
 import 'brace/mode/json';
 import 'brace/mode/xml';
 import 'brace/mode/html';
+import 'brace/mode/text';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -29,6 +30,9 @@ import { RequestHeaderAuthorizationComponent } from './components/expansions/req
     HttpRequestComponent,
     HttpResponseComponent,
     HttpClientsComponent,
+    RequestHeaderAuthorizationComponent
+  ],
+  entryComponents: [
     RequestHeaderAuthorizationComponent
   ],
   imports: [

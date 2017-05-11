@@ -24,7 +24,7 @@
 
         <md-checkbox>Pretty</md-checkbox>
         <md-checkbox [(ngModel)]="requestView.resBodyWrap">Wrap</md-checkbox>
-        <md-checkbox>Syntax Hightligh</md-checkbox>
+        <md-checkbox [(ngModel)]="requestView.resSyntaxHightlight">Syntax Hightligh</md-checkbox>
         <md-select [(ngModel)]="requestView.resDisplayMode">
           <md-option *ngFor="let method of displayModes" [value]="method">{{method}}</md-option>
         </md-select>
@@ -42,6 +42,8 @@
         }"
         style="display: block; width: 100%; height: 100%"></div>
     </div>
+
+
     <!--<div *ngIf="requestView.resDisplayMethod == 'formatted'"
       ace-editor
       [text]="requestView.response.body"
