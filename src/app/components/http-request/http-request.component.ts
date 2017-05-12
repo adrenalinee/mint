@@ -96,8 +96,14 @@ export class HttpRequestComponent implements OnInit {
     }
   }
 
-  openHeaderBuilder(header: NameValue[]) {
-    this.dialog.open(RequestHeaderAuthorizationComponent);
+  openHeaderBuilder(header: NameValue) {
+    this.dialog.open(RequestHeaderAuthorizationComponent, {
+      disableClose: true
+    })
+    .afterClosed()
+    .subscribe(value => {
+      header.value = value;
+    });
   }
 
   addNameValue(selectedIndex, nameValues: NameValue[]) {
