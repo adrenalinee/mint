@@ -102,7 +102,9 @@ export class HttpRequestComponent implements OnInit {
     })
     .afterClosed()
     .subscribe(value => {
-      header.value = value;
+      if (value != null) {
+        header.value = value;
+      }
     });
   }
 
