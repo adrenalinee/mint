@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-request-header-authorization',
@@ -15,11 +15,17 @@ export class RequestHeaderAuthorizationComponent implements OnInit {
   //   password: null
   // };
 
-  authTypes: Array<{}> = new Array();
+  authTypes: Array<{name: string, value: string}> = new Array();
 
-  constructor(private dialogRef: MdDialogRef<RequestHeaderAuthorizationComponent>) { }
+  constructor(
+    private dialogRef: MdDialogRef<RequestHeaderAuthorizationComponent>,
+    @Inject(MD_DIALOG_DATA) private data: any) { }
 
   ngOnInit() {
+    console.log(this.data);
+
+    this.authBuilderView = this.data.viewModel;
+
     this.authTypes.push({
       name: 'Basic Auth',
       value: 'BasicAuth'
@@ -38,7 +44,10 @@ export class RequestHeaderAuthorizationComponent implements OnInit {
     const account = this.authBuilderView.account;
 
     const authorization = 'Basic ' + btoa(account.username + ":" + account.password);
-    this.dialogRef.close(authorization);
+    this.dialogRef.close({
+      value: authorization,
+      viewModel: this.authBuilderView
+    });
   }
 }
 

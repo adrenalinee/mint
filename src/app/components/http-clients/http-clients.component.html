@@ -7,7 +7,7 @@
       </button> TODO -->
     </ng-template>
     <div fxLayout="column" style="padding: 1em">
-      <app-http-request [requestView]="requestView"></app-http-request>
+      <app-http-request [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-request>
       
       <p *ngIf="!requestView.isOpenResponse">
         please hit the 
@@ -23,25 +23,4 @@
       </div>
     </div>
   </md-tab>
-  <!--<md-tab>
-    <ng-template md-tab-label>
-      Request-1
-    </ng-template>
-    <div fxLayout="column" style="padding: 1em">
-      <app-http-request [requestView]="requestView"></app-http-request>
-      
-      <p *ngIf="!requestView.isOpenResponse">
-        please hit the 
-        <button md-raised-button disabled>Send</button>
-        button to get a response
-      </p>
-      <hr>
-      <div *ngIf="requestView.isOpenResponse">
-        Response
-        <app-http-response [requestView]="requestView"></app-http-response>
-      </div>
-    </div>
-  </md-tab>
-  <md-tab label="Request-2">
-  </md-tab>-->
 </md-tab-group>

@@ -8,7 +8,7 @@ export class RequestView {
     reqDisplayMode: string = "text";
     reqBodyWrap: boolean = true;
     reqSyntaxHightlight: boolean = false;
-    headerBuilders: Array<NameValue> = new Array();
+    // headerBuilders: Array<NameValue> = new Array();
 
 
     isOpenResponse: boolean;

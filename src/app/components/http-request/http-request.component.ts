@@ -5,8 +5,8 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { NameValue } from 'app/nameValue';
 import { RequestView } from 'app/request-info';
+import { RequestExpansion, HeaderBuilder } from 'app/requestExpansion';
 import { HttpClientService } from 'app/services/http-client.service';
-import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
 
 @Component({
   selector: 'app-http-request',
@@ -16,6 +16,7 @@ import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/r
 })
 export class HttpRequestComponent implements OnInit {
   @Input() requestView: RequestView;
+  @Input() requestExpansions: Array<RequestExpansion>;
 
   httpMethods: string[];
   contentTypes: string[];
@@ -88,7 +89,14 @@ export class HttpRequestComponent implements OnInit {
   findHeaderBuilder(selectedIndex) {
     //TODO rxjs 로 변경 예정
     const header: NameValue = this.requestView.request.headers[selectedIndex];
-    const headerBuilder: NameValue = this.requestView.headerBuilders.find(hb => hb.name == header.name);
+    // const headerBuilder: NameValue = this.requestView.headerBuilders.find(hb => hb.name == header.name);
+    // if (headerBuilder != null) {
+    //   this.requestView.request.headers[selectedIndex].builder = true;
+    // } else {
+    //   this.requestView.request.headers[selectedIndex].builder = false;
+    // }
+
+    const headerBuilder = this.requestExpansions.find(re => re.headerBuilders[header.name] != null);
     if (headerBuilder != null) {
       this.requestView.request.headers[selectedIndex].builder = true;
     } else {
@@ -97,15 +105,34 @@ export class HttpRequestComponent implements OnInit {
   }
 
   openHeaderBuilder(header: NameValue) {
-    this.dialog.open(RequestHeaderAuthorizationComponent, {
-      disableClose: true
+    const headerBuilder: HeaderBuilder =
+      this.requestExpansions
+        .find(re => re.headerBuilders[header.name] != null)
+        .headerBuilders[header.name];
+
+
+    this.dialog.open(headerBuilder.builder, {
+      disableClose: true,
+      data: {
+        viewModel: headerBuilder.viewModel
+      }
     })
     .afterClosed()
-    .subscribe(value => {
-      if (value != null) {
-        header.value = value;
+    .subscribe(data => {
+      if (data != null) {
+        if (data.value != null) {
+          header.value = data.value;
+        }
+        if (data.viewModel != null) {
+          headerBuilder.viewModel = data.viewModel;
+        }
       }
     });
+
+    // this.requestExpansions
+    //   .filter(re => re.headerBuilders[header.name] != null)
+    //   .map(re => re.headerBuilders)
+    //   ;
   }
 
   addNameValue(selectedIndex, nameValues: NameValue[]) {
