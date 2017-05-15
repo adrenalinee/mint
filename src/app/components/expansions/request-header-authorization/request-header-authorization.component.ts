@@ -53,7 +53,7 @@ export class RequestHeaderAuthorizationComponent implements OnInit {
 
 class AuthorizationBuilderView {
   selectedAuthType: string;
-  account = {
+  account: {username: string, password: string} = {
     username: null,
     password: null
   };

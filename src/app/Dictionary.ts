@@ -1,7 +1,7 @@
-export class Dictionary {
+export class Dictionary<T> {
 
     _keys: string[] = new Array();
-    _values: any[] =new Array();
+    _values: T[] =new Array();
 
     // constructor(init: { key: string; value: any; }[]) {
 
@@ -12,7 +12,7 @@ export class Dictionary {
     //     }
     // }
 
-    add(key: string, value: any) {
+    add(key: string, value: T) {
         this[key] = value;
         this._keys.push(key);
         this._values.push(value);
@@ -30,7 +30,7 @@ export class Dictionary {
         return this._keys;
     }
 
-    values(): any[] {
+    values(): T[] {
         return this._values;
     }
 
