@@ -1,0 +1,17 @@
+<h1 md-dialog-title>{{builderView.title}}</h1>
+
+<div *ngIf="builderView.builders.length > 1">
+  <md-select placeholder="Auth type" fxFlex [(ngModel)]="builder.selectedAuthType">
+    <md-option [value]="NoAuth">No Auth</md-option>
+    <md-option *ngFor="let authType of authTypes" [value]="authType.value">{{authType.name}}</md-option>
+  </md-select>
+</div>
+
+<div md-dialog-content>
+
+</div>
+
+<div md-dialog-actions fxLayoutGap="1em">
+  <button md-raised-button color="accent" *ngIf="authBuilderView.selectedAuthType != null" (click)="apply()">apply</button>
+  <button md-raised-button (click)="close()">cancle</button>
+</div>

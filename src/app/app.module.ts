@@ -21,6 +21,7 @@ import { HttpRequestComponent } from './components/http-request/http-request.com
 import { HttpResponseComponent } from './components/http-response/http-response.component';
 import { HttpClientsComponent } from './components/http-clients/http-clients.component';
 import { RequestHeaderAuthorizationComponent } from './components/expansions/request-header-authorization/request-header-authorization.component';
+import { BuilderDialogComponent } from './components/builder-dialog/builder-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RequestHeaderAuthorizationComponent } from './components/expansions/req
     HttpRequestComponent,
     HttpResponseComponent,
     HttpClientsComponent,
-    RequestHeaderAuthorizationComponent
+    RequestHeaderAuthorizationComponent,
+    BuilderDialogComponent
   ],
   entryComponents: [
     RequestHeaderAuthorizationComponent

@@ -41,9 +41,7 @@ export class RequestHeaderAuthorizationComponent implements OnInit {
   }
 
   apply() {
-    const account = this.authBuilderView.account;
-
-    const authorization = 'Basic ' + btoa(account.username + ":" + account.password);
+    const authorization = 'Basic ' + btoa(this.authBuilderView.username + ":" + this.authBuilderView.password);
     this.dialogRef.close({
       value: authorization,
       viewModel: this.authBuilderView
@@ -53,8 +51,6 @@ export class RequestHeaderAuthorizationComponent implements OnInit {
 
 class AuthorizationBuilderView {
   selectedAuthType: string;
-  account: {username: string, password: string} = {
-    username: null,
-    password: null
-  };
+  username: string;
+  password: string;
 }
