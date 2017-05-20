@@ -22,6 +22,7 @@ import { HttpResponseComponent } from './components/http-response/http-response.
 import { HttpClientsComponent } from './components/http-clients/http-clients.component';
 import { BuilderDialogComponent } from './components/builder-dialog/builder-dialog.component';
 import { AuthorizationBasicComponent } from './components/expansions/authorization-basic/authorization-basic.component';
+import { NameValuesComponent } from './components/name-values/name-values.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthorizationBasicComponent } from './components/expansions/authorizati
     HttpRequestComponent,
     HttpResponseComponent,
     HttpClientsComponent,
-    AuthorizationBasicComponent
+    AuthorizationBasicComponent,
+    NameValuesComponent
   ],
   entryComponents: [
     BuilderDialogComponent,

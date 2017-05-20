@@ -14,8 +14,6 @@ export class AuthorizationBasicComponent implements OnInit {
     @Inject(MD_DIALOG_DATA) private data: any) { }
 
   ngOnInit() {
-    console.log(this.data);
-
     this.basicAuthView = this.data.viewModel;
     if (this.basicAuthView == null) {
       this.basicAuthView = new BasicAuthView();

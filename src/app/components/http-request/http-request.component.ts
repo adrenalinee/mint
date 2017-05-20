@@ -5,6 +5,7 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { NameValue } from 'app/nameValue';
 import { RequestView } from 'app/request-info';
+import { Dictionary } from 'app/Dictionary';
 import { RequestExpansion, HeaderBuilder } from 'app/requestExpansion';
 import { HttpClientService } from 'app/services/http-client.service';
 import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-dialog.component';
@@ -18,6 +19,8 @@ import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-di
 export class HttpRequestComponent implements OnInit {
   @Input() requestView: RequestView;
   @Input() requestExpansions: Array<RequestExpansion>;
+
+  headerBuilders: Array<Dictionary<HeaderBuilder>>;
 
   httpMethods: string[];
   contentTypes: string[];
@@ -53,6 +56,9 @@ export class HttpRequestComponent implements OnInit {
       'json',
       'xml'
     ];
+
+    this.headerBuilders =
+      this.requestExpansions.map(re => re.headerBuilders);
   }
 
   send() {
@@ -84,7 +90,6 @@ export class HttpRequestComponent implements OnInit {
             }
           });
         });
-
   }
 
   findHeaderBuilder(selectedIndex) {
@@ -99,7 +104,7 @@ export class HttpRequestComponent implements OnInit {
     }
   }
 
-  openHeaderBuilder2(header: NameValue) {
+  openHeaderBuilder(header: NameValue) {
     const matchedHeaderBuilders: Array<HeaderBuilder> =
       this.requestExpansions
         .filter(re => re.headerBuilders[header.name] != null)
