@@ -20,22 +20,23 @@ import { HeaderComponent } from './components/header/header.component';
 import { HttpRequestComponent } from './components/http-request/http-request.component';
 import { HttpResponseComponent } from './components/http-response/http-response.component';
 import { HttpClientsComponent } from './components/http-clients/http-clients.component';
-import { RequestHeaderAuthorizationComponent } from './components/expansions/request-header-authorization/request-header-authorization.component';
 import { BuilderDialogComponent } from './components/builder-dialog/builder-dialog.component';
+import { AuthorizationBasicComponent } from './components/expansions/authorization-basic/authorization-basic.component';
 
 @NgModule({
   declarations: [
     AceEditorDirective,
     AppComponent,
+    BuilderDialogComponent,
     HeaderComponent,
     HttpRequestComponent,
     HttpResponseComponent,
     HttpClientsComponent,
-    RequestHeaderAuthorizationComponent,
-    BuilderDialogComponent
+    AuthorizationBasicComponent
   ],
   entryComponents: [
-    RequestHeaderAuthorizationComponent
+    BuilderDialogComponent,
+    AuthorizationBasicComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -7,6 +7,7 @@ import { NameValue } from 'app/nameValue';
 import { RequestView } from 'app/request-info';
 import { RequestExpansion, HeaderBuilder } from 'app/requestExpansion';
 import { HttpClientService } from 'app/services/http-client.service';
+import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-dialog.component';
 
 @Component({
   selector: 'app-http-request',
@@ -89,12 +90,6 @@ export class HttpRequestComponent implements OnInit {
   findHeaderBuilder(selectedIndex) {
     //TODO rxjs 로 변경 예정
     const header: NameValue = this.requestView.request.headers[selectedIndex];
-    // const headerBuilder: NameValue = this.requestView.headerBuilders.find(hb => hb.name == header.name);
-    // if (headerBuilder != null) {
-    //   this.requestView.request.headers[selectedIndex].builder = true;
-    // } else {
-    //   this.requestView.request.headers[selectedIndex].builder = false;
-    // }
 
     const headerBuilder = this.requestExpansions.find(re => re.headerBuilders[header.name] != null);
     if (headerBuilder != null) {
@@ -104,17 +99,17 @@ export class HttpRequestComponent implements OnInit {
     }
   }
 
-  openHeaderBuilder(header: NameValue) {
-    const headerBuilder: HeaderBuilder =
+  openHeaderBuilder2(header: NameValue) {
+    const matchedHeaderBuilders: Array<HeaderBuilder> =
       this.requestExpansions
-        .find(re => re.headerBuilders[header.name] != null)
-        .headerBuilders[header.name];
+        .filter(re => re.headerBuilders[header.name] != null)
+        .map(re => re.headerBuilders[header.name]);
 
-
-    this.dialog.open(headerBuilder.builder, {
-      disableClose: true,
+    //TODO builder dialog open
+    this.dialog.open(BuilderDialogComponent, {
       data: {
-        viewModel: headerBuilder.viewModel
+        title: header.name + ' Builder Select',
+        builders: matchedHeaderBuilders
       }
     })
     .afterClosed()
@@ -123,17 +118,35 @@ export class HttpRequestComponent implements OnInit {
         if (data.value != null) {
           header.value = data.value;
         }
-        if (data.viewModel != null) {
-          headerBuilder.viewModel = data.viewModel;
-        }
       }
     });
-
-    // this.requestExpansions
-    //   .filter(re => re.headerBuilders[header.name] != null)
-    //   .map(re => re.headerBuilders)
-    //   ;
   }
+
+  // openHeaderBuilder(header: NameValue) {
+  //   const headerBuilder: HeaderBuilder =
+  //     this.requestExpansions
+  //       .find(re => re.headerBuilders[header.name] != null)
+  //       .headerBuilders[header.name];
+
+
+  //   this.dialog.open(headerBuilder.builder, {
+  //     disableClose: true,
+  //     data: {
+  //       viewModel: headerBuilder.viewModel
+  //     }
+  //   })
+  //   .afterClosed()
+  //   .subscribe(data => {
+  //     if (data != null) {
+  //       if (data.value != null) {
+  //         header.value = data.value;
+  //       }
+  //       if (data.viewModel != null) {
+  //         headerBuilder.viewModel = data.viewModel;
+  //       }
+  //     }
+  //   });
+  // }
 
   addNameValue(selectedIndex, nameValues: NameValue[]) {
     if (selectedIndex == nameValues.length - 1) {

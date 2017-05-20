@@ -26,11 +26,6 @@ export class RequestHeaderAuthorizationComponent implements OnInit {
 
     this.authBuilderView = this.data.viewModel;
 
-    this.authTypes.push({
-      name: 'Basic Auth',
-      value: 'BasicAuth'
-    });
-
     if (this.authBuilderView == null) {
       this.authBuilderView = new AuthorizationBuilderView();
     }

@@ -1,6 +1,6 @@
 import { ComponentType } from '@angular/material';
 import { Dictionary } from 'app/Dictionary';
-import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
+// import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
 
 /**
  * http client 에 확장 포인트를 정의
@@ -14,7 +14,11 @@ export class RequestExpansion {
     headerBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
 }
 
-export class HeaderBuilder {
+export class Builder {
+    name: string;
+}
+
+export class HeaderBuilder implements Builder {
     name: string;
     builder: ComponentType<any>;
     viewModel: any = {};

@@ -3,7 +3,8 @@ import { RequestView } from 'app/request-info';
 import { NameValue } from 'app/nameValue';
 import { RequestExpansion } from 'app/requestExpansion';
 import { HttpClientExpansionService } from 'app/services/http-client-expansion.service';
-import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
+// import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
+import { AuthorizationBasicComponent } from 'app/components/expansions/authorization-basic/authorization-basic.component';
 
 @Component({
   selector: 'app-http-clients',
@@ -25,8 +26,8 @@ export class HttpClientsComponent implements OnInit {
 
     const requestExpansion = new RequestExpansion();
     requestExpansion.headerBuilders.add('Authorization', {
-      name: 'Authorization',
-      builder: RequestHeaderAuthorizationComponent,
+      name: 'Basic Auth',
+      builder: AuthorizationBasicComponent,
       viewModel: {}
     });
     this.requestExpansions.push(requestExpansion);
