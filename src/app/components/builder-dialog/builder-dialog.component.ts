@@ -35,7 +35,8 @@ export class BuilderDialogComponent implements OnInit {
       if (data != null) {
         selectedBuilder.viewModel = data.viewModel;
         this.dialogRef.close({
-          value: data.value
+          value: data.value,
+          selectedBuilder: this.builderView.selectedBuilder
         });
       }
     });

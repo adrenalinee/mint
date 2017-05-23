@@ -5,8 +5,6 @@
     </md-select>
     <md-input-container fxFlex>
       <input
-        mdTextareaAutosize
-        mdAutosizeMaxRows="3"
         mdInput
         [(ngModel)]="requestView.request.url"
         placeholder="Request URL" />
@@ -33,7 +31,10 @@
             ({{requestView.request.queryParams.length - 1}})
           </span>
         </ng-template>
-        <div fxLayoutGap="1em" *ngFor="let param of requestView.request.queryParams; index as i">
+        <div style="padding: 0.5em">
+          <app-name-values [nameValues]="requestView.request.queryParams" [nameValueBuilders]="queryParamBuilders"></app-name-values>
+        </div>
+        <!--<div fxLayoutGap="1em" *ngFor="let param of requestView.request.queryParams; index as i">
           <md-input-container fxFlex="40">
             <input mdInput placeholder="Name" [(ngModel)]="param.name" />
           </md-input-container>
@@ -42,7 +43,7 @@
               (focus)="addNameValue(i, requestView.request.queryParams)"
               (blur)="checkForNext(i, requestView.request.queryParams)" />
           </md-input-container>
-        </div>
+        </div>-->
       </md-tab>
       <md-tab>
         <ng-template md-tab-label>
@@ -51,7 +52,10 @@
             ({{requestView.request.urlParams.length - 1}})
           </span>
         </ng-template>
-        <div fxLayoutGap="1em" *ngFor="let param of requestView.request.urlParams; index as i">
+        <div style="padding: 0.5em">
+          <app-name-values [nameValues]="requestView.request.urlParams" [nameValueBuilders]="urlParamBuilders"></app-name-values>
+        </div>
+        <!--<div fxLayoutGap="1em" *ngFor="let param of requestView.request.urlParams; index as i">
           <md-input-container fxFlex="40">
             <input mdInput placeholder="Name" [(ngModel)]="param.name" />
           </md-input-container>
@@ -60,7 +64,7 @@
               (focus)="addNameValue(i, requestView.request.urlParams)"
               (blur)="checkForNext(i, requestView.request.urlParams)" />
           </md-input-container>
-        </div>
+        </div>-->
       </md-tab>
     </md-tab-group>
   </div>
@@ -75,7 +79,7 @@
       <div style="padding: 0.5em">
         <div fxLayoutGap="1em" fxLayoutAlign="start center">
           <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
-          <md-checkbox>Syntax Hightligh</md-checkbox>
+          <md-checkbox>Syntax Highlight</md-checkbox>
           <md-select [(ngModel)]="requestView.reqDisplayMode">
             <md-option *ngFor="let method of displayModes" [value]="method">{{method}}</md-option>
           </md-select>
@@ -105,7 +109,7 @@
         </span>
       </ng-template>
       <div style="padding: 0.5em">
-        <app-name-values [nameValueBuilders]="headerBuilders"></app-name-values>
+        <app-name-values [nameValues]="requestView.request.headers" [nameValueBuilders]="headerBuilders"></app-name-values>
         <!--<div fxLayoutGap="1em" *ngFor="let header of requestView.request.headers; index as i">
           <md-input-container fxFlex="40">
             <input mdInput placeholder="Name" [(ngModel)]="header.name" (keyup)="findHeaderBuilder(i)" />

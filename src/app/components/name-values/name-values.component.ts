@@ -13,8 +13,12 @@ import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-di
 export class NameValuesComponent implements OnInit {
   @Input() nameValueBuilders: Array<Dictionary<HeaderBuilder>>;
 
-  nameValues: Array<NameValue> = [new NameValue(null, null)];
+  @Input() nameValues: Array<NameValue>;
 
+  nameValueMeta: Array<{
+    enableBuilder: boolean,
+    selectedBuilder: number
+  }> = new Array();
 
   // headerBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
 
@@ -24,6 +28,7 @@ export class NameValuesComponent implements OnInit {
     if (this.nameValueBuilders == null) {
       this.nameValueBuilders = new Array();
     }
+
   }
 
   findBuilder(selectedIndex) {
@@ -44,7 +49,6 @@ export class NameValuesComponent implements OnInit {
         .filter(builder => builder[header.name] != null)
         .map(builder => builder[header.name]);
 
-    //TODO builder dialog open
     this.dialog.open(BuilderDialogComponent, {
       data: {
         title: header.name + ' Builder Select',

@@ -21,6 +21,8 @@ export class HttpRequestComponent implements OnInit {
   @Input() requestExpansions: Array<RequestExpansion>;
 
   headerBuilders: Array<Dictionary<HeaderBuilder>>;
+  urlParamBuilders: Array<Dictionary<HeaderBuilder>>;
+  queryParamBuilders: Array<Dictionary<HeaderBuilder>>;
 
   httpMethods: string[];
   contentTypes: string[];
@@ -57,8 +59,9 @@ export class HttpRequestComponent implements OnInit {
       'xml'
     ];
 
-    this.headerBuilders =
-      this.requestExpansions.map(re => re.headerBuilders);
+    this.headerBuilders = this.requestExpansions.map(re => re.headerBuilders);
+    this.urlParamBuilders = this.requestExpansions.map(re => re.urlParamBuilders);
+    this.queryParamBuilders = this.requestExpansions.map(re => re.queryParamBuilders);
   }
 
   send() {
@@ -92,81 +95,4 @@ export class HttpRequestComponent implements OnInit {
         });
   }
 
-  findHeaderBuilder(selectedIndex) {
-    //TODO rxjs 로 변경 예정
-    const header: NameValue = this.requestView.request.headers[selectedIndex];
-
-    const headerBuilder = this.requestExpansions.find(re => re.headerBuilders[header.name] != null);
-    if (headerBuilder != null) {
-      this.requestView.request.headers[selectedIndex].builder = true;
-    } else {
-      this.requestView.request.headers[selectedIndex].builder = false;
-    }
-  }
-
-  openHeaderBuilder(header: NameValue) {
-    const matchedHeaderBuilders: Array<HeaderBuilder> =
-      this.requestExpansions
-        .filter(re => re.headerBuilders[header.name] != null)
-        .map(re => re.headerBuilders[header.name]);
-
-    //TODO builder dialog open
-    this.dialog.open(BuilderDialogComponent, {
-      data: {
-        title: header.name + ' Builder Select',
-        builders: matchedHeaderBuilders
-      }
-    })
-    .afterClosed()
-    .subscribe(data => {
-      if (data != null) {
-        if (data.value != null) {
-          header.value = data.value;
-        }
-      }
-    });
-  }
-
-  // openHeaderBuilder(header: NameValue) {
-  //   const headerBuilder: HeaderBuilder =
-  //     this.requestExpansions
-  //       .find(re => re.headerBuilders[header.name] != null)
-  //       .headerBuilders[header.name];
-
-
-  //   this.dialog.open(headerBuilder.builder, {
-  //     disableClose: true,
-  //     data: {
-  //       viewModel: headerBuilder.viewModel
-  //     }
-  //   })
-  //   .afterClosed()
-  //   .subscribe(data => {
-  //     if (data != null) {
-  //       if (data.value != null) {
-  //         header.value = data.value;
-  //       }
-  //       if (data.viewModel != null) {
-  //         headerBuilder.viewModel = data.viewModel;
-  //       }
-  //     }
-  //   });
-  // }
-
-  addNameValue(selectedIndex, nameValues: NameValue[]) {
-    if (selectedIndex == nameValues.length - 1) {
-      nameValues.push(new NameValue(null, null));
-    }
-  }
-
-  checkForNext(selectedIndex, nameValues: NameValue[]) {
-    if (selectedIndex < nameValues.length - 1) {
-      let currentHeader: NameValue = nameValues[selectedIndex];
-      if (currentHeader.name == null && currentHeader.value == null) {
-        if (selectedIndex + 1 == nameValues.length - 1) {
-          nameValues.pop();
-        }
-      }
-    }
-  }
 }

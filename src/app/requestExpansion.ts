@@ -12,13 +12,11 @@ import { Dictionary } from 'app/Dictionary';
  */
 export class RequestExpansion {
     headerBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
+    urlParamBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
+    queryParamBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
 }
 
-export class Builder {
-    name: string;
-}
-
-export class HeaderBuilder implements Builder {
+export class HeaderBuilder {
     name: string;
     builder: ComponentType<any>;
     viewModel: any = {};
