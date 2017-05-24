@@ -6,7 +6,7 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 import { NameValue } from 'app/nameValue';
 import { RequestView } from 'app/request-info';
 import { Dictionary } from 'app/Dictionary';
-import { RequestExpansion, HeaderBuilder } from 'app/requestExpansion';
+import { RequestExpansion, RequestExpander } from 'app/requestExpansion';
 import { HttpClientService } from 'app/services/http-client.service';
 import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-dialog.component';
 
@@ -20,9 +20,9 @@ export class HttpRequestComponent implements OnInit {
   @Input() requestView: RequestView;
   @Input() requestExpansions: Array<RequestExpansion>;
 
-  headerBuilders: Array<Dictionary<HeaderBuilder>>;
-  urlParamBuilders: Array<Dictionary<HeaderBuilder>>;
-  queryParamBuilders: Array<Dictionary<HeaderBuilder>>;
+  headerBuilders: Array<Dictionary<RequestExpander>>;
+  urlParamBuilders: Array<Dictionary<RequestExpander>>;
+  queryParamBuilders: Array<Dictionary<RequestExpander>>;
 
   httpMethods: string[];
   contentTypes: string[];

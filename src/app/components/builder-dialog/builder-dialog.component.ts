@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { HeaderBuilder } from 'app/requestExpansion';
+import { RequestExpander } from 'app/requestExpansion';
 
 @Component({
   selector: 'app-builder-dialog',
@@ -8,7 +8,7 @@ import { HeaderBuilder } from 'app/requestExpansion';
   styleUrls: ['./builder-dialog.component.css']
 })
 export class BuilderDialogComponent implements OnInit {
-  builderView: BuilderView;
+  expanderView: ExpanderView;
 
   constructor(
     private dialog: MdDialog,
@@ -16,15 +16,16 @@ export class BuilderDialogComponent implements OnInit {
     @Inject(MD_DIALOG_DATA) private data: any) { }
 
   ngOnInit() {
-    this.builderView = new BuilderView();
-    this.builderView.title = this.data.title;
-    this.builderView.builders = this.data.builders;
+    this.expanderView = new ExpanderView();
+    this.expanderView.title = this.data.title;
+    this.expanderView.expanders = this.data.expanders;
+    this.expanderView.selectedExpander = this.data.selectedExpander;
   }
 
   openBuilder() {
-    const selectedBuilder: HeaderBuilder = this.builderView.selectedBuilder;
+    const selectedBuilder: RequestExpander = this.expanderView.selectedExpander;
 
-    this.dialog.open(selectedBuilder.builder, {
+    this.dialog.open(selectedBuilder.component, {
       disableClose: true,
       data: {
         viewModel: selectedBuilder.viewModel
@@ -36,7 +37,7 @@ export class BuilderDialogComponent implements OnInit {
         selectedBuilder.viewModel = data.viewModel;
         this.dialogRef.close({
           value: data.value,
-          selectedBuilder: this.builderView.selectedBuilder
+          selectedExpander: this.expanderView.selectedExpander
         });
       }
     });
@@ -47,8 +48,8 @@ export class BuilderDialogComponent implements OnInit {
   }
 }
 
-export class BuilderView {
+export class ExpanderView {
   title: string;
-  selectedBuilder: HeaderBuilder;
-  builders: Array<HeaderBuilder>;
+  selectedExpander: RequestExpander;
+  expanders: Array<RequestExpander>;
 }

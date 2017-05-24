@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { NameValue } from 'app/nameValue';
 import { Dictionary } from 'app/Dictionary';
-import { HeaderBuilder } from 'app/requestExpansion';
+import { RequestExpander } from 'app/requestExpansion';
 import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-dialog.component';
 
 @Component({
@@ -11,16 +11,11 @@ import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-di
   styleUrls: ['./name-values.component.css']
 })
 export class NameValuesComponent implements OnInit {
-  @Input() nameValueBuilders: Array<Dictionary<HeaderBuilder>>;
+  @Input() nameValueBuilders: Array<Dictionary<RequestExpander>>;
 
   @Input() nameValues: Array<NameValue>;
 
-  nameValueMeta: Array<{
-    enableBuilder: boolean,
-    selectedBuilder: number
-  }> = new Array();
-
-  // headerBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
+  nameValueMeta: Array<NameValueMeta> = new Array();
 
   constructor(private dialog: MdDialog) { }
 
@@ -29,6 +24,13 @@ export class NameValuesComponent implements OnInit {
       this.nameValueBuilders = new Array();
     }
 
+    if (this.nameValues == null) {
+      this.nameValues = new Array();
+    }
+
+    this.nameValues.forEach(b => {
+      this.nameValueMeta.push(new NameValueMeta());
+    });
   }
 
   findBuilder(selectedIndex) {
@@ -37,14 +39,15 @@ export class NameValuesComponent implements OnInit {
 
     const headerBuilder = this.nameValueBuilders.find(b => b[header.name] != null);
     if (headerBuilder != null) {
-      this.nameValues[selectedIndex].builder = true;
+      this.nameValueMeta[selectedIndex].enableBuilder = true;
     } else {
-      this.nameValues[selectedIndex].builder = false;
+      this.nameValueMeta[selectedIndex].enableBuilder = false;
     }
   }
 
-  openBuilder(header: NameValue) {
-    const matchedHeaderBuilders: Array<HeaderBuilder> =
+  openBuilder(selectedIndex) {
+    const header: NameValue = this.nameValues[selectedIndex];
+    const matchedHeaderBuilders: Array<RequestExpander> =
       this.nameValueBuilders
         .filter(builder => builder[header.name] != null)
         .map(builder => builder[header.name]);
@@ -52,7 +55,8 @@ export class NameValuesComponent implements OnInit {
     this.dialog.open(BuilderDialogComponent, {
       data: {
         title: header.name + ' Builder Select',
-        builders: matchedHeaderBuilders
+        expanders: matchedHeaderBuilders,
+        selectedExpander: this.nameValueMeta[selectedIndex].selectedExpander
       }
     })
     .afterClosed()
@@ -60,6 +64,7 @@ export class NameValuesComponent implements OnInit {
       if (data != null) {
         if (data.value != null) {
           header.value = data.value;
+          this.nameValueMeta[selectedIndex].selectedExpander = data.selectedExpander
         }
       }
     });
@@ -68,6 +73,7 @@ export class NameValuesComponent implements OnInit {
   addNameValue(selectedIndex) {
     if (selectedIndex == this.nameValues.length - 1) {
       this.nameValues.push(new NameValue(null, null));
+      this.nameValueMeta.push(new NameValueMeta());
     }
   }
 
@@ -77,8 +83,14 @@ export class NameValuesComponent implements OnInit {
       if (currentHeader.name == null && currentHeader.value == null) {
         if (selectedIndex + 1 == this.nameValues.length - 1) {
           this.nameValues.pop();
+          this.nameValueMeta.pop();
         }
       }
     }
   }
+}
+
+class NameValueMeta {
+  enableBuilder: boolean = false;
+  selectedExpander: RequestExpander;
 }

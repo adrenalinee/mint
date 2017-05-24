@@ -11,13 +11,13 @@ import { Dictionary } from 'app/Dictionary';
  * 여러거의 확장 객체를 가질 수 있다.
  */
 export class RequestExpansion {
-    headerBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
-    urlParamBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
-    queryParamBuilders: Dictionary<HeaderBuilder> = new Dictionary<HeaderBuilder>();
+    headerBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
+    urlParamBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
+    queryParamBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
 }
 
-export class HeaderBuilder {
+export class RequestExpander {
     name: string;
-    builder: ComponentType<any>;
+    component: ComponentType<any>;
     viewModel: any = {};
 }

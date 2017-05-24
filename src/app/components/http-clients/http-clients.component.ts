@@ -27,12 +27,12 @@ export class HttpClientsComponent implements OnInit {
     const requestExpansion = new RequestExpansion();
     requestExpansion.headerBuilders.add('Authorization', {
       name: 'Basic Auth',
-      builder: AuthorizationBasicComponent,
+      component: AuthorizationBasicComponent,
       viewModel: {}
     });
     requestExpansion.queryParamBuilders.add('test', {
       name: 'test',
-      builder: AuthorizationBasicComponent,
+      component: AuthorizationBasicComponent,
       viewModel: {}
     });
     this.requestExpansions.push(requestExpansion);

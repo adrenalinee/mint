@@ -9,6 +9,6 @@
       (blur)="checkForNext(i)" />
   </md-input-container>
   <div fxFlexAlign="center">
-    <button md-raised-button color="accent" *ngIf="nameValue.builder" (click)="openBuilder(nameValue)">Build</button>
+    <button md-raised-button color="accent" *ngIf="nameValueMeta[i].enableBuilder" (click)="openBuilder(i)">Build</button>
   </div>
 </div>
