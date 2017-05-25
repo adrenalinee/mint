@@ -10,7 +10,7 @@
         placeholder="Request URL" />
     </md-input-container>
     <div fxFlexAlign="center">
-      <button md-raised-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
+      <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
       <button md-raised-button color="primary" (click)="send()">Send</button>
       <!--<button md-icon-button [mdMenuTriggerFor]="menu">
         <md-icon>more_vert</md-icon>

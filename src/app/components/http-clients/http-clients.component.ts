@@ -25,7 +25,7 @@ export class HttpClientsComponent implements OnInit {
     this.requestViews.push(requestView);
 
     const requestExpansion = new RequestExpansion();
-    requestExpansion.headerBuilders.add('Authorization', {
+    requestExpansion.headerBuilders.add('authorization', {
       name: 'Basic Auth',
       component: AuthorizationBasicComponent,
       viewModel: {}

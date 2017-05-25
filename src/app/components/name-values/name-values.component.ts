@@ -36,8 +36,9 @@ export class NameValuesComponent implements OnInit {
   findBuilder(selectedIndex) {
     //TODO rxjs 로 변경 예정
     const header: NameValue = this.nameValues[selectedIndex];
+    const headerName: string = header.name.toLowerCase();
 
-    const headerBuilder = this.nameValueBuilders.find(b => b[header.name] != null);
+    const headerBuilder = this.nameValueBuilders.find(b => b[headerName] != null);
     if (headerBuilder != null) {
       this.nameValueMeta[selectedIndex].enableBuilder = true;
     } else {
