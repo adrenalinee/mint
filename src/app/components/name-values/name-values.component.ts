@@ -48,10 +48,12 @@ export class NameValuesComponent implements OnInit {
 
   openBuilder(selectedIndex) {
     const header: NameValue = this.nameValues[selectedIndex];
+    const headerName: string = header.name.toLowerCase();
+
     const matchedHeaderBuilders: Array<RequestExpander> =
       this.nameValueBuilders
-        .filter(builder => builder[header.name] != null)
-        .map(builder => builder[header.name]);
+        .filter(builder => builder[headerName] != null)
+        .map(builder => builder[headerName]);
 
     this.dialog.open(BuilderDialogComponent, {
       data: {
