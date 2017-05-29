@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { Observable, Subject } from 'rxjs/Rx';
 // import {FormControl} from '@angular/forms';
 // import 'rxjs/add/operator/startWith';
 
@@ -29,9 +30,12 @@ export class HttpRequestComponent implements OnInit {
   requestHeaders: string[];
   displayModes: string[];
 
+  requestUrl$: Observable<any> = new Subject();
+
   constructor(private httpClient: HttpClientService, private dialog: MdDialog) { }
 
   ngOnInit() {
+
     this.httpMethods = [
       'GET',
       'POST',
@@ -94,5 +98,35 @@ export class HttpRequestComponent implements OnInit {
           });
         });
   }
+
+  findParams() {
+    const url: string = this.requestView.request.url;
+    let uri: string = url;
+    let queryString: string;
+
+    const qIndex = url.indexOf('?');
+    if (qIndex > 0) {
+      uri = url.substring(0, qIndex);
+      queryString = url.substring(qIndex + 1, url.length);
+    }
+
+    if (uri.length > 0) {
+      this.findUriParams(uri);
+    }
+    if (queryString.length > 0) {
+      this.findQueryParams(queryString);
+    }
+
+  }
+
+  findQueryParams(queryString: string) {
+    console.log('findQueryParams');
+  }
+
+  findUriParams(uri: string) {
+    console.log('findUriParams');
+
+  }
+
 
 }

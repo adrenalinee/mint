@@ -23,6 +23,7 @@ export class HttpClientService {
     let body = request.body;
 
     let requestOptions = new RequestOptions({
+      headers: headers,
       method: method,
       body: body
     });

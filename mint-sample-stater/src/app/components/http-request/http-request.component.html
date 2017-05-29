@@ -7,6 +7,7 @@
       <input
         mdInput
         [(ngModel)]="requestView.request.url"
+        (keyup)="requestUrl$.next($event)"
         placeholder="Request URL" />
     </md-input-container>
     <div fxFlexAlign="center">
@@ -34,16 +35,6 @@
         <div style="padding: 0.5em">
           <app-name-values [nameValues]="requestView.request.queryParams" [nameValueBuilders]="queryParamBuilders"></app-name-values>
         </div>
-        <!--<div fxLayoutGap="1em" *ngFor="let param of requestView.request.queryParams; index as i">
-          <md-input-container fxFlex="40">
-            <input mdInput placeholder="Name" [(ngModel)]="param.name" />
-          </md-input-container>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Value" [(ngModel)]="param.value"
-              (focus)="addNameValue(i, requestView.request.queryParams)"
-              (blur)="checkForNext(i, requestView.request.queryParams)" />
-          </md-input-container>
-        </div>-->
       </md-tab>
       <md-tab>
         <ng-template md-tab-label>
@@ -55,16 +46,6 @@
         <div style="padding: 0.5em">
           <app-name-values [nameValues]="requestView.request.urlParams" [nameValueBuilders]="urlParamBuilders"></app-name-values>
         </div>
-        <!--<div fxLayoutGap="1em" *ngFor="let param of requestView.request.urlParams; index as i">
-          <md-input-container fxFlex="40">
-            <input mdInput placeholder="Name" [(ngModel)]="param.name" />
-          </md-input-container>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Value" [(ngModel)]="param.value"
-              (focus)="addNameValue(i, requestView.request.urlParams)"
-              (blur)="checkForNext(i, requestView.request.urlParams)" />
-          </md-input-container>
-        </div>-->
       </md-tab>
     </md-tab-group>
   </div>
@@ -110,19 +91,6 @@
       </ng-template>
       <div style="padding: 0.5em">
         <app-name-values [nameValues]="requestView.request.headers" [nameValueBuilders]="headerBuilders"></app-name-values>
-        <!--<div fxLayoutGap="1em" *ngFor="let header of requestView.request.headers; index as i">
-          <md-input-container fxFlex="40">
-            <input mdInput placeholder="Name" [(ngModel)]="header.name" (keyup)="findHeaderBuilder(i)" />
-          </md-input-container>
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Value" [(ngModel)]="header.value"
-              (focus)="addNameValue(i, requestView.request.headers)"
-              (blur)="checkForNext(i, requestView.request.headers)" />
-          </md-input-container>
-          <div fxFlexAlign="center">
-           <button md-raised-button color="accent" *ngIf="header.builder" (click)="openHeaderBuilder(header)">Build</button>
-          </div>
-        </div>-->
       </div>
     </md-tab>
   </md-tab-group>

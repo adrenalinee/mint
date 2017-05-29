@@ -1,14 +1,21 @@
-<div fxLayoutGap="1em" *ngFor="let nameValue of nameValues; index as i">
-  <md-input-container fxFlex="40">
+<div fxLayoutGap="1em" *ngFor="let nameValue of nameValues; index as i"
+  (mouseenter)="nameValueMeta[i].showCloseButton = true"
+  (mouseleave)="nameValueMeta[i].showCloseButton = false">
+  <md-input-container fxFlex="30">
     <input mdInput placeholder="Name" [(ngModel)]="nameValue.name"
+    (focus)="addNameValue(i)"
     (keyup)="findBuilder(i)" />
   </md-input-container>
   <md-input-container fxFlex>
     <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
-      (focus)="addNameValue(i)"
       (blur)="checkForNext(i)" />
   </md-input-container>
   <div fxFlexAlign="center">
     <button md-raised-button color="accent" *ngIf="nameValueMeta[i].enableBuilder" (click)="openBuilder(i)">Build</button>
+  </div>
+  <div fxFlexAlign="center" *ngIf="nameValueMeta[i].showCloseButton && nameValues.length > 1">
+    <button md-icon-button (click)="remove(i)">
+      <md-icon>clear</md-icon>
+    </button>
   </div>
 </div>

@@ -67,7 +67,8 @@ export class NameValuesComponent implements OnInit {
       if (data != null) {
         if (data.value != null) {
           header.value = data.value;
-          this.nameValueMeta[selectedIndex].selectedExpander = data.selectedExpander
+          this.nameValueMeta[selectedIndex].selectedExpander = data.selectedExpander;
+          this.addNameValue(selectedIndex);
         }
       }
     });
@@ -91,9 +92,15 @@ export class NameValuesComponent implements OnInit {
       }
     }
   }
+
+  remove(selectedIndex) {
+    this.nameValues.splice(selectedIndex, 1);
+    this.nameValueMeta.splice(selectedIndex, 1);
+  }
 }
 
 class NameValueMeta {
   enableBuilder: boolean = false;
   selectedExpander: RequestExpander;
+  showCloseButton: boolean;
 }

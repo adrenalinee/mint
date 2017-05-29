@@ -11,6 +11,6 @@
 </div>
 
 <div md-dialog-actions fxLayoutGap="1em">
-  <button md-raised-button color="accent" *ngIf="expanderView.selectedExpander != null" (click)="openBuilder()">Select</button>
+  <button md-raised-button color="accent" [disabled]="expanderView.selectedExpander == null" (click)="openBuilder()">Select</button>
   <button md-raised-button (click)="close()">Cancle</button>
 </div>
