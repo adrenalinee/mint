@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
-import { NameValue } from 'app/nameValue';
+import { NameValue } from 'app/requestInfo';
 import { Dictionary } from 'app/Dictionary';
 import { RequestExpander } from 'app/requestExpansion';
 import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-dialog.component';

@@ -1,4 +1,3 @@
-import { NameValue } from './nameValue';
 
 export class RequestView {
     title: string;
@@ -40,4 +39,14 @@ export class ResponseInfo {
     headers: Array<NameValue> = new Array();
 
     body: string;
+}
+
+export class NameValue {
+    name: string;
+    value: string;
+
+    constructor(name: string, value: string) {
+        this.name = name;
+        this.value = value;
+    }
 }

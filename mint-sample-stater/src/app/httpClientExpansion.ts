@@ -1,4 +1,4 @@
-import { NameValue } from './nameValue';
+import { NameValue } from './requestInfo';
 
 /**
  * http client 에 확장 포인트를 정의

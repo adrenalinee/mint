@@ -4,8 +4,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 // import {FormControl} from '@angular/forms';
 // import 'rxjs/add/operator/startWith';
 
-import { NameValue } from 'app/nameValue';
-import { RequestView } from 'app/request-info';
+import { RequestView, NameValue } from 'app/requestInfo';
 import { Dictionary } from 'app/Dictionary';
 import { RequestExpansion, RequestExpander } from 'app/requestExpansion';
 import { HttpClientService } from 'app/services/http-client.service';
@@ -29,8 +28,6 @@ export class HttpRequestComponent implements OnInit {
   contentTypes: string[];
   requestHeaders: string[];
   displayModes: string[];
-
-  requestUrl$: Observable<any> = new Subject();
 
   constructor(private httpClient: HttpClientService, private dialog: MdDialog) { }
 
@@ -116,11 +113,34 @@ export class HttpRequestComponent implements OnInit {
     if (queryString.length > 0) {
       this.findQueryParams(queryString);
     }
-
   }
 
   findQueryParams(queryString: string) {
     console.log('findQueryParams');
+
+    let searchStartIndex = 0;
+    let paramStartIndex = queryString.indexOf('{', searchStartIndex);
+    while (paramStartIndex > -1) {
+				var paramEndIndex = queryString.indexOf('}', paramStartIndex);
+				if (paramEndIndex <= -1) {
+					return;
+				}
+				//searchStartIndex = paramEndIndex;
+				
+				var urlParamName = queryString.substring(paramStartIndex + 2, paramEndIndex);
+				paramStartIndex = queryString.indexOf('{', paramEndIndex);
+				
+				if (urlParamName == '') {
+					continue;
+				}
+				
+				this.requestView.request.queryParams.push({
+					name: urlParamName,
+					value: null
+				});
+				
+				this.requestView.isOpenParams = true;
+			}
   }
 
   findUriParams(uri: string) {

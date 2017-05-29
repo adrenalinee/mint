@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestView } from 'app/request-info';
-import { NameValue } from 'app/nameValue';
+import { RequestView, NameValue } from 'app/requestInfo';
 import { RequestExpansion } from 'app/requestExpansion';
 import { HttpClientExpansionService } from 'app/services/http-client-expansion.service';
 // import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
