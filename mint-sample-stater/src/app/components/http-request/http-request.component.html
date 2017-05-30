@@ -7,7 +7,7 @@
       <input
         mdInput
         [(ngModel)]="requestView.request.url"
-        (keyup)="findParams()"
+        (keyup)="findParams($event)"
         placeholder="Request URL" />
     </md-input-container>
     <div fxFlexAlign="center">

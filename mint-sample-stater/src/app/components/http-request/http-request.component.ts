@@ -96,7 +96,11 @@ export class HttpRequestComponent implements OnInit {
         });
   }
 
-  findParams() {
+  findParams($event) {
+    if ($event.key != '}') {
+      return;
+    }
+
     const url: string = this.requestView.request.url;
     let uri: string = url;
     let queryString: string;
@@ -120,8 +124,34 @@ export class HttpRequestComponent implements OnInit {
 
     const paramNames: Array<string> = new Array();
     let isStartParamName: boolean = false;
-    let tempName: string;
+    let tempName: string = '';
+    queryString.split('').forEach(s => {
+      if (s == '{') {
+        isStartParamName = true;
+      } else if (s == '}') {
+        isStartParamName = false;
+        paramNames.push(tempName);
+        tempName = '';
+      } else if (isStartParamName) {
+        tempName += s;
+      }
+    });
 
+    const queryParams: Array<NameValue> = this.requestView.request.queryParams;
+    paramNames.forEach(name => {
+      const exist = queryParams.find(p => p.name == name);
+      console.log(exist);
+      if (!exist) {
+        const param: NameValue = queryParams.pop();
+        param.name = name;
+        queryParams.push(param);
+        queryParams.push(new NameValue(null, null));
+      }
+    });
+
+    if (queryParams.length > 0) {
+      this.requestView.isOpenParams = true;
+    }
   }
 
   findUriParams(uri: string) {
