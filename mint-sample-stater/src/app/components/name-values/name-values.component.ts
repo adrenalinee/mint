@@ -15,7 +15,7 @@ export class NameValuesComponent implements OnInit {
 
   @Input() nameValues: Array<NameValue>;
 
-  nameValueMeta: Array<NameValueMeta> = new Array();
+  // nameValueMeta: Array<NameValueMeta> = new Array();
 
   constructor(private dialog: MdDialog) { }
 
@@ -27,10 +27,6 @@ export class NameValuesComponent implements OnInit {
     if (this.nameValues == null) {
       this.nameValues = new Array();
     }
-
-    this.nameValues.forEach(b => {
-      this.nameValueMeta.push(new NameValueMeta());
-    });
   }
 
   findBuilder(selectedIndex) {
@@ -40,9 +36,9 @@ export class NameValuesComponent implements OnInit {
 
     const headerBuilder = this.nameValueBuilders.find(b => b[headerName] != null);
     if (headerBuilder != null) {
-      this.nameValueMeta[selectedIndex].enableBuilder = true;
+      this.nameValues[selectedIndex].enableBuilder = true;
     } else {
-      this.nameValueMeta[selectedIndex].enableBuilder = false;
+      this.nameValues[selectedIndex].enableBuilder = false;
     }
   }
 
@@ -59,7 +55,7 @@ export class NameValuesComponent implements OnInit {
       data: {
         title: header.name + ' Builder Select',
         expanders: matchedHeaderBuilders,
-        selectedExpander: this.nameValueMeta[selectedIndex].selectedExpander
+        selectedExpander: this.nameValues[selectedIndex].selectedExpander
       }
     })
     .afterClosed()
@@ -67,7 +63,7 @@ export class NameValuesComponent implements OnInit {
       if (data != null) {
         if (data.value != null) {
           header.value = data.value;
-          this.nameValueMeta[selectedIndex].selectedExpander = data.selectedExpander;
+          this.nameValues[selectedIndex].selectedExpander = data.selectedExpander;
           this.addNameValue(selectedIndex);
         }
       }
@@ -77,7 +73,6 @@ export class NameValuesComponent implements OnInit {
   addNameValue(selectedIndex) {
     if (selectedIndex == this.nameValues.length - 1) {
       this.nameValues.push(new NameValue(null, null));
-      this.nameValueMeta.push(new NameValueMeta());
     }
   }
 
@@ -87,7 +82,6 @@ export class NameValuesComponent implements OnInit {
       if (currentHeader.name == null && currentHeader.value == null) {
         if (selectedIndex + 1 == this.nameValues.length - 1) {
           this.nameValues.pop();
-          this.nameValueMeta.pop();
         }
       }
     }
@@ -95,12 +89,5 @@ export class NameValuesComponent implements OnInit {
 
   remove(selectedIndex) {
     this.nameValues.splice(selectedIndex, 1);
-    this.nameValueMeta.splice(selectedIndex, 1);
   }
-}
-
-class NameValueMeta {
-  enableBuilder: boolean = false;
-  selectedExpander: RequestExpander;
-  showCloseButton: boolean;
 }

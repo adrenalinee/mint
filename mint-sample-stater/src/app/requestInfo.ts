@@ -1,3 +1,4 @@
+import { RequestExpander } from 'app/requestExpansion';
 
 export class RequestView {
     title: string;
@@ -44,6 +45,10 @@ export class ResponseInfo {
 export class NameValue {
     name: string;
     value: string;
+
+    enableBuilder?: boolean = false;
+    selectedExpander?: RequestExpander;
+    showCloseButton?: boolean;
 
     constructor(name: string, value: string) {
         this.name = name;

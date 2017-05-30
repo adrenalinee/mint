@@ -110,7 +110,7 @@ export class HttpRequestComponent implements OnInit {
     if (uri.length > 0) {
       this.findUriParams(uri);
     }
-    if (queryString.length > 0) {
+    if (queryString != null) {
       this.findQueryParams(queryString);
     }
   }
@@ -118,29 +118,10 @@ export class HttpRequestComponent implements OnInit {
   findQueryParams(queryString: string) {
     console.log('findQueryParams');
 
-    let searchStartIndex = 0;
-    let paramStartIndex = queryString.indexOf('{', searchStartIndex);
-    while (paramStartIndex > -1) {
-				var paramEndIndex = queryString.indexOf('}', paramStartIndex);
-				if (paramEndIndex <= -1) {
-					return;
-				}
-				//searchStartIndex = paramEndIndex;
-				
-				var urlParamName = queryString.substring(paramStartIndex + 2, paramEndIndex);
-				paramStartIndex = queryString.indexOf('{', paramEndIndex);
-				
-				if (urlParamName == '') {
-					continue;
-				}
-				
-				this.requestView.request.queryParams.push({
-					name: urlParamName,
-					value: null
-				});
-				
-				this.requestView.isOpenParams = true;
-			}
+    const paramNames: Array<string> = new Array();
+    let isStartParamName: boolean = false;
+    let tempName: string;
+
   }
 
   findUriParams(uri: string) {
