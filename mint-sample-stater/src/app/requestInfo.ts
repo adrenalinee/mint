@@ -3,7 +3,7 @@ import { RequestExpander } from 'app/requestExpansion';
 export class RequestView {
     title: string;
 
-    // requestUrl: string;
+    requestUrl: string = "http://localhost:4200/assets/test.json";
     contentType: string = "application/json";
     isOpenParams: boolean;
     paramTebSelectedIndex: number;
@@ -12,7 +12,6 @@ export class RequestView {
     reqBodyWrap: boolean = true;
     reqSyntaxHightlight: boolean = false;
     // headerBuilders: Array<NameValue> = new Array();
-
 
     isOpenResponse: boolean;
     resDisplayMode: string = "text";
@@ -28,7 +27,7 @@ export class RequestView {
 }
 
 export class RequestInfo {
-    url: string = "http://localhost:4200/assets/test.json";
+    url: string;
     method: string = "GET";
     queryParams: Array<NameValue> = [new NameValue(null, null)];
     urlParams: Array<NameValue> = [new NameValue(null, null)];
