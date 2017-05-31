@@ -4,11 +4,13 @@
   <md-input-container fxFlex="30">
     <input mdInput placeholder="Name" [(ngModel)]="nameValue.name"
     (focus)="addNameValue(i)"
+    (blur)="optimize()"
     (keyup)="findBuilder(i)" />
   </md-input-container>
   <md-input-container fxFlex>
     <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
-      (blur)="checkForNext(i)" />
+    (focus)="addNameValue(i)"
+    (blur)="optimize()" />
   </md-input-container>
   <div fxFlexAlign="center">
     <button md-raised-button color="accent" *ngIf="nameValue.enableBuilder" (click)="openBuilder(i)">Build</button>

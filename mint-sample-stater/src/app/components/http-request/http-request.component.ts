@@ -97,67 +97,74 @@ export class HttpRequestComponent implements OnInit {
   }
 
   findParams($event) {
-    if ($event.key != '}') {
+    const url: string = this.requestView.request.url;
+    if (url == null) {
       return;
     }
 
-    const url: string = this.requestView.request.url;
+    if ($event.key != '}') {
+      if (url.indexOf('}') < -1) {
+        return;
+      }
+    }
+
     let uri: string = url;
     let queryString: string;
-
+    
     const qIndex = url.indexOf('?');
+    
     if (qIndex > 0) {
       uri = url.substring(0, qIndex);
       queryString = url.substring(qIndex + 1, url.length);
     }
 
     if (uri.length > 0) {
-      this.findUriParams(uri);
+      if (this.findProperties(uri, this.requestView.request.urlParams)) {
+        this.requestView.isOpenParams = true;
+        this.requestView.paramTebSelectedIndex = 1;
+      }
     }
     if (queryString != null) {
-      this.findQueryParams(queryString);
+      if (this.findProperties(queryString, this.requestView.request.queryParams)) {
+        this.requestView.isOpenParams = true;
+        this.requestView.paramTebSelectedIndex = 0;
+      }
     }
   }
 
-  findQueryParams(queryString: string) {
-    console.log('findQueryParams');
-
+  findProperties(source: string, target: Array<NameValue>): boolean {
     const paramNames: Array<string> = new Array();
     let isStartParamName: boolean = false;
     let tempName: string = '';
-    queryString.split('').forEach(s => {
+    source.split('').forEach(s => {
       if (s == '{') {
         isStartParamName = true;
       } else if (s == '}') {
         isStartParamName = false;
-        paramNames.push(tempName);
-        tempName = '';
+        if (tempName != '') {
+          paramNames.push(tempName);
+          tempName = '';
+        }
       } else if (isStartParamName) {
         tempName += s;
       }
     });
 
-    const queryParams: Array<NameValue> = this.requestView.request.queryParams;
     paramNames.forEach(name => {
-      const exist = queryParams.find(p => p.name == name);
-      console.log(exist);
+      const exist = target.find(p => p.name == name);
       if (!exist) {
-        const param: NameValue = queryParams.pop();
+        const param: NameValue = target.pop();
         param.name = name;
-        queryParams.push(param);
-        queryParams.push(new NameValue(null, null));
+        target.push(param);
+        target.push(new NameValue(null, null));
       }
     });
 
-    if (queryParams.length > 0) {
-      this.requestView.isOpenParams = true;
+    if (paramNames.length > 0) {
+      return true;
     }
+
+    return false;
   }
-
-  findUriParams(uri: string) {
-    console.log('findUriParams');
-
-  }
-
 
 }

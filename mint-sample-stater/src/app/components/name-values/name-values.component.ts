@@ -30,7 +30,6 @@ export class NameValuesComponent implements OnInit {
   }
 
   findBuilder(selectedIndex) {
-    //TODO rxjs 로 변경 예정
     const header: NameValue = this.nameValues[selectedIndex];
     const headerName: string = header.name.toLowerCase();
 
@@ -76,13 +75,20 @@ export class NameValuesComponent implements OnInit {
     }
   }
 
-  checkForNext(selectedIndex) {
-    if (selectedIndex < this.nameValues.length - 1) {
-      let currentHeader: NameValue = this.nameValues[selectedIndex];
-      if (currentHeader.name == null && currentHeader.value == null) {
-        if (selectedIndex + 1 == this.nameValues.length - 1) {
-          this.nameValues.pop();
-        }
+  optimize() {
+    const length = this.nameValues.length;
+    if (length <= 1) {
+      return;
+    }
+
+    for (let i = length - 1; i >= 0 ; i--) {
+      const nameValue: NameValue = this.nameValues[i];
+
+      if (nameValue.name == null && nameValue.value == null) {
+        this.remove(i);
+      } else {
+        this.nameValues.push(new NameValue(null, null));
+        break;
       }
     }
   }

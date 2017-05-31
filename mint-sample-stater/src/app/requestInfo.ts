@@ -3,8 +3,11 @@ import { RequestExpander } from 'app/requestExpansion';
 export class RequestView {
     title: string;
 
+    // requestUrl: string;
     contentType: string = "application/json";
     isOpenParams: boolean;
+    paramTebSelectedIndex: number;
+
     reqDisplayMode: string = "text";
     reqBodyWrap: boolean = true;
     reqSyntaxHightlight: boolean = false;
