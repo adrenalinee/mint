@@ -68,7 +68,43 @@ export class HttpRequestComponent implements OnInit {
   send() {
     console.log('send!');
 
-    this.httpClient.execute(this.requestView.request)
+    let fianlRequestUrl: string;
+    const url = this.requestView.requestUrl;
+
+    if (url.indexOf('}') < 0) {
+      fianlRequestUrl = url;
+    } else {
+      let uri: string = url;
+      let queryString: string;
+      
+      const qIndex = url.indexOf('?');
+      
+      if (qIndex > 0) {
+        uri = url.substring(0, qIndex);
+        queryString = url.substring(qIndex + 1, url.length);
+      }
+
+      if (uri != null) {
+        this.requestView.request.urlParams.forEach(p => {
+          uri.replace('{' + p.name + '}', p.value);
+        });
+      }
+
+      if (queryString != null) {
+        this.requestView.request.queryParams.forEach(p => {
+          queryString.replace('{' + p.name + '}', p.value);
+        });
+      }
+
+      fianlRequestUrl = uri + '?' + queryString;
+    }
+    
+    const method = this.requestView.request.method;
+    const requestHeaders = this.requestView.request.headers;
+
+    console.log(fianlRequestUrl);
+    // this.httpClient.execute(this.requestView.request)
+    this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, null)
       .subscribe(
         response => {
           console.log(response);
@@ -97,7 +133,7 @@ export class HttpRequestComponent implements OnInit {
   }
 
   findParams($event) {
-    const url: string = this.requestView.request.url;
+    const url: string = this.requestView.requestUrl;
     if (url == null) {
       return;
     }
