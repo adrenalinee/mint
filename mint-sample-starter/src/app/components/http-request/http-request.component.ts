@@ -86,28 +86,30 @@ export class HttpRequestComponent implements OnInit {
 
       if (uri != null) {
         this.requestView.request.urlParams.forEach(p => {
-          uri.replace('{' + p.name + '}', p.value);
+          uri = uri.replace('{' + p.name + '}', p.value);
         });
       }
 
       if (queryString != null) {
         this.requestView.request.queryParams.forEach(p => {
-          queryString.replace('{' + p.name + '}', p.value);
+          queryString = queryString.replace('{' + p.name + '}', p.value);
         });
       }
 
       fianlRequestUrl = uri + '?' + queryString;
     }
     
+    const body = this.requestView.request.body;
+    // console.log(body);
     const method = this.requestView.request.method;
     const requestHeaders = this.requestView.request.headers;
 
-    console.log(fianlRequestUrl);
+    // console.log(fianlRequestUrl);
     // this.httpClient.execute(this.requestView.request)
-    this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, null)
+    this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
       .subscribe(
         response => {
-          console.log(response);
+          // console.log(response);
 
           this.requestView.response = response;
           this.requestView.isOpenResponse = true;
@@ -203,4 +205,8 @@ export class HttpRequestComponent implements OnInit {
     return false;
   }
 
+  onChange(data) {
+    // console.log(data);
+    this.requestView.request.body = data;
+  }
 }
