@@ -1,5 +1,5 @@
 <div fxLayout="column">
-  <div fxLayoutGap="1em">
+  <div fxLayoutGap="1em"fxLayout.lt-md="column">
     <md-select fxFlexAlign="center" [(ngModel)]="requestView.request.method">
       <md-option *ngFor="let method of httpMethods" [value]="method">{{method}}</md-option>
     </md-select>
@@ -14,14 +14,6 @@
     <div fxFlexAlign="center">
       <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
       <button md-raised-button color="primary" (click)="send()">Send</button>
-      <!--<button md-icon-button [mdMenuTriggerFor]="menu">
-        <md-icon>more_vert</md-icon>
-      </button>
-      <md-menu #menu="mdMenu">
-        <button md-menu-item>
-          <span>Action</span>
-        </button>
-      </md-menu> TODO -->
     </div>
   </div>
   <div style="background-color: #f2f4f6; padding: 1em" *ngIf="requestView.isOpenParams">

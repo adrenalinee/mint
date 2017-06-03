@@ -119,16 +119,16 @@ export class HttpRequestComponent implements OnInit {
           .forEach(h => {
             if (h.value.startsWith('application/json')) {
               this.requestView.resDisplayMode = 'json';
-              this.requestView.resSyntaxHightlight = true;
+              // this.requestView.resSyntaxHightlight = true;
             } else if (h.value.startsWith('application/xml')) {
               this.requestView.resDisplayMode = 'xml';
-              this.requestView.resSyntaxHightlight = true;
+              // this.requestView.resSyntaxHightlight = true;
             } else if (h.value.startsWith('text/xml')) {
               this.requestView.resDisplayMode = 'xml';
-              this.requestView.resSyntaxHightlight = true;
+              // this.requestView.resSyntaxHightlight = true;
             } else if (h.value.startsWith('text/html')) {
               this.requestView.resDisplayMode = 'html';
-              this.requestView.resSyntaxHightlight = true;
+              // this.requestView.resSyntaxHightlight = true;
             }
           });
         });

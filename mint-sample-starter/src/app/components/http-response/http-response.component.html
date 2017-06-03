@@ -7,10 +7,13 @@
   <md-tab>
     <ng-template md-tab-label>
       <span fxLayoutAlign="center center">
-        Body <!--<md-icon *ngIf="requestView.response.body != null">done</md-icon>-->
+        Body
+        <md-icon *ngIf="requestView.response.body != '' && requestView.response.body != null">
+          check_circle
+        </md-icon>
       </span>
     </ng-template>
-    <div style="padding: 0.5em">
+    <div style="padding: 0.5em; padding-top: 1em">
       <div fxLayoutGap="1em" fxLayoutAlign="start center">
         <!--<md-radio-group [(ngModel)]="requestView.resDisplayMethod">
           <md-radio-button [value]="'formatted'">Formatted</md-radio-button>
@@ -24,8 +27,8 @@
 
         <md-checkbox>Pretty</md-checkbox>
         <md-checkbox [(ngModel)]="requestView.resBodyWrap">Wrap</md-checkbox>
-        <md-checkbox [(ngModel)]="requestView.resSyntaxHightlight">Syntax Highlight</md-checkbox>
-        <md-select [(ngModel)]="requestView.resDisplayMode">
+        <!--<md-checkbox [(ngModel)]="requestView.resSyntaxHightlight">Syntax Highlight</md-checkbox>-->
+        <md-select [(ngModel)]="requestView.resDisplayMode" placeholder="Content type">
           <md-option *ngFor="let method of displayModes" [value]="method">{{method}}</md-option>
         </md-select>
       </div>
