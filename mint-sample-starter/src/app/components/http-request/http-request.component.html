@@ -1,20 +1,29 @@
 <div fxLayout="column">
-  <div fxLayoutGap="1em"fxLayout.lt-md="column">
-    <md-select fxFlexAlign="center" [(ngModel)]="requestView.request.method">
+  <div fxLayoutGap="1em" fxLayout.gt-sm="row" fxLayout="column"
+    fxLayoutAlign="" fxLayoutAlign.gt-sm=" center">
+    <md-select [(ngModel)]="requestView.request.method">
       <md-option *ngFor="let method of httpMethods" [value]="method">{{method}}</md-option>
     </md-select>
     <md-input-container fxFlex>
+      <!--<textarea
+        mdInput
+        mdTextareaAutosize
+        mdAutosizeMinRows="1"
+        #autosize="mdTextareaAutosize"
+        [(ngModel)]="requestView.requestUrl"
+        (keyup)="findParams($event)"
+        placeholder="Request URL"></textarea>-->
       <input
         mdInput
         [(ngModel)]="requestView.requestUrl"
         (keyup)="findParams($event)"
         placeholder="Request URL"
-        mdTooltip="reuqest url에서 property holder 를 {xxx}와 같은 형식으로 사용할 수 있습니다." />
+        mdTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다." />
     </md-input-container>
-    <div fxFlexAlign="center">
+    <!--<div fxFlexAlign="center">-->
       <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
       <button md-raised-button color="primary" (click)="send()">Send</button>
-    </div>
+    <!--</div>-->
   </div>
   <div style="background-color: #f2f4f6; padding: 1em" *ngIf="requestView.isOpenParams">
     <!--<p>property applied request url</p>-->

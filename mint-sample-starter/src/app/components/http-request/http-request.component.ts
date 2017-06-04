@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { Observable, Subject } from 'rxjs/Rx';
 // import {FormControl} from '@angular/forms';

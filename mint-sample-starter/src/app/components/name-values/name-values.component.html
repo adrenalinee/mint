@@ -1,4 +1,5 @@
-<div fxLayoutGap="1em" *ngFor="let nameValue of nameValues; index as i"
+<div fxLayoutGap="1em" fxLayout="row"
+  *ngFor="let nameValue of nameValues; index as i"
   (mouseenter)="nameValue.showCloseButton = true"
   (mouseleave)="nameValue.showCloseButton = false">
   <md-input-container fxFlex="30">
