@@ -41,10 +41,12 @@ export class HttpRequestComponent implements OnInit {
       'DELETE'
     ];
     this.contentTypes = [
-      'text/plain',
-      'text/html',
       'application/json',
-      'application/xml'
+      'application/xml',
+      'application/x-www-form-urlencoded',
+      'multipart/form-data',
+      'text/html',
+      'text/plain'
     ];
     this.requestHeaders = [
       'Accept',

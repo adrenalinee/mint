@@ -65,13 +65,14 @@
           </md-icon>
         </span>
       </ng-template>
-      <div style="padding: 0.5em; padding-top: 1em">
-        <div fxLayoutGap="1em" fxLayoutAlign="start center">
+      <div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
+        <div fxLayoutGap="1em" fxLayoutAlign="start center" fxLayoutWrap>
           <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
           <!--<md-checkbox>Syntax Highlight</md-checkbox>-->
-          <md-select [(ngModel)]="requestView.reqDisplayMode" placeholder="Content type">
-            <md-option *ngFor="let method of displayModes" [value]="method">{{method}}</md-option>
+          <md-select [(ngModel)]="requestView.contentType" placeholder="Content type" style="width: 300px">
+            <md-option *ngFor="let type of contentTypes" [value]="type">{{type}}</md-option>
           </md-select>
+          <button md-raised-button color="accent">Build</button>
 
           <!--<span>Content type</span>
           <md-select fxFlexAlign="center" [(ngModel)]="requestView.contentType" style="width: 200px">
