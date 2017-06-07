@@ -31,6 +31,10 @@ export class NameValuesComponent implements OnInit {
 
   findBuilder(selectedIndex) {
     const header: NameValue = this.nameValues[selectedIndex];
+    if (header.name == null) {
+      return;
+    }
+
     const headerName: string = header.name.toLowerCase();
 
     const headerBuilder = this.nameValueBuilders.find(b => b[headerName] != null);

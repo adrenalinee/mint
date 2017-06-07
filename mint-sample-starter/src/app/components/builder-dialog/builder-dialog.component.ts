@@ -24,6 +24,11 @@ export class BuilderDialogComponent implements OnInit {
 
   openBuilder() {
     const selectedBuilder: RequestExpander = this.expanderView.selectedExpander;
+    if (selectedBuilder.component == null) {
+      console.warn('not registered builder component!!');
+      return;
+    }
+
 
     this.dialog.open(selectedBuilder.component, {
       disableClose: true,

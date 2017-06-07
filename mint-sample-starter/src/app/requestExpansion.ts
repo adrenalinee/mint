@@ -14,10 +14,12 @@ export class RequestExpansion {
     headerBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
     urlParamBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
     queryParamBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
+
+    bodyBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
 }
 
 export class RequestExpander {
     name: string;
     component: ComponentType<any>;
-    viewModel: any = {};
+    viewModel?: any = {};
 }

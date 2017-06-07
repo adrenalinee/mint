@@ -3,18 +3,19 @@ import { RequestExpander } from 'app/requestExpansion';
 export class RequestView {
     title: string;
 
-    requestUrl: string = "http://localhost:4200/assets/test.json";
-    contentType: string = "application/json";
+    requestUrl: string = 'http://localhost:4200/assets/test.json';
+    reqContentType: string = ''; // = 'application/json';
     isOpenParams: boolean;
     paramTebSelectedIndex: number;
 
     // reqDisplayMode: string = "text";
     reqBodyWrap: boolean = true;
+    enableReqBodyBuilder: boolean;
     // reqSyntaxHightlight: boolean = false;
     // headerBuilders: Array<NameValue> = new Array();
 
     isOpenResponse: boolean;
-    resDisplayMode: string = "text";
+    resDisplayMode: string = 'text';
     resBodyWrap: boolean = true;
     // resSyntaxHightlight: boolean = false;
 
@@ -28,7 +29,7 @@ export class RequestView {
 
 export class RequestInfo {
     url: string;
-    method: string = "GET";
+    method: string = 'GET';
     queryParams: Array<NameValue> = [new NameValue(null, null)];
     urlParams: Array<NameValue> = [new NameValue(null, null)];
 
@@ -48,7 +49,7 @@ export class NameValue {
     name: string;
     value: string;
 
-    enableBuilder?: boolean = false;
+    enableBuilder?: boolean;
     selectedExpander?: RequestExpander;
     showCloseButton?: boolean;
 

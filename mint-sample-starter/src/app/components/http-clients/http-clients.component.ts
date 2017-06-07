@@ -4,6 +4,7 @@ import { RequestExpansion } from 'app/requestExpansion';
 import { HttpClientExpansionService } from 'app/services/http-client-expansion.service';
 // import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
 import { AuthorizationBasicComponent } from 'app/components/expansions/authorization-basic/authorization-basic.component';
+import { XWwwFormUrlencodedComponent } from 'app/components/expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 
 @Component({
   selector: 'app-http-clients',
@@ -26,13 +27,19 @@ export class HttpClientsComponent implements OnInit {
     const requestExpansion = new RequestExpansion();
     requestExpansion.headerBuilders.add('authorization', {
       name: 'Basic Auth',
-      component: AuthorizationBasicComponent,
-      viewModel: {}
+      component: AuthorizationBasicComponent
     });
     requestExpansion.queryParamBuilders.add('test', {
       name: 'test',
-      component: AuthorizationBasicComponent,
-      viewModel: {}
+      component: AuthorizationBasicComponent
+    });
+    requestExpansion.urlParamBuilders.add('test', {
+      name: 'test',
+      component: AuthorizationBasicComponent
+    });
+    requestExpansion.bodyBuilders.add('application/x-www-form-urlencoded', {
+      name: 'Default',
+      component: XWwwFormUrlencodedComponent
     });
     this.requestExpansions.push(requestExpansion);
   }

@@ -69,10 +69,14 @@
         <div fxLayoutGap="1em" fxLayoutAlign="start center" fxLayoutWrap>
           <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
           <!--<md-checkbox>Syntax Highlight</md-checkbox>-->
-          <md-select [(ngModel)]="requestView.contentType" placeholder="Content type" style="width: 300px">
+          <md-select
+            [(ngModel)]="requestView.reqContentType"
+            (change)="findReqBodyBuilder()"
+            placeholder="Content type" style="width: 300px">
+            <md-option>None</md-option>
             <md-option *ngFor="let type of contentTypes" [value]="type">{{type}}</md-option>
           </md-select>
-          <button md-raised-button color="accent">Build</button>
+          <button md-raised-button color="accent" *ngIf="requestView.enableReqBodyBuilder" (click)="openReqBodyBuilder()">Build</button>
 
           <!--<span>Content type</span>
           <md-select fxFlexAlign="center" [(ngModel)]="requestView.contentType" style="width: 200px">

@@ -23,6 +23,7 @@ import { HttpClientsComponent } from './components/http-clients/http-clients.com
 import { BuilderDialogComponent } from './components/builder-dialog/builder-dialog.component';
 import { AuthorizationBasicComponent } from './components/expansions/authorization-basic/authorization-basic.component';
 import { NameValuesComponent } from './components/name-values/name-values.component';
+import { XWwwFormUrlencodedComponent } from './components/expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +35,13 @@ import { NameValuesComponent } from './components/name-values/name-values.compon
     HttpResponseComponent,
     HttpClientsComponent,
     AuthorizationBasicComponent,
-    NameValuesComponent
+    NameValuesComponent,
+    XWwwFormUrlencodedComponent
   ],
   entryComponents: [
     BuilderDialogComponent,
-    AuthorizationBasicComponent
+    AuthorizationBasicComponent,
+    XWwwFormUrlencodedComponent
   ],
   imports: [
     BrowserAnimationsModule,

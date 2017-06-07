@@ -23,6 +23,7 @@ export class HttpRequestComponent implements OnInit {
   headerBuilders: Array<Dictionary<RequestExpander>>;
   urlParamBuilders: Array<Dictionary<RequestExpander>>;
   queryParamBuilders: Array<Dictionary<RequestExpander>>;
+  reqBodyBuilders: Array<Dictionary<RequestExpander>>;
 
   httpMethods: string[];
   contentTypes: string[];
@@ -65,6 +66,7 @@ export class HttpRequestComponent implements OnInit {
     this.headerBuilders = this.requestExpansions.map(re => re.headerBuilders);
     this.urlParamBuilders = this.requestExpansions.map(re => re.urlParamBuilders);
     this.queryParamBuilders = this.requestExpansions.map(re => re.queryParamBuilders);
+    this.reqBodyBuilders = this.requestExpansions.map(re => re.bodyBuilders);
   }
 
   send() {
@@ -102,17 +104,12 @@ export class HttpRequestComponent implements OnInit {
     }
     
     const body = this.requestView.request.body;
-    // console.log(body);
     const method = this.requestView.request.method;
     const requestHeaders = this.requestView.request.headers;
 
-    // console.log(fianlRequestUrl);
-    // this.httpClient.execute(this.requestView.request)
     this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
       .subscribe(
         response => {
-          // console.log(response);
-
           this.requestView.response = response;
           this.requestView.isOpenResponse = true;
 
@@ -210,5 +207,56 @@ export class HttpRequestComponent implements OnInit {
   onChange(data) {
     // console.log(data);
     this.requestView.request.body = data;
+  }
+
+  findReqBodyBuilder() {
+    const reqContentType: string = this.requestView.reqContentType;
+
+    const reqBodyBuilder = this.reqBodyBuilders.find(builder => builder[reqContentType] != null)
+    if (reqBodyBuilder != null) {
+      this.requestView.enableReqBodyBuilder = true;
+    } else {
+      this.requestView.enableReqBodyBuilder = false;
+    }
+
+    const contentTypeHeader = this.requestView.request.headers
+      .filter(h => h.name != null)
+      .find(h => h.name.toLowerCase() == 'content-type');
+
+    if (contentTypeHeader != null) {
+      contentTypeHeader.value = reqContentType;
+    } else {
+      this.requestView.request.headers.pop();
+      this.requestView.request.headers.push(new NameValue('Content-Type', reqContentType));
+      this.requestView.request.headers.push(new NameValue(null, null));
+    }
+  }
+
+  selectedReqBodyExpander: number;
+
+  openReqBodyBuilder() {
+    const reqContentType: string = this.requestView.reqContentType;
+
+    const matchedBuilders: Array<RequestExpander> =
+      this.reqBodyBuilders
+        .filter(builder => builder[reqContentType] != null)
+        .map(builder => builder[reqContentType]);
+
+    this.dialog.open(BuilderDialogComponent, {
+      data: {
+        title: 'Request Body Builder Select',
+        expanders: matchedBuilders,
+        selectedExpander: this.selectedReqBodyExpander
+      }
+    })
+    .afterClosed()
+    .subscribe(data => {
+      if (data != null) {
+        if (data.value != null) {
+          this.requestView.request.body = data.value;
+          this.selectedReqBodyExpander = data.selectedExpander;
+        }
+      }
+    });
   }
 }
