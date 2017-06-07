@@ -39,7 +39,8 @@ export class HttpRequestComponent implements OnInit {
       'POST',
       'PUT',
       'PATCH',
-      'DELETE'
+      'DELETE',
+      'OPTIONS'
     ];
     this.contentTypes = [
       'application/json',
@@ -205,7 +206,6 @@ export class HttpRequestComponent implements OnInit {
   }
 
   onChange(data) {
-    // console.log(data);
     this.requestView.request.body = data;
   }
 

@@ -66,9 +66,11 @@
         </span>
       </ng-template>
       <div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
-        <div fxLayoutGap="1em" fxLayoutAlign="start center" fxLayoutWrap>
+        <div fxLayoutGap="1em" fxLayoutAlign="start center">
           <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
-          <!--<md-checkbox>Syntax Highlight</md-checkbox>-->
+          <md-select [(ngModel)]="requestView.reqDisplayMode" placeholder="syntax">
+            <md-option *ngFor="let method of displayModes" [value]="method">{{method}}</md-option>
+          </md-select>
           <md-select
             [(ngModel)]="requestView.reqContentType"
             (change)="findReqBodyBuilder()"
@@ -89,7 +91,7 @@
           [theme]="'idle_fingers'"
           [options]="{
             minLines: 10,
-            maxLines: 'Infinity',
+            maxLines: '30',
             wrap: requestView.reqBodyWrap
           }"
           (textChanged)="onChange($event)"

@@ -8,8 +8,8 @@ export class RequestView {
     isOpenParams: boolean;
     paramTebSelectedIndex: number;
 
-    // reqDisplayMode: string = "text";
-    reqBodyWrap: boolean = true;
+    reqDisplayMode: string = "text";
+    reqBodyWrap: boolean;
     enableReqBodyBuilder: boolean;
     // reqSyntaxHightlight: boolean = false;
     // headerBuilders: Array<NameValue> = new Array();
