@@ -1,0 +1,27 @@
+<div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
+  <div fxLayoutGap="1em" fxLayoutAlign="start center">
+    <md-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</md-checkbox>
+    <md-select [(ngModel)]="requestView.reqDisplayMode" placeholder="Syntax">
+      <md-option *ngFor="let method of displayModes" [value]="method">{{method}}</md-option>
+    </md-select>
+    <md-select
+      [(ngModel)]="requestView.reqContentType"
+      (change)="onChangeRequestBodyContentType()"
+      placeholder="Content type" style="width: 300px">
+      <md-option>None</md-option>
+      <md-option *ngFor="let type of contentTypes" [value]="type">{{type}}</md-option>
+    </md-select>
+    <button md-raised-button color="accent" *ngIf="requestView.enableReqBodyBuilder" (click)="openReqBodyBuilder()">Build</button>
+  </div>
+  <div ace-editor
+    [text]="requestView.request.body"
+    [mode]="requestView.reqDisplayMode"
+    [theme]="'idle_fingers'"
+    [options]="{
+      minLines: 10,
+      maxLines: '30',
+      wrap: requestView.reqBodyWrap
+    }"
+    (textChanged)="onChange($event)"
+    style="display: block; width: 100%; height: 20vh;"></div>
+</div>

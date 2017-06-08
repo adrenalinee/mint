@@ -15,8 +15,6 @@ export class NameValuesComponent implements OnInit {
 
   @Input() nameValues: Array<NameValue>;
 
-  // nameValueMeta: Array<NameValueMeta> = new Array();
-
   constructor(private dialog: MdDialog) { }
 
   ngOnInit() {

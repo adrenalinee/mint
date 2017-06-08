@@ -24,6 +24,7 @@ import { BuilderDialogComponent } from './components/builder-dialog/builder-dial
 import { AuthorizationBasicComponent } from './components/expansions/authorization-basic/authorization-basic.component';
 import { NameValuesComponent } from './components/name-values/name-values.component';
 import { XWwwFormUrlencodedComponent } from './components/expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
+import { RequestBodyComponent } from './components/request-body/request-body.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { XWwwFormUrlencodedComponent } from './components/expansions/xwww-form-u
     HttpClientsComponent,
     AuthorizationBasicComponent,
     NameValuesComponent,
-    XWwwFormUrlencodedComponent
+    XWwwFormUrlencodedComponent,
+    RequestBodyComponent
   ],
   entryComponents: [
     BuilderDialogComponent,

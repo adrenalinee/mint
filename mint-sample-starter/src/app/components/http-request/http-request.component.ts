@@ -26,8 +26,8 @@ export class HttpRequestComponent implements OnInit {
   reqBodyBuilders: Array<Dictionary<RequestExpander>>;
 
   httpMethods: string[];
-  contentTypes: string[];
-  requestHeaders: string[];
+  // contentTypes: string[];
+  // requestHeaders: string[];
   displayModes: string[];
 
   constructor(private httpClient: HttpClientService, private dialog: MdDialog) { }
@@ -42,27 +42,28 @@ export class HttpRequestComponent implements OnInit {
       'DELETE',
       'OPTIONS'
     ];
-    this.contentTypes = [
-      'application/json',
-      'application/xml',
-      'application/x-www-form-urlencoded',
-      'multipart/form-data',
-      'text/html',
-      'text/plain'
-    ];
-    this.requestHeaders = [
-      'Accept',
-      'Authorization',
-      'Cache-Control',
-      'Content-Type',
-      'Host',
-      'Origin'
-    ];
+    // this.contentTypes = [
+    //   'application/json',
+    //   'application/xml',
+    //   'application/x-www-form-urlencoded',
+    //   'multipart/form-data',
+    //   'text/html',
+    //   'text/plain'
+    // ];
+    // this.requestHeaders = [
+    //   'Accept',
+    //   'Authorization',
+    //   'Cache-Control',
+    //   'Content-Type',
+    //   'Host',
+    //   'Origin'
+    // ];
     this.displayModes = [
       'text',
       'json',
       'xml'
     ];
+
 
     this.headerBuilders = this.requestExpansions.map(re => re.headerBuilders);
     this.urlParamBuilders = this.requestExpansions.map(re => re.urlParamBuilders);
@@ -205,58 +206,4 @@ export class HttpRequestComponent implements OnInit {
     return false;
   }
 
-  onChange(data) {
-    this.requestView.request.body = data;
-  }
-
-  findReqBodyBuilder() {
-    const reqContentType: string = this.requestView.reqContentType;
-
-    const reqBodyBuilder = this.reqBodyBuilders.find(builder => builder[reqContentType] != null)
-    if (reqBodyBuilder != null) {
-      this.requestView.enableReqBodyBuilder = true;
-    } else {
-      this.requestView.enableReqBodyBuilder = false;
-    }
-
-    const contentTypeHeader = this.requestView.request.headers
-      .filter(h => h.name != null)
-      .find(h => h.name.toLowerCase() == 'content-type');
-
-    if (contentTypeHeader != null) {
-      contentTypeHeader.value = reqContentType;
-    } else {
-      this.requestView.request.headers.pop();
-      this.requestView.request.headers.push(new NameValue('Content-Type', reqContentType));
-      this.requestView.request.headers.push(new NameValue(null, null));
-    }
-  }
-
-  selectedReqBodyExpander: number;
-
-  openReqBodyBuilder() {
-    const reqContentType: string = this.requestView.reqContentType;
-
-    const matchedBuilders: Array<RequestExpander> =
-      this.reqBodyBuilders
-        .filter(builder => builder[reqContentType] != null)
-        .map(builder => builder[reqContentType]);
-
-    this.dialog.open(BuilderDialogComponent, {
-      data: {
-        title: 'Request Body Builder Select',
-        expanders: matchedBuilders,
-        selectedExpander: this.selectedReqBodyExpander
-      }
-    })
-    .afterClosed()
-    .subscribe(data => {
-      if (data != null) {
-        if (data.value != null) {
-          this.requestView.request.body = data.value;
-          this.selectedReqBodyExpander = data.selectedExpander;
-        }
-      }
-    });
-  }
 }
