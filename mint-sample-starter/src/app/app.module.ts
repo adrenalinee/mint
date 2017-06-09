@@ -8,10 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AceEditorDirective } from 'ng2-ace';
 import 'brace/theme/idle_fingers';
-import 'brace/mode/json';
-import 'brace/mode/xml';
+import 'brace/mode/css';
 import 'brace/mode/html';
+import 'brace/mode/javascript';
+import 'brace/mode/json';
 import 'brace/mode/text';
+import 'brace/mode/properties';
+import 'brace/mode/xml';
+
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -25,6 +29,7 @@ import { AuthorizationBasicComponent } from './components/expansions/authorizati
 import { NameValuesComponent } from './components/name-values/name-values.component';
 import { XWwwFormUrlencodedComponent } from './components/expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 import { RequestBodyComponent } from './components/request-body/request-body.component';
+import { TextPlainComponent } from './components/expansions/text-plain/text-plain.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +43,13 @@ import { RequestBodyComponent } from './components/request-body/request-body.com
     AuthorizationBasicComponent,
     NameValuesComponent,
     XWwwFormUrlencodedComponent,
-    RequestBodyComponent
+    RequestBodyComponent,
+    TextPlainComponent
   ],
   entryComponents: [
-    BuilderDialogComponent,
     AuthorizationBasicComponent,
+    BuilderDialogComponent,
+    TextPlainComponent,
     XWwwFormUrlencodedComponent
   ],
   imports: [

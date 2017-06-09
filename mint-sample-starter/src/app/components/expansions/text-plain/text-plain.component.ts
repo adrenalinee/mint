@@ -4,16 +4,16 @@ import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { NameValue } from 'app/requestInfo';
 
 @Component({
-  selector: 'app-xwww-form-urlencoded',
-  templateUrl: './xwww-form-urlencoded.component.html',
-  styleUrls: ['./xwww-form-urlencoded.component.css']
+  selector: 'app-text-plain',
+  templateUrl: './text-plain.component.html',
+  styleUrls: ['./text-plain.component.css']
 })
-export class XWwwFormUrlencodedComponent implements OnInit {
+export class TextPlainComponent implements OnInit {
 
   formDatas: Array<NameValue>;
 
   constructor(
-    private dialogRef: MdDialogRef<XWwwFormUrlencodedComponent>,
+    private dialogRef: MdDialogRef<TextPlainComponent>,
     @Inject(MD_DIALOG_DATA) private data: any) {
       this.formDatas = this.data.viewModel;
     }
@@ -26,13 +26,13 @@ export class XWwwFormUrlencodedComponent implements OnInit {
   }
 
   apply() {
-    const urlEncodedFormData = this.formDatas
+    const textPlainFormData = this.formDatas
       .filter(p => p.name != null || p.value != null)
-      .map(p => encodeURI(p.name) + '=' + encodeURI(p.value))
-      .join('&');
+      .map(p => p.name + '=' + p.value)
+      .join('\n');
 
     this.dialogRef.close({
-      value: urlEncodedFormData,
+      value: textPlainFormData,
       viewModel: this.formDatas
     });
   }

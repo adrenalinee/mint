@@ -20,7 +20,9 @@ export class RequestBodyComponent implements OnInit {
   contentTypes: string[];
   displayModes: string[];
 
-  proposeDisplayModes: Dictionary<string> = new Dictionary<string>();
+  selectedReqBodyExpander: number;
+
+  suggestedDisplayModes: Dictionary<string> = new Dictionary<string>();
 
   constructor(private dialog: MdDialog) { }
 
@@ -34,12 +36,21 @@ export class RequestBodyComponent implements OnInit {
       'text/plain'
     ];
     this.displayModes = [
-      'text',
+      'css',
+      'html',
+      'javascript',
       'json',
+      'text',
+      'properties',
       'xml'
     ];
 
-    // this.proposeDisplayModes.add('application/x-www-form-urlencoded', );
+    this.suggestedDisplayModes.add('application/json', 'json');
+    this.suggestedDisplayModes.add('application/xml', 'xml');
+    this.suggestedDisplayModes.add('application/x-www-form-urlencoded', 'text');
+    this.suggestedDisplayModes.add('multipart/form-data', 'text');
+    this.suggestedDisplayModes.add('text/html', 'html');
+    this.suggestedDisplayModes.add('text/plain', 'properties');
   }
 
 
@@ -49,6 +60,14 @@ export class RequestBodyComponent implements OnInit {
 
   onChangeRequestBodyContentType() {
     const reqContentType: string = this.requestView.reqContentType;
+
+    const displayMode = this.suggestedDisplayModes[reqContentType];
+    if (displayMode != null) {
+      this.requestView.reqDisplayMode = displayMode;
+    } else {
+      this.requestView.reqDisplayMode = 'text';
+    }
+
 
     const reqBodyBuilder = this.reqBodyBuilders.find(builder => builder[reqContentType] != null)
     if (reqBodyBuilder != null) {
@@ -69,9 +88,6 @@ export class RequestBodyComponent implements OnInit {
       this.requestView.request.headers.push(new NameValue(null, null));
     }
   }
-
-  //TODO request body 관련 부분을 별도의 component로 분리 시킬 예정
-  selectedReqBodyExpander: number;
 
   openReqBodyBuilder() {
     const reqContentType: string = this.requestView.reqContentType;

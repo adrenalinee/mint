@@ -28,7 +28,7 @@ export class HttpRequestComponent implements OnInit {
   httpMethods: string[];
   // contentTypes: string[];
   // requestHeaders: string[];
-  displayModes: string[];
+  // displayModes: string[];
 
   constructor(private httpClient: HttpClientService, private dialog: MdDialog) { }
 
@@ -58,11 +58,6 @@ export class HttpRequestComponent implements OnInit {
     //   'Host',
     //   'Origin'
     // ];
-    this.displayModes = [
-      'text',
-      'json',
-      'xml'
-    ];
 
 
     this.headerBuilders = this.requestExpansions.map(re => re.headerBuilders);
