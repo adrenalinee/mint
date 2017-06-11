@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+
+import { HttpClientsComponent } from './components/http-clients/http-clients.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  
+  @ViewChild('httpClients')
+  httpClients: HttpClientsComponent;
+
+  addClient() {
+    this.httpClients.addClient();
+  }
 }

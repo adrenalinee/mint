@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AceEditorDirective } from 'ng2-ace';
 import 'brace/theme/idle_fingers';
+import 'brace/theme/dawn';
 import 'brace/mode/css';
 import 'brace/mode/html';
 import 'brace/mode/javascript';

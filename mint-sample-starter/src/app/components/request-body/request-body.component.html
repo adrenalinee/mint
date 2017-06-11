@@ -16,10 +16,11 @@
   <div ace-editor
     [text]="requestView.request.body"
     [mode]="requestView.reqDisplayMode"
-    [theme]="'idle_fingers'"
+    [theme]="'dawn'"
     [options]="{
       minLines: 10,
       maxLines: '30',
+      showPrintMargin: false,
       wrap: requestView.reqBodyWrap
     }"
     (textChanged)="onChange($event)"

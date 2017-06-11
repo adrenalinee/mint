@@ -1,4 +1,4 @@
-<md-tab-group dynamicHeight="true">
+<md-tab-group dynamicHeight="true" [selectedIndex]="selectedIndex">
   <md-tab *ngFor="let requestView of requestViews; index as i">
     <ng-template md-tab-label>
       {{requestView.title}}
@@ -11,7 +11,7 @@
       
       <p *ngIf="!requestView.isOpenResponse">
         please hit the 
-        <button md-raised-button disabled>Send</button>
+        <button md-raised-button color="primary">Send</button>
         button to get a response
       </p>
       <!--<p></p>-->

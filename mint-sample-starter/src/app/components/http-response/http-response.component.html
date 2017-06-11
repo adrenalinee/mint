@@ -1,7 +1,17 @@
-<div fxLayout="row" fxLayoutGap="1em">
+<!--<div fxLayout="row" fxLayoutGap="1em">
     <p>Status: <span>{{requestView.response.status}}</span></p>
     <p>Status text: <span>{{requestView.response.statusText}}</span></p>
-</div>
+</div>-->
+
+<md-toolbar color="" fxLayout="row" fxLayoutGap="1em">
+    <span>
+      <b>Status:</b> {{requestView.response.status}}
+    </span>
+    <span>
+      <b>Status text:</b> {{requestView.response.statusText}}
+    </span>
+</md-toolbar>
+
 
 <md-tab-group dynamicHeight="true">
   <md-tab>
@@ -13,7 +23,20 @@
         </md-icon>
       </span>
     </ng-template>
-    <div style="padding: 0.5em; padding-top: 1em">
+    <!--<md-toolbar>
+      <button md-button>Raw</button>
+      <button md-button>Pretty</button>
+      <button md-button>Preview</button>
+    </md-toolbar>-->
+
+
+    <div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
+      <md-radio-group>
+        <md-radio-button>Raw</md-radio-button>
+        <md-radio-button>Pretty</md-radio-button>
+        <md-radio-button>Preview</md-radio-button>
+      </md-radio-group>
+
       <div fxLayoutGap="1em" fxLayoutAlign="start center">
         <!--<md-radio-group [(ngModel)]="requestView.resDisplayMethod">
           <md-radio-button [value]="'formatted'">Formatted</md-radio-button>
@@ -24,8 +47,8 @@
           <md-option *ngFor="let method of resDisplayModes" [value]="method">{{method}}</md-option>
         </md-select>-->
         <!--<md-checkbox>Wrap</md-checkbox>-->
-
-        <md-checkbox>Pretty</md-checkbox>
+        
+        <!--<md-checkbox>Pretty</md-checkbox>-->
         <md-checkbox [(ngModel)]="requestView.resBodyWrap">Wrap</md-checkbox>
         <!--<md-checkbox [(ngModel)]="requestView.resSyntaxHightlight">Syntax Highlight</md-checkbox>-->
         <md-select [(ngModel)]="requestView.resDisplayMode" placeholder="Syntax">
@@ -36,11 +59,12 @@
       <div ace-editor
         [text]="requestView.response.body"
         [mode]="requestView.resDisplayMode"
-        [theme]="'idle_fingers'"
+        [theme]="'dawn'"
         [readOnly]="true"
         [options]="{
           minLines: 10,
           maxLines: 'Infinity',
+          showPrintMargin: false,
           wrap: requestView.resBodyWrap
         }"
         style="display: block; width: 100%; height: 100%"></div>

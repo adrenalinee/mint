@@ -19,10 +19,12 @@ export class HttpClientsComponent implements OnInit {
   
   private tabCount = 1;
 
+  selectedIndex = 0;
+
   constructor(private httpClientExpansionService: HttpClientExpansionService) { }
 
   ngOnInit() {
-    const requestView: RequestView = new RequestView("Request-" + this.tabCount++);
+    const requestView: RequestView = new RequestView("SandBox-" + this.tabCount++);
     this.requestViews.push(requestView);
 
     const requestExpansion = new RequestExpansion();
@@ -53,7 +55,17 @@ export class HttpClientsComponent implements OnInit {
     this.requestExpansions.push(requestExpansion);
   }
 
-  closeTab(index: number) {
-    console.log('closeTab');
+  addClient(focus: boolean = true) {
+    console.log('addClient');
+
+    const requestView: RequestView = new RequestView("SandBox-" + this.tabCount++);
+    const addedIndex = this.requestViews.push(requestView);
+    if (focus) {
+      this.selectedIndex = addedIndex;
+    }
+  }
+
+  closeClient(index: number) {
+    console.log('closeClient');
   }
 }
