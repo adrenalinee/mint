@@ -3,13 +3,15 @@
     <p>Status text: <span>{{requestView.response.statusText}}</span></p>
 </div>-->
 
-<md-toolbar color="" fxLayout="row" fxLayoutGap="1em">
+<md-toolbar color="primary">
+  <div fxLayout="row" fxLayoutGap="1em">
     <span>
-      <b>Status:</b> {{requestView.response.status}}
+      <b>Status: </b> {{requestView.response.status}} {{requestView.response.statusText}}
     </span>
     <span>
-      <b>Status text:</b> {{requestView.response.statusText}}
+      <b>elapse time: </b> {{requestView.response.elapseTime}} ms
     </span>
+  </div>
 </md-toolbar>
 
 
@@ -23,19 +25,14 @@
         </md-icon>
       </span>
     </ng-template>
-    <!--<md-toolbar>
-      <button md-button>Raw</button>
-      <button md-button>Pretty</button>
-      <button md-button>Preview</button>
-    </md-toolbar>-->
-
 
     <div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
-      <md-radio-group>
+      <!--<md-radio-group>
         <md-radio-button>Raw</md-radio-button>
         <md-radio-button>Pretty</md-radio-button>
         <md-radio-button>Preview</md-radio-button>
-      </md-radio-group>
+      </md-radio-group>-->
+
 
       <div fxLayoutGap="1em" fxLayoutAlign="start center">
         <!--<md-radio-group [(ngModel)]="requestView.resDisplayMethod">

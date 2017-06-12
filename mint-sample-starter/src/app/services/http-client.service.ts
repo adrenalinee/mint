@@ -23,12 +23,15 @@ export class HttpClientService {
       body: body
     });
 
+    const startTime = new Date().getTime();
     return this.http.request(url, requestOptions)
       .map(response => {
         // console.log(response);
+        const elapseTime = new Date().getTime() - startTime;
         let responseInfo: ResponseInfo = new ResponseInfo();
         responseInfo.status = response.status;
         responseInfo.statusText = response.statusText;
+        responseInfo.elapseTime = elapseTime;
 
         response.headers.keys().forEach(k => {
           responseInfo.headers.push(new NameValue(k, response.headers.get(k)));

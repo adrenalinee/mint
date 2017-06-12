@@ -83,15 +83,21 @@ export class NameValuesComponent implements OnInit {
       return;
     }
 
-    for (let i = length - 1; i >= 0 ; i--) {
+    for (let i  = 0; i < length; i++) {
       const nameValue: NameValue = this.nameValues[i];
-
-      if (nameValue.name == null && nameValue.value == null) {
-        this.remove(i);
-      } else {
-        this.nameValues.push(new NameValue(null, null));
-        break;
+      if (i < length - 1) {
+        if (this.isEmpty(nameValue.name) && this.isEmpty(nameValue.value)) {
+          this.remove(i);
+        }
       }
+    }
+  }
+
+  isEmpty(value: string): boolean {
+    if (value == null || value == '') {
+      return true;
+    } else {
+      return false;
     }
   }
 

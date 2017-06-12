@@ -38,6 +38,7 @@ export class RequestInfo {
 }
 
 export class ResponseInfo {
+    elapseTime: number;
     status: number;
     statusText: string;
     headers: Array<NameValue> = new Array();

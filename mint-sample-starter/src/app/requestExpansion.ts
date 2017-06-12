@@ -16,6 +16,8 @@ export class RequestExpansion {
     queryParamBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
 
     bodyBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
+    
+    resBodyVeiwers: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
 }
 
 export class RequestExpander {

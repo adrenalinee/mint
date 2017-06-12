@@ -1,7 +1,10 @@
 <app-header></app-header>
 
 <span class="app-action">
-  <button md-fab (click)="addClient()"><md-icon>add</md-icon></button>
+  <button md-fab
+    mdTooltip="add Sandbox client"
+    mdTooltipPosition="above"
+    (click)="addClient()"><md-icon>add</md-icon></button>
 </span>
 <div class="content-container content">
   <app-http-clients #httpClients></app-http-clients>
