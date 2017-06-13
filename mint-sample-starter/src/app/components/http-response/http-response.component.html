@@ -26,12 +26,11 @@
       </span>
     </ng-template>
 
-    <div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
-      <!--<md-radio-group>
-        <md-radio-button>Raw</md-radio-button>
-        <md-radio-button>Pretty</md-radio-button>
-        <md-radio-button>Preview</md-radio-button>
-      </md-radio-group>-->
+    <div fxLayoutGap="1em" fxLayout="column" style="padding: 0.5em">
+      <md-radio-group>
+        <md-radio-button>Basic</md-radio-button>
+        <md-radio-button *ngFor="let resBodyVeiwer of resBodyVeiwers[requestView.resContentType]">{{resBodyVeiwer.name}}</md-radio-button>
+      </md-radio-group>
 
 
       <div fxLayoutGap="1em" fxLayoutAlign="start center">

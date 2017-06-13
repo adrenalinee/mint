@@ -4,17 +4,19 @@ export class RequestView {
     title: string;
 
     requestUrl: string = 'http://localhost:4200/assets/test.json';
-    reqContentType: string = ''; // = 'application/json';
+    reqContentType: string = '';
+    reqDisplayMode: string = "text";
+
     isOpenParams: boolean;
     paramTebSelectedIndex: number;
 
-    reqDisplayMode: string = "text";
     reqBodyWrap: boolean;
     enableReqBodyBuilder: boolean;
     // reqSyntaxHightlight: boolean = false;
     // headerBuilders: Array<NameValue> = new Array();
 
     isOpenResponse: boolean;
+    resContentType: string = '';
     resDisplayMode: string = 'text';
     resBodyWrap: boolean = true;
     // resSyntaxHightlight: boolean = false;

@@ -1,38 +1,26 @@
 <md-tab-group dynamicHeight="true" [selectedIndex]="selectedIndex">
   <md-tab *ngFor="let requestView of requestViews; index as i">
     <ng-template md-tab-label>
-      {{requestView.title}}
-      <!--<button md-icon-button (click)="closeTab(i)">
-        <md-icon>clear</md-icon>
-      </button> TODO -->
-      <!--<button md-icon-button [mdMenuTriggerFor]="menu">
-        <md-icon>more_vert</md-icon>
-      </button>
-      <md-menu #menu="mdMenu">
-        <button md-menu-item>
-          <md-icon>settings</md-icon>
-          <span>Preferrence</span>
+      <div>
+        {{requestView.title}}
+        <button md-icon-button [mdMenuTriggerFor]="menu">
+          <md-icon>more_vert</md-icon>
         </button>
-        <button md-menu-item>
-          <md-icon>info</md-icon>
-          <span>About</span>
-        </button>
-      </md-menu>-->
+        <md-menu #menu="mdMenu">
+          <!--<button md-menu-item>
+            <md-icon>content_copy</md-icon>
+            <span>Duplicate</span>
+            {{menu.menu}}
+          </button> TODO -->
+          <button md-menu-item (click)="closeClient(i)">
+            <md-icon>close</md-icon>
+            <span>Close</span>
+          </button>
+        </md-menu>
+      </div>
     </ng-template>
     <div fxLayout="column" style="padding: 1em">
-      <app-http-request [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-request>
-      
-      <p *ngIf="!requestView.isOpenResponse">
-        please hit the 
-        <button md-raised-button color="primary">Send</button>
-        button to get a response
-      </p>
-      <!--<p></p>-->
-      <!--style="background-color: #f2f4f6; padding: 1em;"-->
-      <div *ngIf="requestView.isOpenResponse">
-        Response
-        <app-http-response [requestView]="requestView"></app-http-response>
-      </div>
+      <app-http-client [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-client>
     </div>
   </md-tab>
 </md-tab-group>

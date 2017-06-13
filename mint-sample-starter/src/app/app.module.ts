@@ -31,6 +31,7 @@ import { NameValuesComponent } from './components/name-values/name-values.compon
 import { XWwwFormUrlencodedComponent } from './components/expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 import { RequestBodyComponent } from './components/request-body/request-body.component';
 import { TextPlainComponent } from './components/expansions/text-plain/text-plain.component';
+import { HttpClientComponent } from './components/http-client/http-client.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { TextPlainComponent } from './components/expansions/text-plain/text-plai
     NameValuesComponent,
     XWwwFormUrlencodedComponent,
     RequestBodyComponent,
-    TextPlainComponent
+    TextPlainComponent,
+    HttpClientComponent
   ],
   entryComponents: [
     AuthorizationBasicComponent,

@@ -1,0 +1,12 @@
+<app-http-request [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-request>
+
+<p *ngIf="!requestView.isOpenResponse">
+  please hit the 
+  <button md-raised-button color="primary">Send</button>
+  button to get a response
+</p>
+
+<div *ngIf="requestView.isOpenResponse">
+  Response
+  <app-http-response [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-response>
+</div>

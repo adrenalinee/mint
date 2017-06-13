@@ -26,9 +26,6 @@ export class HttpRequestComponent implements OnInit {
   reqBodyBuilders: Array<Dictionary<RequestExpander>>;
 
   httpMethods: string[];
-  // contentTypes: string[];
-  // requestHeaders: string[];
-  // displayModes: string[];
 
   constructor(private httpClient: HttpClientService, private dialog: MdDialog) { }
 
@@ -42,23 +39,6 @@ export class HttpRequestComponent implements OnInit {
       'DELETE',
       'OPTIONS'
     ];
-    // this.contentTypes = [
-    //   'application/json',
-    //   'application/xml',
-    //   'application/x-www-form-urlencoded',
-    //   'multipart/form-data',
-    //   'text/html',
-    //   'text/plain'
-    // ];
-    // this.requestHeaders = [
-    //   'Accept',
-    //   'Authorization',
-    //   'Cache-Control',
-    //   'Content-Type',
-    //   'Host',
-    //   'Origin'
-    // ];
-
 
     this.headerBuilders = this.requestExpansions.map(re => re.headerBuilders);
     this.urlParamBuilders = this.requestExpansions.map(re => re.urlParamBuilders);
@@ -115,20 +95,30 @@ export class HttpRequestComponent implements OnInit {
           .forEach(h => {
             if (h.value.startsWith('application/json')) {
               this.requestView.resDisplayMode = 'json';
+              this.requestView.resContentType = 'application/json';
             } else if (h.value.startsWith('application/xml')) {
               this.requestView.resDisplayMode = 'xml';
+              this.requestView.resContentType = 'application/xml';
             } else if (h.value.startsWith('text/xml')) {
               this.requestView.resDisplayMode = 'xml';
+              this.requestView.resContentType = 'text/xml';
             } else if (h.value.startsWith('text/html')) {
               this.requestView.resDisplayMode = 'html';
+              this.requestView.resContentType = 'text/html';
             } else if (h.value.startsWith('text/css')) {
               this.requestView.resDisplayMode = 'css';
+              this.requestView.resContentType = 'text/css';
             }
           });
         });
   }
 
-  findParams($event) {
+  findParams($event: KeyboardEvent) {
+    if ($event.key == 'Enter') {
+      this.send();
+      return;
+    }
+
     const url: string = this.requestView.requestUrl;
     if (url == null) {
       return;

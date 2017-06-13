@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MdMenuTrigger } from '@angular/material';
+
 import { RequestView, NameValue } from 'app/requestInfo';
 import { RequestExpansion } from 'app/requestExpansion';
 import { HttpClientExpansionService } from 'app/services/http-client-expansion.service';
@@ -16,7 +18,7 @@ import { XWwwFormUrlencodedComponent } from 'app/components/expansions/xwww-form
 export class HttpClientsComponent implements OnInit {
   requestViews: Array<RequestView> = new Array();
   requestExpansions: Array<RequestExpansion> = new Array();
-  
+
   private tabCount = 1;
 
   selectedIndex = 0;
@@ -52,6 +54,11 @@ export class HttpClientsComponent implements OnInit {
       component: TextPlainComponent
     });
 
+    requestExpansion.resBodyVeiwers.add('text/html', {
+      name: 'Preview',
+      component: null
+    });
+
     this.requestExpansions.push(requestExpansion);
   }
 
@@ -66,6 +73,7 @@ export class HttpClientsComponent implements OnInit {
   }
 
   closeClient(index: number) {
-    console.log('closeClient');
+    this.requestViews.splice(index, 1);
   }
+
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RequestView } from '../../requestInfo';
+
+import { Dictionary } from 'app/Dictionary';
+import { RequestExpansion, RequestExpander } from 'app/requestExpansion';
+import { RequestView } from 'app/requestInfo';
 
 @Component({
   selector: 'app-http-response',
@@ -8,6 +11,9 @@ import { RequestView } from '../../requestInfo';
 })
 export class HttpResponseComponent implements OnInit {
   @Input() requestView: RequestView;
+  @Input() requestExpansions: Array<RequestExpansion>;
+
+  resBodyVeiwers: Array<Dictionary<RequestExpander>>;
   
   displayModes: string[];
 
@@ -22,6 +28,12 @@ export class HttpResponseComponent implements OnInit {
       'css',
       'javascript'
     ];
+
+    this.resBodyVeiwers = this.requestExpansions.map(re => re.resBodyVeiwers);
+    console.log(this.resBodyVeiwers);
+    console.log(this.resBodyVeiwers['text/html']);
+
+    
   }
 
 }
