@@ -83,22 +83,20 @@ export class NameValuesComponent implements OnInit {
       return;
     }
 
-    for (let i  = 0; i < length; i++) {
-      const nameValue: NameValue = this.nameValues[i];
-      if (i < length - 1) {
-        if (this.isEmpty(nameValue.name) && this.isEmpty(nameValue.value)) {
-          this.remove(i);
-        }
-      }
+    const lastNameValue: NameValue = this.nameValues[length - 1];
+    const prevLastNameValue: NameValue = this.nameValues[length - 2];
+    if (this.isEmpty(lastNameValue) && this.isEmpty(prevLastNameValue)) {
+      this.nameValues.pop();
     }
   }
 
-  isEmpty(value: string): boolean {
-    if (value == null || value == '') {
-      return true;
-    } else {
-      return false;
+  isEmpty(nameValue: NameValue): boolean {
+    if (nameValue.value == null || nameValue.value == '') {
+      if (nameValue.name == null || nameValue.name == '') {
+        return true;
+      }
     }
+      return false;
   }
 
   remove(selectedIndex) {

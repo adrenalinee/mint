@@ -5,8 +5,8 @@
   <md-input-container fxFlex="30">
     <input mdInput placeholder="Name" [(ngModel)]="nameValue.name"
     (focus)="addNameValue(i)"
-    (blur)="optimize()"
-    (keyup)="findBuilder(i)" />
+    (keyup)="addNameValue(i);findBuilder(i)"
+    (blur)="optimize()" />
   </md-input-container>
   <md-input-container fxFlex>
     <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
