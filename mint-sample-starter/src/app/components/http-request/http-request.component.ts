@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { RequestView, NameValue } from 'app/requestInfo';
 import { Dictionary } from 'app/Dictionary';
 import { RequestExpansion, RequestExpander } from 'app/requestExpansion';
+import { HttpResponseComponent } from 'app/components/http-response/http-response.component';
 import { HttpClientService } from 'app/services/http-client.service';
 import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-dialog.component';
 
@@ -19,6 +20,7 @@ import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-di
 export class HttpRequestComponent implements OnInit {
   @Input() requestView: RequestView;
   @Input() requestExpansions: Array<RequestExpansion>;
+  @Input() httpResponse: HttpResponseComponent;
 
   headerBuilders: Array<Dictionary<RequestExpander>>;
   urlParamBuilders: Array<Dictionary<RequestExpander>>;
@@ -49,6 +51,16 @@ export class HttpRequestComponent implements OnInit {
   send() {
     console.log('send!');
 
+    const fianlRequestUrl: string = this.makeFinalRequestUrl();
+    const body = this.requestView.request.body;
+    const method = this.requestView.request.method;
+    const requestHeaders = this.requestView.request.headers;
+
+    this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
+      .subscribe(response => this.httpResponse.handleResponse(response));
+  }
+
+  private makeFinalRequestUrl(): string {
     let fianlRequestUrl: string;
     const url = this.requestView.requestUrl;
 
@@ -79,38 +91,8 @@ export class HttpRequestComponent implements OnInit {
 
       fianlRequestUrl = uri + '?' + queryString;
     }
-    
-    const body = this.requestView.request.body;
-    const method = this.requestView.request.method;
-    const requestHeaders = this.requestView.request.headers;
 
-    this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
-      .subscribe(
-        response => {
-          this.requestView.response = response;
-          this.requestView.isOpenResponse = true;
-
-          response.headers
-          .filter(h => h.name == 'Content-Type')
-          .forEach(h => {
-            if (h.value.startsWith('application/json')) {
-              this.requestView.resDisplayMode = 'json';
-              this.requestView.resContentType = 'application/json';
-            } else if (h.value.startsWith('application/xml')) {
-              this.requestView.resDisplayMode = 'xml';
-              this.requestView.resContentType = 'application/xml';
-            } else if (h.value.startsWith('text/xml')) {
-              this.requestView.resDisplayMode = 'xml';
-              this.requestView.resContentType = 'text/xml';
-            } else if (h.value.startsWith('text/html')) {
-              this.requestView.resDisplayMode = 'html';
-              this.requestView.resContentType = 'text/html';
-            } else if (h.value.startsWith('text/css')) {
-              this.requestView.resDisplayMode = 'css';
-              this.requestView.resContentType = 'text/css';
-            }
-          });
-        });
+    return fianlRequestUrl;
   }
 
   findParams($event: KeyboardEvent) {

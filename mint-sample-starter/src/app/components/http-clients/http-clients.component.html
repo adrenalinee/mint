@@ -7,12 +7,12 @@
           <md-icon>more_vert</md-icon>
         </button>
         <md-menu #menu="mdMenu">
-          <!--<button md-menu-item>
+          <button md-menu-item (click)="duplicateClient(i)">
             <md-icon>content_copy</md-icon>
             <span>Duplicate</span>
             {{menu.menu}}
-          </button> TODO -->
-          <button md-menu-item (click)="closeClient(i)">
+          </button>
+          <button md-menu-item (click)="closeClient(i)" *ngIf="requestViews.length > 1">
             <md-icon>close</md-icon>
             <span>Close</span>
           </button>

@@ -1,18 +1,10 @@
-<div fxLayout="column">
+<div fxLayout="column" fxLayoutGap="0.5em">
   <div fxLayoutGap="0.5em" fxLayout.gt-sm="row" fxLayout="column"
     fxLayoutAlign="" fxLayoutAlign.gt-sm=" center">
     <md-select [(ngModel)]="requestView.request.method">
       <md-option *ngFor="let method of httpMethods" [value]="method">{{method}}</md-option>
     </md-select>
     <md-input-container fxFlex>
-      <!--<textarea
-        mdInput
-        mdTextareaAutosize
-        mdAutosizeMinRows="1"
-        #autosize="mdTextareaAutosize"
-        [(ngModel)]="requestView.requestUrl"
-        (keyup)="findParams($event)"
-        placeholder="Request URL"></textarea>-->
       <input
         mdInput
         [(ngModel)]="requestView.requestUrl"

@@ -76,4 +76,12 @@ export class HttpClientsComponent implements OnInit {
     this.requestViews.splice(index, 1);
   }
 
+  duplicateClient(index: number) {
+    const requestView: RequestView = this.requestViews[index];
+    const newRequestView = new RequestView("SandBox-" + this.tabCount++);
+    newRequestView.requestUrl = requestView.requestUrl;
+
+
+    this.requestViews.splice(index + 1, 0, newRequestView);
+  }
 }
