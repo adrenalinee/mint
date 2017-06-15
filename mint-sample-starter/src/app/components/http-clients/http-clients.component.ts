@@ -4,10 +4,10 @@ import { MdMenuTrigger } from '@angular/material';
 import { RequestView, NameValue } from 'app/requestInfo';
 import { RequestExpansion } from 'app/requestExpansion';
 import { HttpClientExpansionService } from 'app/services/http-client-expansion.service';
-// import { RequestHeaderAuthorizationComponent } from 'app/components/expansions/request-header-authorization/request-header-authorization.component';
 import { AuthorizationBasicComponent } from 'app/components/expansions/authorization-basic/authorization-basic.component';
 import { TextPlainComponent } from 'app/components/expansions/text-plain/text-plain.component';
 import { XWwwFormUrlencodedComponent } from 'app/components/expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
+import { TextHtmlViewerComponent } from 'app/components/expansions/text-html-viewer/text-html-viewer.component';
 
 @Component({
   selector: 'app-http-clients',
@@ -55,8 +55,8 @@ export class HttpClientsComponent implements OnInit {
     });
 
     requestExpansion.resBodyVeiwers.add('text/html', {
-      name: 'Preview',
-      component: null
+      name: 'HTML View',
+      component: TextHtmlViewerComponent
     });
 
     this.requestExpansions.push(requestExpansion);
@@ -80,7 +80,6 @@ export class HttpClientsComponent implements OnInit {
     const requestView: RequestView = this.requestViews[index];
     const newRequestView = new RequestView("SandBox-" + this.tabCount++);
     newRequestView.requestUrl = requestView.requestUrl;
-
 
     this.requestViews.splice(index + 1, 0, newRequestView);
   }

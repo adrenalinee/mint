@@ -32,6 +32,9 @@ import { XWwwFormUrlencodedComponent } from './components/expansions/xwww-form-u
 import { RequestBodyComponent } from './components/request-body/request-body.component';
 import { TextPlainComponent } from './components/expansions/text-plain/text-plain.component';
 import { HttpClientComponent } from './components/http-client/http-client.component';
+import { ResponseBodyBasicComponent } from './components/response-body-basic/response-body-basic.component';
+import { BodyViewerHostDirective } from './components/http-response/http-response.component';
+import { TextHtmlViewerComponent } from './components/expansions/text-html-viewer/text-html-viewer.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +50,18 @@ import { HttpClientComponent } from './components/http-client/http-client.compon
     XWwwFormUrlencodedComponent,
     RequestBodyComponent,
     TextPlainComponent,
-    HttpClientComponent
+    HttpClientComponent,
+    ResponseBodyBasicComponent,
+    BodyViewerHostDirective,
+    TextHtmlViewerComponent
   ],
   entryComponents: [
     AuthorizationBasicComponent,
     BuilderDialogComponent,
     TextPlainComponent,
-    XWwwFormUrlencodedComponent
+    XWwwFormUrlencodedComponent,
+    ResponseBodyBasicComponent,
+    TextHtmlViewerComponent
   ],
   imports: [
     BrowserAnimationsModule,
