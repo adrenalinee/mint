@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// import { AceEditorDirective } from 'ng2-ace-editor';
 import { AceEditorDirective } from 'ng2-ace';
 import 'brace/theme/idle_fingers';
 import 'brace/theme/dawn';
@@ -35,6 +36,7 @@ import { HttpClientComponent } from './components/http-client/http-client.compon
 import { ResponseBodyBasicComponent } from './components/response-body-basic/response-body-basic.component';
 import { BodyViewerHostDirective } from './components/http-response/http-response.component';
 import { TextHtmlViewerComponent } from './components/expansions/text-html-viewer/text-html-viewer.component';
+import { SafeHtmlPipe } from './components/expansions/text-html-viewer/text-html-viewer.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { TextHtmlViewerComponent } from './components/expansions/text-html-viewe
     HttpClientComponent,
     ResponseBodyBasicComponent,
     BodyViewerHostDirective,
-    TextHtmlViewerComponent
+    TextHtmlViewerComponent,
+    SafeHtmlPipe
   ],
   entryComponents: [
     AuthorizationBasicComponent,

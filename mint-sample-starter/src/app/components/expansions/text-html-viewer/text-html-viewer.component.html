@@ -1,3 +1,1 @@
-<p>
-  text-html-viewer works!
-</p>
+<div [innerHTML]="requestView.response.body | safeHtml"></div>

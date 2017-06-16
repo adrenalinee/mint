@@ -19,7 +19,7 @@ export class RequestView {
     resContentType: string = '';
     resDisplayMode: string = 'text';
     resBodyWrap: boolean = true;
-    // resSyntaxHightlight: boolean = false;
+    resBodyFormat: boolean = false;
 
     request: RequestInfo = new RequestInfo();
     response: ResponseInfo = new ResponseInfo();
