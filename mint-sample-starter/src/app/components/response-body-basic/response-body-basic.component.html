@@ -11,5 +11,10 @@
   [mode]="requestView.resDisplayMode"
   [theme]="'dawn'"
   [readOnly]="true"
-  [options]="aceOption"
+  [options]="{
+      minLines: 10,
+      maxLines: '1000',
+      showPrintMargin: false,
+      wrap: requestView.resBodyWrap
+  }"
   style="display: block; width: 100%; height: 100%"></div>

@@ -2,12 +2,18 @@
     <p>Status: <span>{{requestView.response.status}}</span></p>
     <p>Status text: <span>{{requestView.response.statusText}}</span></p>
 </div>-->
-<p *ngIf="!requestView.isOpenResponse">
+
+<p *ngIf="requestView.requestStatus == RequestStatus.PreSend">
   please hit the 
   <button md-raised-button color="primary">Send</button>
   button to get a response
 </p>
-<div *ngIf="requestView.isOpenResponse" fxLayout="column" fxLayoutGap="1em">
+
+<div *ngIf="requestView.requestStatus == RequestStatus.Sending">
+  Sending...
+</div>
+
+<div *ngIf="requestView.requestStatus == RequestStatus.SendSuccess" fxLayout="column" fxLayoutGap="1em">
   <b>Response</b>
   <md-toolbar color="primary">
     <div fxLayout="row" fxLayoutGap="1em">
@@ -35,7 +41,6 @@
         <md-radio-group *ngIf="matchedResBodyViewers.length > 1"
           fxLayoutGap="1em"
           [(ngModel)]="selectedBodyViewer">
-          <!--<md-radio-button [value]="basicResBodyViewer">Basic</md-radio-button>-->
           <md-radio-button [value]="resBodyVeiwer" *ngFor="let resBodyVeiwer of matchedResBodyViewers">{{resBodyVeiwer.name}}</md-radio-button>
         </md-radio-group>
 

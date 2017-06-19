@@ -55,6 +55,7 @@ export class RequestBodyComponent implements OnInit {
 
 
   onChange(data) {
+    console.log('onChange');
     this.requestView.request.body = data;
   }
 
@@ -67,7 +68,6 @@ export class RequestBodyComponent implements OnInit {
     } else {
       this.requestView.reqDisplayMode = 'text';
     }
-
 
     const reqBodyBuilder = this.reqBodyBuilders.find(builder => builder[reqContentType] != null)
     if (reqBodyBuilder != null) {

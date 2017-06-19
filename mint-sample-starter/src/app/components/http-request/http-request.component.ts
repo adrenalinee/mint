@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 // import {FormControl} from '@angular/forms';
 // import 'rxjs/add/operator/startWith';
 
-import { RequestView, NameValue } from 'app/requestInfo';
+import { RequestView, NameValue, RequestStatus } from 'app/requestInfo';
 import { Dictionary } from 'app/Dictionary';
 import { RequestExpansion, RequestExpander } from 'app/requestExpansion';
 import { HttpResponseComponent } from 'app/components/http-response/http-response.component';
@@ -56,6 +56,7 @@ export class HttpRequestComponent implements OnInit {
     const method = this.requestView.request.method;
     const requestHeaders = this.requestView.request.headers;
 
+    this.requestView.requestStatus = RequestStatus.Sending;
     this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
       .subscribe(response => this.httpResponse.handleResponse(response));
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { RequestView } from 'app/requestInfo';
 import { BodyViewerComponent } from 'app/requestExpansion';
@@ -11,21 +11,25 @@ import { BodyViewerComponent } from 'app/requestExpansion';
 export class ResponseBodyBasicComponent implements BodyViewerComponent, OnInit {
   @Input() requestView: RequestView;
   
+  // @ViewChild('editor') editor;
+
   displayModes: string[];
 
   displayResBody: string;
 
-  aceOption: any;
+  // aceOption: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.aceOption = {
-      minLines: 10,
-      maxLines: '1000',
-      showPrintMargin: false,
-      wrap: this.requestView.resBodyWrap
-    }
+    // console.log('ngOnInit');
+    
+    // this.aceOption = {
+    //   minLines: 10,
+    //   maxLines: '1000',
+    //   showPrintMargin: false,
+    //   wrap: this.requestView.resBodyWrap
+    // }
 
     this.displayModes = [
       'text',
@@ -40,10 +44,10 @@ export class ResponseBodyBasicComponent implements BodyViewerComponent, OnInit {
   }
 
   onChangeFormat() {
-    console.log('onChangeFormat');
+    // console.log('onChangeFormat');
     const resBodyFormat: boolean = this.requestView.resBodyFormat;
-    console.log(resBodyFormat);
-    console.log(this.requestView.resContentType);
+    // console.log(resBodyFormat);
+    // console.log(this.requestView.resContentType);
 
     if (!resBodyFormat) {
       this.displayResBody = this.requestView.response.body;
