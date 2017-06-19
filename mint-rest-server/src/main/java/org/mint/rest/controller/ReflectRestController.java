@@ -22,30 +22,30 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReflectRestController {
 	
 	
-	@CrossOrigin
-	@RequestMapping("/test")
-	Response test(
-			@RequestHeader MultiValueMap<String, String> headers,
-			@RequestParam MultiValueMap<String, String> queryParams, HttpServletRequest request) throws Exception {
-		
-		StringBuilder sb = new StringBuilder();
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.getInputStream()));
-		
-		int buffer;
-		while ((buffer = bufferedReader.read()) != -1) {
-			sb.append((char) buffer);
-		}
-		
-		
-		Response r = new Response();
-		r.setHeaders(headers);
-		r.setQueryParams(queryParams);
-		r.setRequestBody(sb.toString());
-		r.setRequestMethod(request.getMethod());
-		r.setRequestUrl(request.getQueryString());
-		
-		return r;
-	}
+//	@CrossOrigin
+//	@RequestMapping("/test")
+//	Response test(
+//			@RequestHeader MultiValueMap<String, String> headers,
+//			@RequestParam MultiValueMap<String, String> queryParams, HttpServletRequest request) throws Exception {
+//		
+//		StringBuilder sb = new StringBuilder();
+//		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(request.getInputStream()));
+//		
+//		int buffer;
+//		while ((buffer = bufferedReader.read()) != -1) {
+//			sb.append((char) buffer);
+//		}
+//		
+//		
+//		Response r = new Response();
+//		r.setHeaders(headers);
+//		r.setQueryParams(queryParams);
+//		r.setRequestBody(sb.toString());
+//		r.setRequestMethod(request.getMethod());
+//		r.setRequestUrl(request.getQueryString());
+//		
+//		return r;
+//	}
 	
 	@CrossOrigin
 	@RequestMapping("/reflect")
