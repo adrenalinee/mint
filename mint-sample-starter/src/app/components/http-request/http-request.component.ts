@@ -54,7 +54,7 @@ export class HttpRequestComponent implements OnInit {
     const fianlRequestUrl: string = this.makeFinalRequestUrl();
     const body = this.requestView.request.body;
     const method = this.requestView.request.method;
-    const requestHeaders = this.requestView.request.headers;
+    const requestHeaders = this.requestView.request.headers.filter(h => h.enabled);
 
     this.requestView.requestStatus = RequestStatus.Sending;
     this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
@@ -79,13 +79,17 @@ export class HttpRequestComponent implements OnInit {
       }
 
       if (uri != null) {
-        this.requestView.request.urlParams.forEach(p => {
+        this.requestView.request.urlParams
+        .filter(p => p.enabled)
+        .forEach(p => {
           uri = uri.replace('{' + p.name + '}', p.value);
         });
       }
 
       if (queryString != null) {
-        this.requestView.request.queryParams.forEach(p => {
+        this.requestView.request.queryParams
+        .filter(p => p.enabled)
+        .forEach(p => {
           queryString = queryString.replace('{' + p.name + '}', p.value);
         });
       }

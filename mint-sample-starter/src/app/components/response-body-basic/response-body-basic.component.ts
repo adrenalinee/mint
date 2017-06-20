@@ -53,14 +53,19 @@ export class ResponseBodyBasicComponent implements BodyViewerComponent, OnInit {
       this.displayResBody = this.requestView.response.body;
     } else {
       if (this.requestView.resContentType == 'application/json') {
-        this.displayResBody = JSON.stringify(JSON.parse(this.requestView.response.body), null, 2);
+        this.displayResBody = this.formatJson(this.requestView.response.body);
       } else if (this.requestView.resContentType == 'application/xml' ||
                  this.requestView.resContentType == 'text/xml') {
         this.displayResBody = this.formatXml(this.requestView.response.body);
       } else {
         //TODO notify unsupported format
+        console.warn('unsupported format. content type: ' + this.requestView.resContentType);
       }
     }
+  }
+
+  formatJson(json: string): string {
+    return JSON.stringify(JSON.parse(json), null, 2);
   }
 
   /**

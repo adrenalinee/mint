@@ -99,7 +99,21 @@ export class NameValuesComponent implements OnInit {
       return false;
   }
 
+  /**
+   * 선택된 항목을 배열에서 삭제
+   * @param selectedIndex 
+   */
   remove(selectedIndex) {
     this.nameValues.splice(selectedIndex, 1);
+  }
+
+  disabled(selectedIndex) {
+    const selectedNameValue: NameValue = this.nameValues[selectedIndex];
+    selectedNameValue.enabled = false;
+  }
+
+    enabled(selectedIndex) {
+    const selectedNameValue: NameValue = this.nameValues[selectedIndex];
+    selectedNameValue.enabled = true;
   }
 }

@@ -84,6 +84,7 @@ export class NameValue {
     enableBuilder?: boolean;
     selectedExpander?: RequestExpander;
     showCloseButton?: boolean;
+    enabled: boolean = true;
 
     constructor(name: string, value: string) {
         this.name = name;
