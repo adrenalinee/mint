@@ -14,6 +14,8 @@ export class HttpClientConfig {
 
     private requestExpansions: Array<RequestExpansion>;
 
+    private responseStatuses: Array<Status>;
+
     // findDefinedHeaders(name: string): Array<Header> {
     //     return null;
     // }
@@ -26,4 +28,10 @@ export class HttpClientConfig {
 export class Header {
     name: string;
     values: Array<string>;
+}
+
+export class Status {
+    code: number;
+    text: string;
+    description: string;
 }

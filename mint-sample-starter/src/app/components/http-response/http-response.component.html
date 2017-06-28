@@ -10,12 +10,13 @@
 </p>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.Sending">
-  Sending...
+  <h1>Sending...</h1>
+  <md-spinner></md-spinner>
 </div>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.SendSuccess" fxLayout="column" fxLayoutGap="1em">
   <b>Response</b>
-  <md-toolbar color="primary">
+  <md-toolbar>
     <div fxLayout="row" fxLayoutGap="1em">
       <span>
         <b>Status: </b> {{requestView.response.status}} {{requestView.response.statusText}}
