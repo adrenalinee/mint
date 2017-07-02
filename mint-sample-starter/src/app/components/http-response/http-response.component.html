@@ -10,7 +10,8 @@
 </p>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.Sending">
-  Sending...
+  <h1>Sending...</h1>
+  <md-spinner></md-spinner>
 </div>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.SendSuccess" fxLayout="column" fxLayoutGap="1em">

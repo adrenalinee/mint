@@ -32,6 +32,8 @@ export class HttpClientsPreference {
 export class HttpClientConfig {
     private requestExpansions: Array<RequestExpansion>;
 
+    private responseStatuses: Array<Status>;
+
     // findDefinedHeaders(name: string): Array<Header> {
     //     return null;
     // }
