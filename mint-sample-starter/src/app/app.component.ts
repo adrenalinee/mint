@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 
+import { HttpClientsPreference } from 'app/httpClientspreferences';
 import { HttpClientsComponent } from './components/http-clients/http-clients.component';
 
 @Component({

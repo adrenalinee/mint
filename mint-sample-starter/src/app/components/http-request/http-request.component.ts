@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
-import { Observable, Subject } from 'rxjs/Rx';
-// import {FormControl} from '@angular/forms';
-// import 'rxjs/add/operator/startWith';
+import { Observable } from 'rxjs/Rx';
 
 import { RequestView, NameValue, RequestStatus } from 'app/requestInfo';
 import { Dictionary } from 'app/Dictionary';

@@ -11,7 +11,7 @@ import { HttpResponseComponent } from 'app/components/http-response/http-respons
   styleUrls: ['./http-client.component.css']
 })
 export class HttpClientComponent implements OnInit {
-  @Input() httpClientConfig: HttpClientConfig;
+  @Input() config?: HttpClientConfig;
 
   @Input() requestView: RequestView;
   @Input() requestExpansions: Array<RequestExpansion>;
@@ -21,6 +21,11 @@ export class HttpClientComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.httpResponse);
+
+    if (this.config == null) {
+      this.config = new HttpClientConfig();
+    }
+
   }
 
 }

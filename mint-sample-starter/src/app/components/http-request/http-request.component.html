@@ -12,14 +12,10 @@
         placeholder="Request URL"
         mdTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다." />
     </md-input-container>
-    <!--<div fxFlexAlign="center">-->
-      <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
-      <button md-raised-button color="primary" (click)="send()">Send</button>
-    <!--</div>-->
+    <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
+    <button md-raised-button color="primary" (click)="send()">Send</button>
   </div>
   <div style="background-color: #f2f4f6; padding: 0.5em" *ngIf="requestView.isOpenParams">
-    <!--<p>property applied request url</p>-->
-
 
     <md-tab-group [selectedIndex]="requestView.paramTebSelectedIndex">
       <md-tab>
