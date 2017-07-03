@@ -32,7 +32,7 @@ export class HttpClientsPreference {
 export class HttpClientConfig {
     private requestExpansions: Array<RequestExpansion>;
 
-    private responseStatuses: Array<Status>;
+    // private responseStatuses: Array<Status>;
 
     // findDefinedHeaders(name: string): Array<Header> {
     //     return null;
@@ -52,3 +52,9 @@ export class Header {
         this.values = values;
     }
 }
+
+// export class Status {
+//     code: number;
+//     text: string;
+//     description: string;
+// }
