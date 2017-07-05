@@ -2,7 +2,7 @@
   *ngFor="let nameValue of nameValues; index as i"
   (mouseenter)="nameValue.showCloseButton = true"
   (mouseleave)="nameValue.showCloseButton = false">
-  <div fxLayout="row" fxFlex>
+  <div fxLayoutGap="1em" fxLayout="row" fxFlex>
     <md-input-container fxFlex="30">
       <input mdInput placeholder="Name" [(ngModel)]="nameValue.name"
       [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"

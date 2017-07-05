@@ -46,7 +46,7 @@ export class HttpClientsComponent implements OnInit {
     if (this.preference == null) {
       //TODO 기본 설정을 사용
       this.preference = new HttpClientsPreference();
-      this.preference.addAllDefaultStatus();
+      // this.preference.addAllDefaultStatus();
     }
 
     this.addClient();

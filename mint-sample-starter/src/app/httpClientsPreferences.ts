@@ -7,20 +7,20 @@ import { RequestExpansion } from 'app/requestExpansion';
 export class HttpClientsPreference {
     maxClientTabCount: number = 10;
 
-    definedMethods: Array<string> = new Array();
+    // definedMethods: Array<string> = new Array();
 
-    definedHeaders: Array<Header> = new Array();
+    // definedHeaders: Array<Header> = new Array();
 
-    addAllDefaultStatus() {
-        this.definedMethods.push('GET');
-        this.definedMethods.push('POST');
-        this.definedMethods.push('PUT');
-        this.definedMethods.push('PATCH');
-        this.definedMethods.push('DELETE');
-        this.definedMethods.push('OPTIONS');
+    // addAllDefaultStatus() {
+    //     this.definedMethods.push('GET');
+    //     this.definedMethods.push('POST');
+    //     this.definedMethods.push('PUT');
+    //     this.definedMethods.push('PATCH');
+    //     this.definedMethods.push('DELETE');
+    //     this.definedMethods.push('OPTIONS');
 
-        this.definedHeaders.push(new Header('Accept', null));
-    }
+    //     this.definedHeaders.push(new Header('Accept', null));
+    // }
 }
 
 
