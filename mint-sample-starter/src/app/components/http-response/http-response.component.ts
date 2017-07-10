@@ -54,9 +54,13 @@ export class HttpResponseComponent implements OnInit {
     this.resBodyVeiwers = this.requestExpansions.map(re => re.resBodyVeiwers);
   }
 
+  /**
+   * http response 정보를 입력받아서 화면에 그려준다.
+   * http request component가 이 메서드를 호출한다.
+   * @param responseInfo 
+   */
   handleResponse(responseInfo: ResponseInfo) {
     this.requestView.response = responseInfo;
-    // this.requestView.isOpenResponse = true;
     this.requestView.requestStatus = RequestStatus.SendSuccess;
 
     responseInfo.headers
@@ -93,5 +97,14 @@ export class HttpResponseComponent implements OnInit {
 
     this.matchedResBodyViewers.splice(0, 0, this.basicResBodyViewer);
     this.selectedBodyViewer = this.matchedResBodyViewers[0];
+  }
+
+  /**
+   * http request가 실패했을 경우에 대한 처리
+   * cors 문제
+   * 응답을 받지 못함
+   */
+  handleError() {
+
   }
 }

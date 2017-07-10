@@ -56,7 +56,12 @@ export class HttpRequestComponent implements OnInit {
 
     this.requestView.requestStatus = RequestStatus.Sending;
     this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
-      .subscribe(response => this.httpResponse.handleResponse(response));
+    .subscribe(
+      response => this.httpResponse.handleResponse(response),
+      error => console.log(error)
+
+    )
+      // .subscribe(response => this.httpResponse.handleResponse(response));
   }
 
   private makeFinalRequestUrl(): string {

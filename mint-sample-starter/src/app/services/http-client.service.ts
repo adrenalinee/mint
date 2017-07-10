@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { RequestInfo, ResponseInfo, NameValue } from '../requestInfo';
@@ -26,7 +26,7 @@ export class HttpClientService {
     const startTime = new Date().getTime();
     return this.http.request(url, requestOptions)
       .map(response => {
-        // console.log(response);
+        console.log(response);
         const elapseTime = new Date().getTime() - startTime;
         let responseInfo: ResponseInfo = new ResponseInfo();
         responseInfo.status = response.status;
@@ -46,6 +46,12 @@ export class HttpClientService {
 
   handleError(response: Response | any): Observable<ResponseInfo> {
     console.log(response);
+    // if (response.status == 0) {
+
+    //   return  Observable.throw("error!");
+    // }
+
+
     const responseInfo: ResponseInfo = new ResponseInfo();
     responseInfo.status = response.status;
     responseInfo.statusText = response.statusText;

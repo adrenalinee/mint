@@ -44,7 +44,7 @@ export class ResponseBodyBasicComponent implements BodyViewerComponent, OnInit {
   }
 
   onChangeFormat() {
-    // console.log('onChangeFormat');
+    console.log('onChangeFormat');
     const resBodyFormat: boolean = this.requestView.resBodyFormat;
     // console.log(resBodyFormat);
     // console.log(this.requestView.resContentType);
