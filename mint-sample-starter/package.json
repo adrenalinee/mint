@@ -1,6 +1,6 @@
 {
-  "name": "test-search-api",
-  "version": "0.0.0",
+  "name": "mint-sample-starter",
+  "version": "0.0.1-SNAPSHOT",
   "license": "MIT",
   "scripts": {
     "ng": "ng",

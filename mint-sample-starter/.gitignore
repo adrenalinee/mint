@@ -68,3 +68,4 @@ testem.log
 Thumbs.db
 
 /bin
+npm-debug.log*
