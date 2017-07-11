@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Headers, RequestOptions, Response, ResponseType } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { RequestInfo, ResponseInfo, NameValue } from '../requestInfo';
@@ -46,6 +46,11 @@ export class HttpClientService {
 
   handleError(response: Response | any): Observable<ResponseInfo> {
     console.log(response);
+    if (response.type == ResponseType.Error) {
+      return  Observable.throw("error!");
+    }
+
+
     // if (response.status == 0) {
 
     //   return  Observable.throw("error!");
