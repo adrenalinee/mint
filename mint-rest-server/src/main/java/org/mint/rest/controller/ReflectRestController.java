@@ -15,7 +15,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -48,7 +48,16 @@ public class ReflectRestController {
 //	}
 	
 	@CrossOrigin
-	@RequestMapping("/reflect")
+	@RequestMapping(path="/reflect", method={
+			RequestMethod.GET,
+			RequestMethod.POST,
+			RequestMethod.PATCH,
+			RequestMethod.PUT,
+			RequestMethod.DELETE,
+			RequestMethod.HEAD,
+			RequestMethod.OPTIONS,
+			RequestMethod.TRACE
+	})
 	Response reflect(
 			@RequestHeader MultiValueMap<String, String> headers,
 			HttpServletRequest request) throws Exception {
@@ -91,30 +100,28 @@ public class ReflectRestController {
 		r.setHeaders(headers);
 		
 		
-		final String queryString = request.getQueryString();
+//		final String queryString = request.getQueryString();
 		String requestUrl = request.getRequestURL().toString();
 		
-		if (queryString != null) {
-			requestUrl += "?";
-			final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-			r.setQueryParams(queryParams);
-			
-			if (queryString != "") {
-				requestUrl += queryString;
-				
-				Arrays.asList(queryString.split("&")).stream()
-				.map(p -> {
-					String[] nameValue = p.split("=");
-					return new NameValue(nameValue[0], nameValue[1]);
-				}).forEach(nv -> {
-					queryParams.add(nv.getName(), nv.getValue());
-				});
-			}
-		}
+//		if (queryString != null) {
+//			requestUrl += "?";
+//			final MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
+//			r.setQueryParams(queryParams);
+//			
+//			if (queryString != "") {
+//				requestUrl += queryString;
+//				
+//				Arrays.asList(queryString.split("&")).stream()
+//				.map(p -> {
+//					String[] nameValue = p.split("=");
+//					return new NameValue(nameValue[0], nameValue[1]);
+//				}).forEach(nv -> {
+//					queryParams.add(nv.getName(), nv.getValue());
+//				});
+//			}
+//		}
 		
 		r.setRequestUrl(requestUrl);
-		
-		
 		
 		return r;
 	}
@@ -197,7 +204,7 @@ class Response {
 	private String requestUrl;
 	
 	private MultiValueMap<String, String> headers;
-	private MultiValueMap<String, String> queryParams;
+//	private MultiValueMap<String, String> queryParams;
 	private String requestBody;
 	
 	public MultiValueMap<String, String> getHeaders() {
@@ -206,12 +213,12 @@ class Response {
 	public void setHeaders(MultiValueMap<String, String> headers) {
 		this.headers = headers;
 	}
-	public MultiValueMap<String, String> getQueryParams() {
-		return queryParams;
-	}
-	public void setQueryParams(MultiValueMap<String, String> queryParams) {
-		this.queryParams = queryParams;
-	}
+//	public MultiValueMap<String, String> getQueryParams() {
+//		return queryParams;
+//	}
+//	public void setQueryParams(MultiValueMap<String, String> queryParams) {
+//		this.queryParams = queryParams;
+//	}
 	public String getRequestBody() {
 		return requestBody;
 	}
