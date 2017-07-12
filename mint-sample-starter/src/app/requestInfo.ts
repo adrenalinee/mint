@@ -81,6 +81,18 @@ export class NameValue {
     name: string;
     value: string;
 
+    /**
+     * client에서 해당 이름이 고정인지 여부
+     * (고정이면 지울 수 없음)
+     */
+    FixedName: boolean;
+
+    /**
+     * client에서 해당 값이 고정인지 여부
+     * (고정이면 지울 수 없음)
+     */
+    FixedValue: boolean;
+
     enableBuilder?: boolean;
     selectedExpander?: RequestExpander;
     showCloseButton?: boolean;

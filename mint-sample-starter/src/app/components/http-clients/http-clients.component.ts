@@ -3,7 +3,7 @@ import { MdMenuTrigger, MdSnackBar } from '@angular/material';
 
 import { RequestView, NameValue } from 'app/requestInfo';
 import { RequestExpansion } from 'app/requestExpansion';
-import { HttpClientsPreference } from 'app/httpClientsPreferences';
+import { HttpClientsPreference, HttpClientConfig, DefinedRequestInfo } from 'app/httpClientsPreferences';
 import { HttpClientExpansionService } from 'app/services/http-client-expansion.service';
 import { AuthorizationBasicComponent } from 'app/components/expansions/authorization-basic/authorization-basic.component';
 import { TextPlainComponent } from 'app/components/expansions/text-plain/text-plain.component';
@@ -90,15 +90,19 @@ export class HttpClientsComponent implements OnInit {
   /**
    * 클라이언트 탭 추가
    * 
-   * @param focus 
-   * @param position 
+   * 
+   * @param focus 추가된 탭이 포커스를 가지게 할지 여부
+   * @param position 추가될 탭의 위치, 지정하지 않으면 마지막에 추가됨
+   * @param config 
    */
-  addClient(focus: boolean = true, position?: number) {
+  addClient(focus: boolean = true, position?: number, config?: HttpClientConfig) {
     console.log('addClient');
 
     if (!this.isAvailableAddTab()) {
       return;
     }
+
+    //TODO config 처리..
 
     const requestView: RequestView = new RequestView("SandBox-" + this.tabCount++);
     const addedIndex = this.requestViews.push(requestView);
