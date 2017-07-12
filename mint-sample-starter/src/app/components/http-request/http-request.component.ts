@@ -37,6 +37,7 @@ export class HttpRequestComponent implements OnInit {
       'PUT',
       'PATCH',
       'DELETE',
+      'HEAD',
       'OPTIONS'
     ];
 

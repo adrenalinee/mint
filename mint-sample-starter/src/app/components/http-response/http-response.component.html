@@ -10,8 +10,9 @@
 </p>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.Sending">
+  <md-progress-bar mode="indeterminate"></md-progress-bar>
   <h1>Sending...</h1>
-  <md-spinner></md-spinner>
+  <!-- <md-spinner></md-spinner> -->
 </div>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.SendSuccess" fxLayout="column" fxLayoutGap="1em">
