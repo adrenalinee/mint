@@ -4,12 +4,17 @@ Mint 는 다양한 용도로 기능을 확장하여 사용될 수 있는 angular
 # Getting started
 
 1. mint 저장소 복제
-'''
+
+
+```
+#!bash
+
 git clone https://adrenalinee@bitbucket.org/adrenalinee/mint.git
 cd mint
 cd mint-sample-stater
 npm start
-'''
+```
+
 웹 브라우저에서 http://localhost:4200 접속
 
 # 로드맵
