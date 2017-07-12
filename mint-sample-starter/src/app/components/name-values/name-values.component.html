@@ -5,16 +5,25 @@
   <div fxLayoutGap="1em" fxLayout="row" fxFlex>
     <md-input-container fxFlex="30">
       <input mdInput placeholder="Name" [(ngModel)]="nameValue.name"
-      [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
-      (focus)="addNameValue(i)"
-      (keyup)="addNameValue(i);findBuilder(i)"
-      (blur)="optimize()" />
+        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
+        (focus)="addNameValue(i)"
+        (keyup)="addNameValue(i);findBuilder(i)"
+        (blur)="optimize()" />
     </md-input-container>
     <md-input-container fxFlex>
-      <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
+      <!-- <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
       [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
       (focus)="addNameValue(i)"
-      (blur)="optimize()" />
+      (blur)="optimize()" /> -->
+      <textarea mdInput
+        mdTextareaAutosize
+        placeholder="Value"
+        [(ngModel)]="nameValue.value"
+        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
+        (focus)="addNameValue(i)"
+        (blur)="optimize()"></textarea>
     </md-input-container>
   </div>
   <!--<div>
