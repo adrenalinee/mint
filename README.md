@@ -1,21 +1,21 @@
 # Mint
-Mint 는 다양한 용도로 기능을 확장하여 사용될 수 있는 angular 로 개발된 web Http Client component framework 입니다.
+Mint 는 사용자가 다양한 용도로 기능을 확장하여 사용될 수 있는 angular 로 개발된 web Http Client component framework 입니다.
 
 # Getting started
 
-1. mint 저장소 복제
-
-
+**mint 저장소 복제**
 ```
 #!bash
-
 git clone https://adrenalinee@bitbucket.org/adrenalinee/mint.git
 cd mint
 cd mint-sample-stater
 npm start
 ```
+**웹 브라우저에서 http://localhost:4200 접속**
 
-웹 브라우저에서 http://localhost:4200 접속
+# 확장 포인트
+작성예정
+
 
 # 로드맵
 현재 아래와 같은 서브 모듈들을 걔발 진행할 예정입니다.
@@ -27,3 +27,6 @@ npm start
 * mint-api-console-server: 여러개의 api 스팩을 관리할 수 있게 해주는 web console. mint-collections 와 호환
 * mint-sample-starter: mint 사용예시 어플리케이션. 바로 실행해 볼 수 있는 전시용
 * mint-sample-rest-server: mint http client 를 통해 호출해볼 수 있는 다양한 응답을 받아 볼 수 있는 api 들이 만들어져 있는 테트스용도 서버
+
+# License
+MIT license - http://www.opensource.org/licenses/mit-license.php
