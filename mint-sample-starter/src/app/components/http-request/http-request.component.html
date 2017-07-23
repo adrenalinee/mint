@@ -18,8 +18,8 @@
           placeholder="Request URL"
           mdTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다."></textarea>
     </md-input-container>
-    <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams">Params</button>
-    <button md-raised-button color="primary" (click)="send()">Send</button>
+    <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams" [disabled]="requestView.requestStatus == RequestStatus.Sending">Params</button>
+    <button md-raised-button color="primary" (click)="send()" [disabled]="requestView.requestStatus == RequestStatus.Sending">Send</button>
   </div>
   <div style="background-color: #f2f4f6; padding: 0.5em" *ngIf="requestView.isOpenParams">
 

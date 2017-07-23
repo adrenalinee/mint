@@ -16,6 +16,8 @@ import { BuilderDialogComponent } from 'app/components/builder-dialog/builder-di
   providers: [HttpClientService]
 })
 export class HttpRequestComponent implements OnInit {
+  RequestStatus: any = RequestStatus;
+
   @Input() requestView: RequestView;
   @Input() requestExpansions: Array<RequestExpansion>;
   @Input() httpResponse: HttpResponseComponent;
@@ -59,7 +61,7 @@ export class HttpRequestComponent implements OnInit {
     this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
     .subscribe(
       response => this.httpResponse.handleResponse(response),
-      error => console.log(error)
+      error => this.httpResponse.handleError()
 
     )
       // .subscribe(response => this.httpResponse.handleResponse(response));

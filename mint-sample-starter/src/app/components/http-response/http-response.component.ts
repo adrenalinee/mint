@@ -105,6 +105,6 @@ export class HttpResponseComponent implements OnInit {
    * 응답을 받지 못함
    */
   handleError() {
-
+    console.log("handleError!");
   }
 }
