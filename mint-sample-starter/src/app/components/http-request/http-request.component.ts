@@ -57,12 +57,12 @@ export class HttpRequestComponent implements OnInit {
     const method = this.requestView.request.method;
     const requestHeaders = this.requestView.request.headers.filter(h => h.enabled);
 
+    this.requestView.request.url = fianlRequestUrl;
     this.requestView.requestStatus = RequestStatus.Sending;
     this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
     .subscribe(
       response => this.httpResponse.handleResponse(response),
       error => this.httpResponse.handleError()
-
     )
       // .subscribe(response => this.httpResponse.handleResponse(response));
   }
@@ -78,8 +78,10 @@ export class HttpRequestComponent implements OnInit {
       let queryString: string;
       
       const qIndex = url.indexOf('?');
+
+      console.log(qIndex);
       
-      if (qIndex > 0) {
+      if (qIndex > -1) {
         uri = url.substring(0, qIndex);
         queryString = url.substring(qIndex + 1, url.length);
       }
@@ -100,7 +102,10 @@ export class HttpRequestComponent implements OnInit {
         });
       }
 
-      fianlRequestUrl = uri + '?' + queryString;
+      fianlRequestUrl = uri;
+      if (queryString != null) {
+         fianlRequestUrl + '?' + queryString;
+      }
     }
 
     return fianlRequestUrl;

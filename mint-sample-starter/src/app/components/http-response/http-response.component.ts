@@ -106,5 +106,6 @@ export class HttpResponseComponent implements OnInit {
    */
   handleError() {
     console.log("handleError!");
+    this.requestView.requestStatus = RequestStatus.SendFail;
   }
 }

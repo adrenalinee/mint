@@ -9,6 +9,11 @@
   button to get a response
 </p>
 
+<div *ngIf="requestView.requestStatus == RequestStatus.SendFail">
+  <h2>Could not get any response</h2>
+  There was an error connecting to {{requestView.request.url}}
+</div>
+
 <div *ngIf="requestView.requestStatus == RequestStatus.Sending">
   <md-progress-bar mode="indeterminate"></md-progress-bar>
   <h1>
