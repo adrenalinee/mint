@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/cor
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { Observable } from 'rxjs/Rx';
 
-import { RequestView, NameValue, RequestStatus } from 'app/requestInfo';
+import { RequestView, NameValue, RequestStatus, ResponseInfo } from 'app/requestInfo';
 import { Dictionary } from 'app/Dictionary';
 import { RequestExpansion, RequestExpander } from 'app/requestExpansion';
 import { HttpResponseComponent } from 'app/components/http-response/http-response.component';
@@ -59,6 +59,10 @@ export class HttpRequestComponent implements OnInit {
 
     this.requestView.request.url = fianlRequestUrl;
     this.requestView.requestStatus = RequestStatus.Sending;
+    this.requestView.response = new ResponseInfo();
+    this.requestView.resBodyFormat = false;
+    this.requestView.resBodyWrap = true;
+
     this.httpClient.execute2(method, fianlRequestUrl, requestHeaders, body)
     .subscribe(
       response => this.httpResponse.handleResponse(response),
