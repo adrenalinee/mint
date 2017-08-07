@@ -60,12 +60,15 @@ export class HttpResponseComponent implements OnInit {
    * @param responseInfo 
    */
   handleResponse(responseInfo: ResponseInfo) {
+    console.log('handleResponse');
+
     this.requestView.response = responseInfo;
     this.requestView.requestStatus = RequestStatus.SendSuccess;
 
     responseInfo.headers
-    .filter(h => h.name == 'Content-Type')
+    .filter(h => h.name.toLocaleLowerCase() == 'content-type')
     .forEach(h => {
+      console.log(h.value);
       if (h.value.startsWith('application/json')) {
         this.requestView.resDisplayMode = 'json';
         this.requestView.resContentType = 'application/json';

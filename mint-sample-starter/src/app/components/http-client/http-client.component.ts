@@ -13,8 +13,8 @@ import { HttpResponseComponent } from 'app/components/http-response/http-respons
 export class HttpClientComponent implements OnInit {
   @Input() config?: HttpClientConfig;
 
-  @Input() requestView: RequestView;
-  @Input() requestExpansions: Array<RequestExpansion>;
+  @Input() requestView?: RequestView;
+  @Input() requestExpansions?: Array<RequestExpansion>;
   @ViewChild(HttpResponseComponent) httpResponse: HttpResponseComponent;
 
   constructor() { }
@@ -26,6 +26,13 @@ export class HttpClientComponent implements OnInit {
       this.config = new HttpClientConfig();
     }
 
+    if (this.requestView == null) {
+      this.requestView = new RequestView(null);
+    }
+
+    if (this.requestExpansions == null) {
+      this.requestExpansions = new Array();
+    }
   }
 
 }
