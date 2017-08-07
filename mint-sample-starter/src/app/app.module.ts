@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 
 // import { AceEditorDirective } from 'ng2-ace-editor';
 import { AceEditorDirective } from 'ng2-ace';
@@ -37,6 +38,14 @@ import { ResponseBodyBasicComponent } from './components/response-body-basic/res
 import { BodyViewerHostDirective } from './components/http-response/http-response.component';
 import { TextHtmlViewerComponent } from './components/expansions/text-html-viewer/text-html-viewer.component';
 import { SafeHtmlPipe } from './components/expansions/text-html-viewer/text-html-viewer.component';
+import { ClientTabPageComponent } from './pages/client-tab-page.component';
+import { SingleClientComponent } from './pages/single-client/single-client.component';
+
+const appRoutes: Routes = [
+  { path: 'clients', component: ClientTabPageComponent },
+  { path: 'client', component: SingleClientComponent },
+  { path: '', redirectTo: '/clients', pathMatch: 'full' }
+];
 
 @NgModule({
   declarations: [
@@ -56,7 +65,9 @@ import { SafeHtmlPipe } from './components/expansions/text-html-viewer/text-html
     ResponseBodyBasicComponent,
     BodyViewerHostDirective,
     TextHtmlViewerComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ClientTabPageComponent,
+    SingleClientComponent
   ],
   entryComponents: [
     AuthorizationBasicComponent,
@@ -73,6 +84,10 @@ import { SafeHtmlPipe } from './components/expansions/text-html-viewer/text-html
     FormsModule,
     HttpModule,
     MaterialModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true }
+    )
     // NgbModule
   ],
   providers: [],
