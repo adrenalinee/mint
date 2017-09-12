@@ -31,7 +31,7 @@ export class HttpClientComponent implements OnInit {
     }
 
     if (this.requestExpansions == null) {
-      this.requestExpansions = new Array();
+      this.requestExpansions = new Array(); //TODO 입력받은 값이 없을 경우 기본 확장 셋이 등록되어야 한다.
     }
   }
 

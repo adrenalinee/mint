@@ -14,7 +14,7 @@ export class RequestView {
      * 사용자가 입력한 요청 경로
      * 이 경로가 바로 요청에 사용되지는 않고 parameter 값들을 binding 한 값을 최종 요청 경로로 사용하게 된다.
      */
-    requestUrl: string = 'http://localhost:4200/assets/test.json';
+    requestUrl: string = ''; //http://localhost:4200/assets/test.json';
 
     /**
      * request body의 content type
