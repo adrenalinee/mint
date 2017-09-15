@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClientExpansion } from 'app/httpClientExpansion';
+// import { Injectable } from '@angular/core';
+// import { HttpClientExpansion } from 'app/httpClientExpansion';
 
-@Injectable()
-export class HttpClientExpansionService {
+// @Injectable()
+// export class HttpClientExpansionService {
 
-  /**
-   * key: url
-   */
-  httpClientExpansions: [string, HttpClientExpansion];
+//   /**
+//    * key: url
+//    */
+//   httpClientExpansions: [string, HttpClientExpansion];
 
-  constructor() { }
+//   constructor() { }
 
-}
+// }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { RequestView } from 'app/requestInfo';
 import { RequestExpansion } from 'app/requestExpansion';
+import { DefaultRequestExpansionBuilder } from 'app/components/expansions/DefaultRequestExpansionBuilder';
 import { HttpClientConfig } from 'app/httpClientsPreferences';
 import { HttpResponseComponent } from 'app/components/http-response/http-response.component';
 
@@ -31,7 +32,8 @@ export class HttpClientComponent implements OnInit {
     }
 
     if (this.requestExpansions == null) {
-      this.requestExpansions = new Array(); //TODO 입력받은 값이 없을 경우 기본 확장 셋이 등록되어야 한다.
+      // this.requestExpansions = new Array(); //TODO 입력받은 값이 없을 경우 기본 확장 셋이 등록되어야 한다.
+      this.requestExpansions = DefaultRequestExpansionBuilder.build();
     }
   }
 

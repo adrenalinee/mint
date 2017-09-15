@@ -14,12 +14,29 @@ import { RequestView } from 'app/requestInfo';
  * 여러거의 확장 객체를 가질 수 있다.
  */
 export class RequestExpansion {
+    /**
+     * header 값을 생성해주는 빌더
+     */
     headerBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
+
+    /**
+     * url parameter 값을 생성해주는 빌더
+     */
     urlParamBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
+
+    /**
+     * query string paramter 값을 생성해주는 빌더
+     */
     queryParamBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
 
+    /**
+     * request body 를 생성해주는 빌더
+     */
     bodyBuilders: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
     
+    /**
+     * response body 를 보여주는 뷰어
+     */
     resBodyVeiwers: Dictionary<RequestExpander> = new Dictionary<RequestExpander>();
 }
 

@@ -2,9 +2,12 @@ import { RequestExpansion } from 'app/requestExpansion';
 import { NameValue } from 'app/requestInfo';
 
 /**
- * 
+ * http client tab 전체를 관리하는 환경 설정 값 객체
  */
 export class HttpClientsPreference {
+    /**
+     * 허용하는 탭의 최대 갯수
+     */
     maxClientTabCount: number = 10;
 
     // definedMethods: Array<string> = new Array();
@@ -24,13 +27,22 @@ export class HttpClientsPreference {
 }
 
 /**
- * 
+ * http client 의 설정 정보
  */
 export class HttpClientConfig {
+    /**
+     * clinet 의 이름. tab 에서 tab의 이름이 된다.
+     */
     private name: string;
 
+    /**
+     * 기본적으로 추가되어 있는 확장. RequestExpansion 설명 참조
+     */
     private requestExpansions: Array<RequestExpansion>;
 
+    /**
+     * 기본 지정된 요청 정보. DefinedRequestInfo 설명 참조
+     */
     private definedRequestInfo: DefinedRequestInfo;
 }
 

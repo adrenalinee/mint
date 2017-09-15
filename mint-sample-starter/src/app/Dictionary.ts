@@ -1,3 +1,6 @@
+/**
+ * map 과 같은 형태의 자료구조정의
+ */
 export class Dictionary<T> {
 
     _keys: string[] = new Array();
