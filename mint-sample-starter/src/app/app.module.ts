@@ -3,7 +3,20 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import {
+  MdButtonModule,
+  MdCheckboxModule,
+  MdDialogModule,
+  MdIconModule,
+  MdInputModule,
+  MdMenuModule,
+  MdRadioModule,
+  MdSelectModule,
+  MdSidenavModule,
+  MdSnackBarModule,
+  MdTabsModule,
+  MdToolbarModule,
+  MdTooltipModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -83,7 +96,19 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MdDialogModule,
+    MdIconModule,
+    MdInputModule,
+    MdMenuModule,
+    MdRadioModule,
+    MdSelectModule,
+    MdSidenavModule,
+    MdSnackBarModule,
+    MdTabsModule,
+    MdToolbarModule,
+    MdTooltipModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }

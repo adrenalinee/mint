@@ -52,7 +52,11 @@ export class HttpRequestComponent implements OnInit {
   send() {
     console.log('send!');
 
-    const fianlRequestUrl: string = this.makeFinalRequestUrl();
+    const cleanedUrl = this.cleanRequestUrl(this.requestView.requestUrl);
+    console.log("@@@: " + this.requestView.requestUrl);
+    this.requestView.requestUrl = cleanedUrl;
+
+    const fianlRequestUrl: string = this.makeFinalRequestUrl(cleanedUrl);
     const body = this.requestView.request.body;
     const method = this.requestView.request.method;
     const requestHeaders = this.requestView.request.headers.filter(h => h.enabled);
@@ -71,9 +75,17 @@ export class HttpRequestComponent implements OnInit {
       // .subscribe(response => this.httpResponse.handleResponse(response));
   }
 
-  private makeFinalRequestUrl(): string {
+  private cleanRequestUrl(dirtyUrl: string): string {
+    if (dirtyUrl == null || "" == dirtyUrl) {
+      return dirtyUrl;
+    }
+
+    return dirtyUrl.replace("\n", "");
+  }
+
+  private makeFinalRequestUrl(rawUrl: string): string {
     let fianlRequestUrl: string;
-    const url = this.requestView.requestUrl;
+    const url = rawUrl;
 
     if (url.indexOf('}') < 0) {
       fianlRequestUrl = url;
@@ -117,12 +129,14 @@ export class HttpRequestComponent implements OnInit {
 
   findParams($event: KeyboardEvent) {
     if ($event.key == 'Enter') {
+      //TODO 더 좋은 방식으로 바꿔야 함
+      this.requestView.requestUrl = this.requestView.requestUrl.substr(0, this.requestView.requestUrl.length - 1);
       this.send();
       return;
     }
 
     const url: string = this.requestView.requestUrl;
-    if (url == null) {
+    if (url == null || "" == url) {
       return;
     }
 

@@ -5,6 +5,9 @@ import { TextPlainComponent } from 'app/components/expansions/text-plain/text-pl
 import { XWwwFormUrlencodedComponent } from 'app/components/expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 import { TextHtmlViewerComponent } from 'app/components/expansions/text-html-viewer/text-html-viewer.component';
 
+/**
+ * 기본적으로 사용할 확장기능 정의 및 전달
+ */
 export class DefaultRequestExpansionBuilder {
 
     static build(): Array<RequestExpansion> {
