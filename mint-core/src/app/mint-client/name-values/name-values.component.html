@@ -1,0 +1,60 @@
+<div fxLayoutGap="1em" fxLayout="row"
+  *ngFor="let nameValue of nameValues; index as i"
+  (mouseenter)="nameValue.showCloseButton = true"
+  (mouseleave)="nameValue.showCloseButton = false">
+  <div fxLayoutGap="1em" fxLayout="row" fxFlex>
+    <md-input-container fxFlex="30">
+      <input mdInput placeholder="Name" [(ngModel)]="nameValue.name"
+        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
+        (focus)="addNameValue(i)"
+        (keyup)="addNameValue(i);findBuilder(i)"
+        (blur)="optimize()" />
+    </md-input-container>
+    <md-input-container fxFlex>
+      <!-- <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
+      [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+      (focus)="addNameValue(i)"
+      (blur)="optimize()" /> -->
+      <textarea mdInput
+        mdTextareaAutosize
+        placeholder="Value"
+        [(ngModel)]="nameValue.value"
+        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
+        (focus)="addNameValue(i)"
+        (blur)="optimize()"></textarea>
+    </md-input-container>
+  </div>
+  <!--<div>
+    <span fxFlex="30">{{}}
+  </div>-->
+  <div fxFlexAlign="center">
+    <button md-raised-button color="accent" *ngIf="nameValue.enableBuilder" (click)="openBuilder(i)">Build</button>
+
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item (click)="disabled(i)" *ngIf="nameValue.enabled">
+        <md-icon>block</md-icon>
+        <span>Disable</span>
+        {{menu.menu}}
+      </button>
+      <button md-menu-item (click)="enabled(i)" *ngIf="!nameValue.enabled">
+        <md-icon>redo</md-icon>
+        <span>Enable</span>
+        {{menu.menu}}
+      </button>
+      <button md-menu-item (click)="remove(i)" *ngIf="nameValues.length > 1">
+        <md-icon>close</md-icon>
+        <span>Remove</span>
+      </button>
+    </md-menu>
+  </div>
+  <!--<div fxFlexAlign="center" *ngIf="nameValue.showCloseButton && nameValues.length > 1">
+    <button md-icon-button (click)="remove(i)">
+      <md-icon>clear</md-icon>
+    </button>
+  </div>-->
+</div>

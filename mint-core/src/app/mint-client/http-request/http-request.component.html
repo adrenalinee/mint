@@ -1,0 +1,76 @@
+<div fxLayout="column" fxLayoutGap="0.5em">
+  <div fxLayoutGap="0.5em" fxLayout.gt-sm="row" fxLayout="column"
+    fxLayoutAlign="" fxLayoutAlign.gt-sm=" center">
+    <md-select [(ngModel)]="requestView.request.method">
+      <md-option *ngFor="let method of httpMethods" [value]="method">{{method}}</md-option>
+    </md-select>
+    <md-input-container fxFlex>
+      <!-- <input
+        mdInput
+        [(ngModel)]="requestView.requestUrl"
+        (keyup)="findParams($event)"
+        placeholder="Request URL"
+        mdTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다." /> -->
+        <textarea mdInput
+          mdTextareaAutosize
+          [(ngModel)]="requestView.requestUrl"
+          (keyup)="findParams($event)"
+          placeholder="Request URL"
+          mdTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다."></textarea>
+    </md-input-container>
+    <button md-button (click)="requestView.isOpenParams = !requestView.isOpenParams" [disabled]="requestView.requestStatus == RequestStatus.Sending">Params</button>
+    <button md-raised-button color="primary" (click)="send()" [disabled]="requestView.requestStatus == RequestStatus.Sending">Send</button>
+  </div>
+  <div style="background-color: #f2f4f6; padding: 0.5em" *ngIf="requestView.isOpenParams">
+
+    <md-tab-group [selectedIndex]="requestView.paramTebSelectedIndex">
+      <md-tab>
+        <ng-template md-tab-label>
+          Query
+          <span *ngIf="requestView.request.queryParams.length > 1">
+            ({{requestView.request.queryParams.length - 1}})
+          </span>
+        </ng-template>
+        <div style="padding: 0.5em">
+          <app-name-values [nameValues]="requestView.request.queryParams" [nameValueBuilders]="queryParamBuilders"></app-name-values>
+        </div>
+      </md-tab>
+      <md-tab>
+        <ng-template md-tab-label>
+          Url
+          <span *ngIf="requestView.request.urlParams.length > 1">
+            ({{requestView.request.urlParams.length - 1}})
+          </span>
+        </ng-template>
+        <div style="padding: 0.5em">
+          <app-name-values [nameValues]="requestView.request.urlParams" [nameValueBuilders]="urlParamBuilders"></app-name-values>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </div>
+
+  <md-tab-group>
+    <md-tab>
+      <ng-template md-tab-label>
+        <span fxLayoutAlign="center center">
+          Body
+          <md-icon *ngIf="requestView.request.body != '' && requestView.request.body != null">
+            check_circle
+          </md-icon>
+        </span>
+      </ng-template>
+      <app-request-body [requestView]="requestView" [reqBodyBuilders]="reqBodyBuilders"></app-request-body>
+    </md-tab>
+    <md-tab>
+      <ng-template md-tab-label>
+        Headers
+        <span *ngIf="requestView.request.headers.length > 1">
+          ({{requestView.request.headers.length - 1}})
+        </span>
+      </ng-template>
+      <div style="padding: 0.5em">
+        <app-name-values [nameValues]="requestView.request.headers" [nameValueBuilders]="headerBuilders"></app-name-values>
+      </div>
+    </md-tab>
+  </md-tab-group>
+</div>

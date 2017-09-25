@@ -1,0 +1,16 @@
+<h1 md-dialog-title>{{expanderView.title}}</h1>
+
+<div md-dialog-content>
+  <md-select
+    fxFlex
+    placeholder="{{expanderView.name}} select"
+    [(ngModel)]="expanderView.selectedExpander">
+    <md-option [value]="">No Select</md-option>
+    <md-option *ngFor="let expander of expanderView.expanders" [value]="expander">{{expander.name}}</md-option>
+  </md-select>
+</div>
+
+<div md-dialog-actions fxLayoutGap="1em">
+  <button md-raised-button color="accent" [disabled]="expanderView.selectedExpander == null" (click)="openBuilder()">Select</button>
+  <button md-raised-button (click)="close()">Cancle</button>
+</div>

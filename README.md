@@ -3,7 +3,6 @@ Mint 는 사용자가 다양한 용도로 기능을 확장하여 사용될 수 �
 
 # Getting started
 ```
-#!bash
 git clone https://adrenalinee@bitbucket.org/adrenalinee/mint.git
 cd mint
 cd mint-sample-stater
@@ -12,7 +11,14 @@ npm start
 **웹 브라우저에서 http://localhost:4200 접속**
 
 # 확장 포인트
-작성예정
+Request
+* header builer: 
+* url parameter builer: 
+* query string paramter builer: 
+* request body builder: 
+
+Response
+* response body viewer: 
 
 
 # 로드맵
