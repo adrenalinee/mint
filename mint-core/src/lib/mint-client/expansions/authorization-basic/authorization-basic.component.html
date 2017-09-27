@@ -1,0 +1,19 @@
+<h1 md-dialog-title>Basic Auth</h1>
+
+<div md-dialog-content>
+  <div>
+    <md-input-container>
+      <input mdInput placeholder="Username" [(ngModel)]="basicAuthView.username" />
+    </md-input-container>
+  </div>
+  <div>
+  <md-input-container>
+    <input mdInput placeholder="Password" [(ngModel)]="basicAuthView.password" />
+  </md-input-container>
+  </div>
+</div>
+
+<div md-dialog-actions fxLayoutGap="1em">
+  <button md-raised-button color="accent" (click)="apply()">apply</button>
+  <button md-raised-button (click)="close()">cancle</button>
+</div>
