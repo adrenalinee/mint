@@ -30,14 +30,22 @@ import {
   import 'brace/mode/properties';
   import 'brace/mode/xml';
 
-  import { HttpRequestComponent } from './http-request/http-request.component';
-  import { HttpResponseComponent } from './http-response/http-response.component';
-  import { BuilderDialogComponent } from './builder-dialog/builder-dialog.component';
-  import { NameValuesComponent } from './name-values/name-values.component';
-  import { RequestBodyComponent } from './request-body/request-body.component';
-  import { HttpClientComponent } from './http-client/http-client.component';
-  import { ResponseBodyBasicComponent } from './response-body-basic/response-body-basic.component';
-  import { BodyViewerHostDirective } from './http-response/http-response.component';
+  import {
+    RequestView,
+    RequestInfo,
+    ResponseInfo,
+    NameValue,
+    RequestStatus
+  } from './RequestViews';
+
+  import { HttpRequestComponent } from './components/http-request/http-request.component';
+  import { HttpResponseComponent } from './components/http-response/http-response.component';
+  import { BuilderDialogComponent } from './components/builder-dialog/builder-dialog.component';
+  import { NameValuesComponent } from './components/name-values/name-values.component';
+  import { RequestBodyComponent } from './components/request-body/request-body.component';
+  import { HttpClientComponent } from './http-client.component';
+  import { ResponseBodyBasicComponent } from './components/response-body-basic/response-body-basic.component';
+  import { BodyViewerHostDirective } from './components/http-response/http-response.component';
 
   import { AuthorizationBasicComponent } from './expansions/authorization-basic/authorization-basic.component';
   import { SafeHtmlPipe } from './expansions/text-html-viewer/text-html-viewer.component';
@@ -65,10 +73,30 @@ import {
     MdTooltipModule
   ],
   exports: [
+    RequestView,
+    RequestInfo,
+    ResponseInfo,
+    NameValue,
+    RequestStatus,
+    AceEditorDirective,
     HttpClientComponent
   ],
   declarations: [
+    RequestView,
+    RequestInfo,
+    ResponseInfo,
+    NameValue,
+    RequestStatus,
+    AceEditorDirective,
     HttpClientComponent
+  ],
+  entryComponents: [
+    AuthorizationBasicComponent,
+    BuilderDialogComponent,
+    TextPlainComponent,
+    XWwwFormUrlencodedComponent,
+    ResponseBodyBasicComponent,
+    TextHtmlViewerComponent
   ]
 })
 export class MintClientModule { }

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
-import { RequestView } from 'app/requestInfo';
-import { RequestExpansion } from 'app/requestExpansion';
-import { DefaultRequestExpansionBuilder } from 'app/components/expansions/DefaultRequestExpansionBuilder';
-import { HttpClientConfig } from 'app/httpClientsPreferences';
-import { HttpResponseComponent } from 'app/components/http-response/http-response.component';
+import { RequestView } from './RequestViews';
+import { RequestExpansion } from './RequestExpansions';
+import { DefaultRequestExpansionBuilder } from './expansions/DefaultRequestExpansionBuilder';
+import { HttpClientConfig } from './HttpClientConfig';
+import { HttpResponseComponent } from './components/http-response/http-response.component';
 
 @Component({
   selector: 'app-http-client',

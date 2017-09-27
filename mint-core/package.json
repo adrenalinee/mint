@@ -3,12 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build:dist": "npm run build:umd && npm run build:ngc",
+    "test": "karma start --single-run && npm run build:dist && npm run build:clean"
   },
   "private": true,
   "dependencies": {

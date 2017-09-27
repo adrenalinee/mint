@@ -1,4 +1,4 @@
-import { RequestExpander } from 'app/requestExpansion';
+// import { RequestExpander } from 'app/requestExpansion';
 
 /**
  * 하나의 request를 화면에 그리기 위한 모든 데이터 저장
@@ -94,7 +94,7 @@ export class NameValue {
     FixedValue: boolean;
 
     enableBuilder?: boolean;
-    selectedExpander?: RequestExpander;
+    // selectedExpander?: RequestExpander;
     showCloseButton?: boolean;
     enabled: boolean = true;
 
