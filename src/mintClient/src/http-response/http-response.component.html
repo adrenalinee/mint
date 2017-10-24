@@ -1,0 +1,74 @@
+<!--<div fxLayout="row" fxLayoutGap="1em">
+    <p>Status: <span>{{requestView.response.status}}</span></p>
+    <p>Status text: <span>{{requestView.response.statusText}}</span></p>
+</div>-->
+
+<p *ngIf="requestView.requestStatus == RequestStatus.PreSend">
+  please hit the
+  <button mat-raised-button color="primary">Send</button>
+  button to get a response
+</p>
+
+<div *ngIf="requestView.requestStatus == RequestStatus.SendFail">
+  <h2>Could not get any response</h2>
+  There was an error connecting to {{requestView.request.url}}
+</div>
+
+<div *ngIf="requestView.requestStatus == RequestStatus.Sending">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <h1>
+    Sending... <button mat-raised-button>Cancel...</button>
+  </h1>
+</div>
+
+<div *ngIf="requestView.requestStatus == RequestStatus.SendSuccess" fxLayout="column" fxLayoutGap="1em">
+  <b>Response</b>
+  <mat-toolbar>
+    <div fxLayout="row" fxLayoutGap="1em">
+      <span>
+        <b>Status: </b> {{requestView.response.status}} {{requestView.response.statusText}}
+      </span>
+      <span>
+        <b>elapse time: </b> {{requestView.response.elapseTime | number}} ms
+      </span>
+    </div>
+  </mat-toolbar>
+
+  <mat-tab-group dynamicHeight="true">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span fxLayoutAlign="center center">
+          Body
+          <mat-icon *ngIf="requestView.response.body != '' && requestView.response.body != null">
+            check_circle
+          </mat-icon>
+        </span>
+      </ng-template>
+
+      <div fxLayoutGap="1em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
+        <mat-radio-group *ngIf="matchedResBodyViewers.length > 1"
+          fxLayoutGap="1em"
+          [(ngModel)]="selectedBodyViewer">
+          <mat-radio-button [value]="resBodyVeiwer" *ngFor="let resBodyVeiwer of matchedResBodyViewers">{{resBodyVeiwer.name}}</mat-radio-button>
+        </mat-radio-group>
+
+        <div
+          *ngFor="let resBodyVeiwer of matchedResBodyViewers"
+          [hidden]="selectedBodyViewer != resBodyVeiwer">
+          <ng-template body-viewer-host
+            [bodyViewer]="resBodyVeiwer" [requestView]="requestView"></ng-template>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Headers ({{requestView.response.headers.length}})
+      </ng-template>
+      <div style="padding: 0.5em">
+        <p *ngFor="let header of requestView.response.headers">
+          <b>{{header.name}}</b>: {{header.value}}
+        </p>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

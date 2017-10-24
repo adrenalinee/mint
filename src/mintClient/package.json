@@ -1,0 +1,8 @@
+{
+  "version": "0.0.1",
+  "description": "mint client angular material",
+  "keywords": [ ],
+  "libConfig": {
+    "inlineResources": true
+  }
+}

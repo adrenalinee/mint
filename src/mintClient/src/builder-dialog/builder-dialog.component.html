@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{expanderView.title}}</h1>
+
+<div mat-dialog-content>
+  <mat-select
+    fxFlex
+    placeholder="{{expanderView.name}} select"
+    [(ngModel)]="expanderView.selectedExpander">
+    <mat-option [value]="">No Select</mat-option>
+    <mat-option *ngFor="let expander of expanderView.expanders" [value]="expander">{{expander.name}}</mat-option>
+  </mat-select>
+</div>
+
+<div mat-dialog-actions fxLayoutGap="1em">
+  <button mat-raised-button color="accent" [disabled]="expanderView.selectedExpander == null" (click)="openBuilder()">Select</button>
+  <button mat-raised-button (click)="close()">Cancle</button>
+</div>

@@ -1,0 +1,60 @@
+<div fxLayoutGap="1em" fxLayout="row"
+  *ngFor="let nameValue of nameValues; index as i"
+  (mouseenter)="nameValue.showCloseButton = true"
+  (mouseleave)="nameValue.showCloseButton = false">
+  <div fxLayoutGap="1em" fxLayout="row" fxFlex>
+    <mat-form-field fxFlex="30">
+      <input matInput placeholder="Name" [(ngModel)]="nameValue.name"
+        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
+        (focus)="addNameValue(i)"
+        (keyup)="addNameValue(i);findBuilder(i)"
+        (blur)="optimize()" />
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <!-- <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
+      [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+      (focus)="addNameValue(i)"
+      (blur)="optimize()" /> -->
+      <textarea matInput
+        matTextareaAutosize
+        placeholder="Value"
+        [(ngModel)]="nameValue.value"
+        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
+        (focus)="addNameValue(i)"
+        (blur)="optimize()"></textarea>
+    </mat-form-field>
+  </div>
+  <!--<div>
+    <span fxFlex="30">{{}}
+  </div>-->
+  <div fxFlexAlign="center">
+    <button mat-raised-button color="accent" *ngIf="nameValue.enableBuilder" (click)="openBuilder(i)">Build</button>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="disabled(i)" *ngIf="nameValue.enabled">
+        <mat-icon>block</mat-icon>
+        <span>Disable</span>
+        {{menu.menu}}
+      </button>
+      <button mat-menu-item (click)="enabled(i)" *ngIf="!nameValue.enabled">
+        <mat-icon>redo</mat-icon>
+        <span>Enable</span>
+        {{menu.menu}}
+      </button>
+      <button mat-menu-item (click)="remove(i)" *ngIf="nameValues.length > 1">
+        <mat-icon>close</mat-icon>
+        <span>Remove</span>
+      </button>
+    </mat-menu>
+  </div>
+  <!--<div fxFlexAlign="center" *ngIf="nameValue.showCloseButton && nameValues.length > 1">
+    <button mat-icon-button (click)="remove(i)">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>-->
+</div>

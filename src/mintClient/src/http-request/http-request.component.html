@@ -1,0 +1,80 @@
+<div fxLayout="column" fxLayoutGap="0.5em">
+  <div fxLayoutGap="0.5em" fxLayout.gt-sm="row" fxLayout="column"
+       fxLayoutAlign fxLayoutAlign.gt-sm=" center">
+    <mat-form-field>
+      <mat-select [(ngModel)]="requestView.request.method">
+        <mat-option *ngFor="let method of httpMethods" [value]="method">{{method}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+      <!-- <input
+        mdInput
+        [(ngModel)]="requestView.requestUrl"
+        (keyup)="findParams($event)"
+        placeholder="Request URL"
+        mdTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다." /> -->
+      <textarea matInput
+                matTextareaAutosize
+                [(ngModel)]="requestView.requestUrl"
+                (keyup)="findParams($event)"
+                placeholder="Request URL"
+                matTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다."></textarea>
+    </mat-form-field>
+    <button mat-button (click)="requestView.isOpenParams = !requestView.isOpenParams" [disabled]="requestView.requestStatus == RequestStatus.Sending">
+      Params
+    </button>
+    <button mat-raised-button color="primary" (click)="send()" [disabled]="requestView.requestStatus == RequestStatus.Sending">Send</button>
+  </div>
+  <div style="background-color: #f2f4f6; padding: 0.5em" *ngIf="requestView.isOpenParams">
+
+    <mat-tab-group [selectedIndex]="requestView.paramTebSelectedIndex">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Query
+          <span *ngIf="requestView.request.queryParams.length > 1">
+            ({{requestView.request.queryParams.length - 1}})
+          </span>
+        </ng-template>
+        <div style="padding: 0.5em">
+          <app-name-values [nameValues]="requestView.request.queryParams" [nameValueBuilders]="queryParamBuilders"></app-name-values>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Url
+          <span *ngIf="requestView.request.urlParams.length > 1">
+            ({{requestView.request.urlParams.length - 1}})
+          </span>
+        </ng-template>
+        <div style="padding: 0.5em">
+          <app-name-values [nameValues]="requestView.request.urlParams" [nameValueBuilders]="urlParamBuilders"></app-name-values>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span fxLayoutAlign="center center">
+          Body
+          <mat-icon *ngIf="requestView.request.body !== ''">
+            check_circle
+          </mat-icon>
+        </span>
+      </ng-template>
+      <app-request-body [requestView]="requestView" [reqBodyBuilders]="reqBodyBuilders"></app-request-body>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Headers
+        <span *ngIf="requestView.request.headers.length > 1">
+          ({{requestView.request.headers.length - 1}})
+        </span>
+      </ng-template>
+      <div style="padding: 0.5em">
+        <app-name-values [nameValues]="requestView.request.headers" [nameValueBuilders]="headerBuilders"></app-name-values>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

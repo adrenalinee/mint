@@ -1,0 +1,28 @@
+<div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
+  <div fxLayoutGap="1em" fxLayoutAlign="start center">
+    <mat-checkbox [(ngModel)]="requestView.reqBodyWrap">Wrap</mat-checkbox>
+    <mat-select [(ngModel)]="requestView.reqDisplayMode" placeholder="Syntax">
+      <mat-option *ngFor="let method of displayModes" [value]="method">{{method}}</mat-option>
+    </mat-select>
+    <mat-select
+      [(ngModel)]="requestView.reqContentType"
+      (change)="onChangeRequestBodyContentType()"
+      placeholder="Content type" style="width: 300px">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let type of contentTypes" [value]="type">{{type}}</mat-option>
+    </mat-select>
+    <button mat-raised-button color="accent" *ngIf="requestView.enableReqBodyBuilder" (click)="openReqBodyBuilder()">Build</button>
+  </div>
+  <div ace-editor
+    [text]="requestView.request.body"
+    [mode]="requestView.reqDisplayMode"
+    [theme]="'dawn'"
+    [options]="{
+      minLines: 10,
+      maxLines: '100',
+      showPrintMargin: false,
+      wrap: requestView.reqBodyWrap
+    }"
+    (textChanged)="onChange($event)"
+    style="display: block; width: 100%; height: 20vh;"></div>
+</div>
