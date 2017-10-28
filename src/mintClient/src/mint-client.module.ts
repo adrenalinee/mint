@@ -44,6 +44,7 @@ import { HttpRequestComponent } from './http-request/http-request.component';
 import { BodyViewerHostDirective, HttpResponseComponent } from './http-response/http-response.component';
 import { NameValuesComponent } from './name-values/name-values.component';
 import { RequestBodyComponent } from './request-body/request-body.component';
+import { RequestView } from './requestViews';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { RequestBodyComponent } from './request-body/request-body.component';
     TextHtmlViewerComponent
   ],
   exports: [
-    HttpClientComponent
+    HttpClientComponent,
+    RequestView
   ],
   imports: [
     CommonModule,
