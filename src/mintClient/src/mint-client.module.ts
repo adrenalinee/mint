@@ -72,8 +72,7 @@ import { RequestView } from './requestViews';
     TextHtmlViewerComponent
   ],
   exports: [
-    HttpClientComponent,
-    RequestView
+    HttpClientComponent
   ],
   imports: [
     CommonModule,

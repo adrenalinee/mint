@@ -46,6 +46,10 @@ import { MyLibModule } from 'my-lib';
 import { MintClientModule } from '../../mintClient/src/mint-client.module';
 import { DetailComponent } from './detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SingleClientComponent } from './single-client/single-client.component';
+import { HeaderComponent } from './components/header.component';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -56,7 +60,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     DetailComponent,
-    NoContentComponent
+    NoContentComponent,
+    HeaderComponent,
+    SingleClientComponent
   ],
   /**
    * Import Angular's modules.
@@ -65,8 +71,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    FlexLayoutModule,
     HttpClientModule,
     MyLibModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
     MintClientModule,
     RouterModule.forRoot(
       ROUTES,

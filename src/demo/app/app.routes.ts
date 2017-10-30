@@ -12,6 +12,5 @@ export const ROUTES: Routes = [
   { path: 'detail',  component: DetailComponent },
   // { path: 'clients', component: ClientTabPageComponent },
   { path: 'client', component: SingleClientComponent },
-  
   { path: '**',    component: NoContentComponent },
 ];

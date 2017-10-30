@@ -1,0 +1,26 @@
+<md-tab-group dynamicHeight="true" [selectedIndex]="selectedIndex">
+	<md-tab *ngFor="let requestView of requestViews; index as i">
+		<ng-template md-tab-label>
+			<div>
+				{{requestView.title}}
+				<button md-icon-button [mdMenuTriggerFor]="menu">
+					<md-icon>more_vert</md-icon>
+				</button>
+				<md-menu #menu="mdMenu">
+					<button md-menu-item (click)="duplicateClient(i)">
+						<md-icon>content_copy</md-icon>
+						<span>Duplicate</span>
+						{{menu.menu}}
+					</button>
+					<button md-menu-item (click)="closeClient(i)" *ngIf="requestViews.length > 1">
+						<md-icon>close</md-icon>
+						<span>Close</span>
+					</button>
+				</md-menu>
+			</div>
+		</ng-template>
+		<div fxLayout="column" style="padding: 1em">
+			<app-http-client [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-client>
+		</div>
+	</md-tab>
+</md-tab-group>
