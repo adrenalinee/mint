@@ -38,13 +38,13 @@ import { TextHtmlViewerComponent } from './expansions/text-html-viewer/text-html
 import { TextPlainComponent } from './expansions/text-plain/text-plain.component';
 import { XWwwFormUrlencodedComponent } from './expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 import { HttpClientComponent } from './http-client/http-client.component';
+import { HttpClientTabComponent } from './http-client-tab/http-client-tab.component';
 import { BuilderDialogComponent } from './builder-dialog/builder-dialog.component';
 import { ResponseBodyBasicComponent } from './response-body-basic/response-body-basic.component';
 import { HttpRequestComponent } from './http-request/http-request.component';
 import { BodyViewerHostDirective, HttpResponseComponent } from './http-response/http-response.component';
 import { NameValuesComponent } from './name-values/name-values.component';
 import { RequestBodyComponent } from './request-body/request-body.component';
-import { RequestView } from './requestViews';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import { RequestView } from './requestViews';
     RequestBodyComponent,
     TextPlainComponent,
     HttpClientComponent,
+    HttpClientTabComponent,
     ResponseBodyBasicComponent,
     BodyViewerHostDirective,
     TextHtmlViewerComponent,
@@ -72,7 +73,8 @@ import { RequestView } from './requestViews';
     TextHtmlViewerComponent
   ],
   exports: [
-    HttpClientComponent
+    HttpClientComponent,
+    HttpClientTabComponent
   ],
   imports: [
     CommonModule,
