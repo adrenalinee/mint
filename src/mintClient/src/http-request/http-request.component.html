@@ -1,8 +1,8 @@
-<div fxLayout="column" fxLayoutGap="0.5em">
+<div fxLayout="column">
   <div fxLayoutGap="0.5em" fxLayout.gt-sm="row" fxLayout="column"
        fxLayoutAlign.gt-sm=" center">
     <mat-form-field>
-      <mat-select [(ngModel)]="requestView.request.method">
+      <mat-select [(ngModel)]="requestView.request.method" placeholder="request method">
         <mat-option *ngFor="let method of httpMethods" [value]="method">{{method}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -20,9 +20,10 @@
                 placeholder="Request URL"
                 matTooltip="reuqest url에서 property holder 를 {...}와 같은 형식으로 사용할 수 있습니다."></textarea>
     </mat-form-field>
-    <button mat-button (click)="requestView.isOpenParams = !requestView.isOpenParams"
-            [disabled]="requestView.requestStatus == RequestStatus.Sending">
+    <button mat-button (click)="requestView.isOpenParams = !requestView.isOpenParams">
       Params
+      <mat-icon *ngIf="requestView.isOpenParams">expand_less</mat-icon>
+      <mat-icon *ngIf="!requestView.isOpenParams">expand_more</mat-icon>
     </button>
     <button mat-raised-button color="primary" (click)="send()" [disabled]="requestView.requestStatus == RequestStatus.Sending">Send</button>
   </div>

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
   MatButtonModule,
+  // MatButtonToggleModule,
   MatCheckboxModule,
   MatDialogModule,
   MatIconModule,
@@ -12,7 +13,6 @@ import {
   MatMenuModule,
   MatRadioModule,
   MatSelectModule,
-  MatSidenavModule,
   MatSnackBarModule,
   MatTabsModule,
   MatTooltipModule
@@ -83,6 +83,7 @@ import { RequestBodyComponent } from './request-body/request-body.component';
     HttpModule,
     // AceEditorModule,
     MatButtonModule,
+    // MatButtonToggleModule,
     MatCheckboxModule,
     MatDialogModule,
     MatIconModule,
