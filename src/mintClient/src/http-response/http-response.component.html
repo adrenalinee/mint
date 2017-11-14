@@ -1,8 +1,3 @@
-<!--<div fxLayout="row" fxLayoutGap="1em">
-    <p>Status: <span>{{requestView.response.status}}</span></p>
-    <p>Status text: <span>{{requestView.response.statusText}}</span></p>
-</div>-->
-
 <p *ngIf="requestView.requestStatus == RequestStatus.PreSend">
   please hit the
   <button mat-raised-button color="primary">Send</button>
@@ -11,14 +6,14 @@
 
 <div *ngIf="requestView.requestStatus == RequestStatus.SendFail">
   <h2>Could not get any response</h2>
-  There was an error connecting to {{requestView.request.url}}
+  There was an error connecting to <a href="{{requestView.request.url}}">{{requestView.request.url}}</a>
 </div>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.Sending">
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   <h1>
     Sending... <button mat-raised-button>Cancel...</button>
   </h1>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 
 <div *ngIf="requestView.requestStatus == RequestStatus.SendSuccess" fxLayout="column" fxLayoutGap="1em">
@@ -40,12 +35,12 @@
         <span fxLayoutAlign="center center">
           Body
           <mat-icon *ngIf="requestView.response.body != '' && requestView.response.body != null">
-            check_circle
+            done
           </mat-icon>
         </span>
       </ng-template>
 
-      <div fxLayoutGap="1em" fxLayout="column" style="padding: 0.5em; padding-top: 1em">
+      <div fxLayoutGap="1em" fxLayout="column" style="padding: 0.5em;">
         <mat-radio-group *ngIf="matchedResBodyViewers.length > 1"
           fxLayoutGap="1em"
           [(ngModel)]="selectedBodyViewer">

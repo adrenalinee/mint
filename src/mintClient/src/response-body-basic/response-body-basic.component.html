@@ -1,8 +1,10 @@
-<div fxLayoutGap="1em" fxLayoutAlign="start center">
+<div fxLayoutGap="0.5em" fxLayoutAlign="start center">
   <mat-checkbox [(ngModel)]="requestView.resBodyWrap">Wrap</mat-checkbox>
-  <mat-select [(ngModel)]="requestView.resDisplayMode" placeholder="Syntax">
-    <mat-option *ngFor="let method of displayModes" [value]="method">{{method}}</mat-option>
-  </mat-select>
+  <mat-form-field>
+    <mat-select [(ngModel)]="requestView.resDisplayMode" placeholder="Syntax">
+      <mat-option *ngFor="let method of displayModes" [value]="method">{{method}}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <mat-checkbox [(ngModel)]="requestView.resBodyFormat" (change)="onChangeFormat()">Format</mat-checkbox>
 </div>
 
