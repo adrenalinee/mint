@@ -7,10 +7,10 @@ import {MultiClientTabComponent} from './multi-client/multi-client-tab.component
 
 export const ROUTES: Routes = [
   // { path: '',      component: HomeComponent },
-  { path: '', redirectTo: '/clients', pathMatch: 'full' },
-  { path: 'home',  component: HomeComponent },
-  { path: 'detail',  component: DetailComponent },
+  { path: '', redirectTo: '/client', pathMatch: 'full' },
+  // { path: 'home',  component: HomeComponent },
+  // { path: 'detail',  component: DetailComponent },
   { path: 'clients', component: MultiClientTabComponent },
   { path: 'client', component: SingleClientComponent },
-  { path: '**',    component: NoContentComponent },
+  // { path: '**',    component: NoContentComponent },
 ];
