@@ -43,14 +43,15 @@ export interface StoreType {
 }
 
 import { MyLibModule } from 'my-lib';
-import { MintClientModule } from '../../mintClient/src/mint-client.module';
+import { MintClientModule } from 'mint-client';
+// import { MintClientModule } from '../../mintClient/src/mint-client.module';
 import { DetailComponent } from './detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SingleClientComponent } from './single-client/single-client.component';
 import { MultiClientTabComponent } from './multi-client/multi-client-tab.component';
 import { HeaderComponent } from './components/header.component';
-import {MatButtonModule, MatIconModule, MatMenuModule, MatTabsModule, MatToolbarModule} from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule, MatIconModule, MatMenuModule, MatTabsModule, MatToolbarModule } from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process

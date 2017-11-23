@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 import { HttpClientsComponent } from 'app/components/http-clients/http-clients.component';
-import { HttpClientTabComponent } from '../../../mintClient/src/http-client-tab/http-client-tab.component';
+import { HttpClientTabComponent } from '../../../mint-client/src/http-client-tab/http-client-tab.component';
 
 @Component({
   styles: [

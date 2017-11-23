@@ -18,9 +18,9 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
-import { AceEditorDirective } from 'ng2-ace';
+// import { AceEditorDirective } from 'ng2-ace';
 
-// import { AceEditorModule } from 'ng2-ace-editor';
+import { AceEditorModule } from 'ng2-ace-editor';
 
 import 'brace/theme/idle_fingers';
 import 'brace/theme/dawn';
@@ -48,7 +48,7 @@ import { RequestBodyComponent } from './request-body/request-body.component';
 
 @NgModule({
   declarations: [
-    AceEditorDirective,
+    // AceEditorDirective,
     BuilderDialogComponent,
     HttpRequestComponent,
     HttpResponseComponent,
@@ -81,7 +81,7 @@ import { RequestBodyComponent } from './request-body/request-body.component';
     FlexLayoutModule,
     FormsModule,
     HttpModule,
-    // AceEditorModule,
+    AceEditorModule,
     MatButtonModule,
     // MatButtonToggleModule,
     MatCheckboxModule,

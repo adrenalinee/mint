@@ -6,6 +6,7 @@ Mint 는 사용자가 다양한 용도로 기능을 확장하여 사용될 수 �
 git clone https://adrenalinee@bitbucket.org/adrenalinee/mint.git
 cd mint
 cd mint-sample-stater
+npm install
 npm start
 ```
 **웹 브라우저에서 http://localhost:4200 접속**

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestView } from '../../../mintClient/src/requestViews';
+import { RequestView } from '../../../mint-client/src/requestViews';
 
 @Component({
   selector: 'app-single-client',
