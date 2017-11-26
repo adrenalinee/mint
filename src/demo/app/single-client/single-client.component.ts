@@ -17,7 +17,7 @@ export class SingleClientComponent implements OnInit {
 
   ngOnInit() {
     this.requestView = new RequestView(null);
-    this.requestView.requestUrl = 'http://localhost:3000/assets/test.json';
+    this.requestView.requestUrl = 'assets/test.json';
   }
 
 }
