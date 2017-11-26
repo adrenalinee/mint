@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-header',
   template: `
 <mat-toolbar color="primary">
-    <span>Mint Sample App</span>
+    <span>Mint Sample</span>
     <button mat-button routerLink="/client">single client</button>
     <button mat-button routerLink="/clients">multi client</button>
     <span fxFlex></span>
