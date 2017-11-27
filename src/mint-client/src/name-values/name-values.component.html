@@ -1,34 +1,30 @@
-<div fxLayoutGap="1em" fxLayout="row"
+<div fxLayoutGap="0.5em" fxLayout="row"
   *ngFor="let nameValue of nameValues; index as i"
   (mouseenter)="nameValue.showCloseButton = true"
   (mouseleave)="nameValue.showCloseButton = false">
-  <div fxLayoutGap="1em" fxLayout="row" fxFlex>
-    <mat-form-field fxFlex="30">
-      <input matInput placeholder="Name" [(ngModel)]="nameValue.name"
-        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
-        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
-        (focus)="addNameValue(i)"
-        (keyup)="addNameValue(i);findBuilder(i)"
-        (blur)="optimize()" />
-    </mat-form-field>
-    <mat-form-field fxFlex>
-      <!-- <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
+
+  <mat-form-field fxFlex="30">
+    <input matInput placeholder="Name" [(ngModel)]="nameValue.name"
       [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+      [style.color]="!nameValue.enabled ? 'gray' : 'black'"
       (focus)="addNameValue(i)"
-      (blur)="optimize()" /> -->
-      <textarea matInput
-        matTextareaAutosize
-        placeholder="Value"
-        [(ngModel)]="nameValue.value"
-        [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
-        [style.color]="!nameValue.enabled ? 'gray' : 'black'"
-        (focus)="addNameValue(i)"
-        (blur)="optimize()"></textarea>
-    </mat-form-field>
-  </div>
-  <!--<div>
-    <span fxFlex="30">{{}}
-  </div>-->
+      (keyup)="addNameValue(i);findBuilder(i)"
+      (blur)="optimize()" />
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <!-- <input mdInput placeholder="Value" [(ngModel)]="nameValue.value"
+    [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+    (focus)="addNameValue(i)"
+    (blur)="optimize()" /> -->
+    <textarea matInput
+      matTextareaAutosize
+      placeholder="Value"
+      [(ngModel)]="nameValue.value"
+      [style.text-decoration]="!nameValue.enabled ? ' line-through' : ''"
+      [style.color]="!nameValue.enabled ? 'gray' : 'black'"
+      (focus)="addNameValue(i)"
+      (blur)="optimize()"></textarea>
+  </mat-form-field>
   <div fxFlexAlign="center">
     <button mat-raised-button color="accent" *ngIf="nameValue.enableBuilder" (click)="openBuilder(i)">Build</button>
 

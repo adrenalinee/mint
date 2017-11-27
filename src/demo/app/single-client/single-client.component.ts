@@ -4,7 +4,7 @@ import { RequestView } from '../../../mint-client/src/requestViews';
 @Component({
   selector: 'app-single-client',
   template: `
-<div style="padding: 0.5em 1em 0.5em 1em">
+<div style="padding: 0.5em">
     <app-http-client [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-client>
 </div>
   `

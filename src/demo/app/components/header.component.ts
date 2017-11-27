@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 <mat-toolbar color="primary">
     <span>Mint Sample</span>
     <button mat-button routerLink="/client">single client</button>
-    <button mat-button routerLink="/clients">multi client</button>
+    <button mat-button routerLink="/clients">multi clients</button>
     <span fxFlex></span>
     <button mat-icon-button mdTooltip="Help">
         <mat-icon>help</mat-icon>

@@ -40,9 +40,9 @@
         </span>
       </ng-template>
 
-      <div fxLayoutGap="1em" fxLayout="column" style="padding: 0.5em;">
+      <div fxLayoutGap="0.5em" fxLayout="column" style="padding: 0.5em;">
         <mat-radio-group *ngIf="matchedResBodyViewers.length > 1"
-          fxLayoutGap="1em"
+          fxLayoutGap="0.5em"
           [(ngModel)]="selectedBodyViewer">
           <mat-radio-button [value]="resBodyVeiwer" *ngFor="let resBodyVeiwer of matchedResBodyViewers">{{resBodyVeiwer.name}}</mat-radio-button>
         </mat-radio-group>
