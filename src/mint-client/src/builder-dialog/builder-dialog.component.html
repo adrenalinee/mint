@@ -1,13 +1,15 @@
 <h1 mat-dialog-title>{{expanderView.title}}</h1>
 
 <div mat-dialog-content>
-  <mat-select
-    fxFlex
-    placeholder="{{expanderView.name}} select"
-    [(ngModel)]="expanderView.selectedExpander">
-    <mat-option [value]="">No Select</mat-option>
-    <mat-option *ngFor="let expander of expanderView.expanders" [value]="expander">{{expander.name}}</mat-option>
-  </mat-select>
+  <mat-form-field>
+    <mat-select
+      fxFlex
+      placeholder="{{expanderView.title}} select"
+      [(ngModel)]="expanderView.selectedExpander">
+      <mat-option [value]="">No Select</mat-option>
+      <mat-option *ngFor="let expander of expanderView.expanders" [value]="expander">{{expander.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
 
 <div mat-dialog-actions fxLayoutGap="1em">

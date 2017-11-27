@@ -4,13 +4,21 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-header',
   template: `
 <mat-toolbar color="primary">
-    <span>Mint Sample</span>
-    <button mat-button routerLink="/client">single client</button>
-    <button mat-button routerLink="/clients">multi clients</button>
+    <span>
+      <span>Mint Demo</span>
+      <button mat-button routerLink="/client" fxHide fxShow.gt-sm>client</button>
+      <button mat-button routerLink="/clients" fxHide fxShow.gt-sm>client tab</button>
+    </span>
     <span fxFlex></span>
     <button mat-icon-button mdTooltip="Help">
         <mat-icon>help</mat-icon>
     </button>
+    <mat-toolbar-row fxShow fxHide.gt-sm>
+      <span>
+        <button mat-button routerLink="/client">client</button>
+        <button mat-button routerLink="/clients">client tab</button>
+      </span>
+    </mat-toolbar-row>
 </mat-toolbar>
   `
 })
