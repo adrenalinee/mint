@@ -21,7 +21,7 @@ export class RequestView {
 
     /**
      * request body의 content type
-     * 요청 해더에 입력한 content type을 이 필드에 따로 저장합니다.
+     * 요청 해더에 입력한 content type을 이 필드에 따로 저장한다.
      * 요청 바디의 syntax highlight 처리를 위해 이값을 따로 관리함
      */
     reqContentType: string = '';
@@ -48,8 +48,8 @@ export class RequestView {
     requestStatus: RequestStatus = RequestStatus.PreSend;
 
     // isOpenResponse: boolean;
-    resContentType: string = '';
-    resDisplayMode: string = 'text';
+    resContentType: string = ''; // response viewer 를 결정
+    resDisplayMode: string = 'text'; // syntax high light 를 결정
     resBodyWrap: boolean = true;
     resBodyFormat: boolean = false;
 
@@ -77,7 +77,7 @@ export class ResponseInfo {
     statusText: string | null;
     headers: NameValue[] = [];
 
-    body: string;
+    body: string | null;
 }
 
 export class NameValue {

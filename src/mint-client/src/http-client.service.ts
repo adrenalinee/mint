@@ -40,7 +40,7 @@ export class HttpClientService {
                     responseInfo.headers.push(NameValue.new(k, response.headers.get(k)));
                 });
 
-            responseInfo.body = response.body == null ? '' : <string> response.body;
+            responseInfo.body = response.body == null ? null : <string> response.body;
 
             return responseInfo;
         }); // .catch(this.handleError);

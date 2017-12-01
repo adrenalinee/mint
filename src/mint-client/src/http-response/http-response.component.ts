@@ -82,6 +82,9 @@ export class HttpResponseComponent implements OnInit {
                 } else if (h.value.startsWith('text/css')) {
                     this.requestView.resDisplayMode = 'css';
                     this.requestView.resContentType = 'text/css';
+                } else {
+                  this.requestView.resDisplayMode = 'text';
+                  this.requestView.resContentType = 'text/plain';
                 }
             });
 

@@ -126,13 +126,14 @@ export class HttpRequestComponent implements OnInit {
     return fianlRequestUrl;
   }
 
-  findParams($event: KeyboardEvent) {
+  sendCheck($event: KeyboardEvent) {
     if ($event.key === 'Enter') {
-      // TODO 더 좋은 방식으로 바꿔야 함
-      this.requestView.requestUrl = this.requestView.requestUrl.substr(0, this.requestView.requestUrl.length - 1);
       this.send();
-      return;
+      return false;
     }
+  }
+
+  findParams($event: KeyboardEvent) {
 
     const url: string = this.requestView.requestUrl;
     if (url == null || '' === url) {
