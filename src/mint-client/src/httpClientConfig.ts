@@ -1,24 +1,31 @@
-import { NameValue } from './requestViews';
-import { RequestExpansion } from './requestExpansions';
+import {NameValue} from './requestViews';
+import {RequestExpansion} from './requestExpansions';
 
 /**
  * http client 의 설정 정보
  */
 export class HttpClientConfig {
-    /**
-     * clinet 의 이름. tab 에서 tab의 이름이 된다.
-     */
-    private name: string;
+  // /**
+  //  * clinet 의 이름. tab 에서 tab의 이름이 된다.
+  //  */
+  // private name: string;
 
-    /**
-     * 기본적으로 추가되어 있는 확장. RequestExpansion 설명 참조
-     */
-    private requestExpansions: Array<RequestExpansion>;
+  /**
+   * 기본적으로 추가되어 있는 확장. RequestExpansion 설명 참조
+   */
+  requestExpansions: Array<RequestExpansion>;
 
-    /**
-     * 기본 지정된 요청 정보. DefinedRequestInfo 설명 참조
-     */
-    private definedRequestInfo: DefinedRequestInfo;
+  /**
+   * 기본 지정된 요청 정보. DefinedRequestInfo 설명 참조
+   */
+  definedRequestInfo: DefinedRequestInfo = new DefinedRequestInfo();
+
+  /**
+   * DefaultRequestExpansionBuilder 를 통해 기본적인 http request 정보를 생성할 수 있는
+   * expander 를 추가한다.
+   * @type {boolean}
+   */
+  useDefaultExpander: Boolean = true;
 }
 
 /**
@@ -26,11 +33,11 @@ export class HttpClientConfig {
  * 여기에 지정된 내용들은 기본적으로 client 에서 지우거나 수정할 수 없다.
  */
 export class DefinedRequestInfo {
-    url: string;
-    method: string = 'GET';
-    queryParams: Array<NameValue> = [new NameValue()];
-    urlParams: Array<NameValue> = [new NameValue()];
+  url: string;
+  method: string = 'GET';
+  queryParams: Array<NameValue> = [new NameValue()];
+  urlParams: Array<NameValue> = [new NameValue()];
 
-    headers: Array<NameValue> = [new NameValue()];
-    body: string;
+  headers: Array<NameValue> = [new NameValue()];
+  body: string;
 }

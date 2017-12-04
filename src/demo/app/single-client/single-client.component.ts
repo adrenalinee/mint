@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestView } from '../../../mint-client/src/requestViews';
+import { HttpClientConfig } from '../../../mint-client/src/httpClientConfig';
+// import { RequestView } from '../../../mint-client/src/requestViews';
 
 @Component({
   selector: 'app-single-client',
   template: `
 <div style="padding: 0.5em">
-    <app-http-client [requestView]="requestView" [requestExpansions]="requestExpansions"></app-http-client>
+    <app-http-client></app-http-client>
 </div>
   `
 })
 export class SingleClientComponent implements OnInit {
 
-  requestView: RequestView;
+  // requestView: RequestView;
+
+  httpClientConfig: HttpClientConfig;
 
   constructor() { }
 
   ngOnInit() {
-    this.requestView = new RequestView(null);
-    this.requestView.requestUrl = 'assets/test.json';
+    // this.requestView = new RequestView(null);
+    // this.requestView.requestUrl = 'assets/test.json';
+
+    this.httpClientConfig = new HttpClientConfig();
+
   }
 
 }
