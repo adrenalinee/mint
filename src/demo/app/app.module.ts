@@ -44,13 +44,19 @@ export interface StoreType {
 
 import { MyLibModule } from 'my-lib';
 import { MintClientModule } from 'mint-client';
-// import { MintClientModule } from '../../mintClient/src/mint-client.module';
 import { DetailComponent } from './detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SingleClientComponent } from './single-client/single-client.component';
 import { MultiClientTabComponent } from './multi-client/multi-client-tab.component';
 import { HeaderComponent } from './components/header.component';
-import { MatButtonModule, MatIconModule, MatMenuModule, MatTabsModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatIconModule,
+  MatMenuModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 /**
@@ -80,8 +86,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatToolbarModule,
     MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
     MintClientModule,
     RouterModule.forRoot(
       ROUTES,

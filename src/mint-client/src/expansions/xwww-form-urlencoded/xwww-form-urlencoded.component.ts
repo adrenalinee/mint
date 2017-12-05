@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NameValue } from '../../requestViews';
 
 @Component({
-  selector: 'app-xwww-form-urlencoded',
+  selector: 'mint-xwww-form-urlencoded',
   templateUrl: './xwww-form-urlencoded.component.html',
   styleUrls: ['./xwww-form-urlencoded.component.css']
 })

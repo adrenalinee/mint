@@ -15,7 +15,7 @@ import { HttpClientTabComponent } from '../../../mint-client/src/http-client-tab
     (click)="addClient()"><mat-icon>add</mat-icon></button>
 </span>
 
-<app-http-clients #httpClients></app-http-clients>`
+<mint-http-clients #httpClients></mint-http-clients>`
 })
 export class MultiClientTabComponent {
 

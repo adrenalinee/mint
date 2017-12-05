@@ -13,13 +13,13 @@ import { AppState } from './app.service';
  * Top Level Component
  */
 @Component({
-  selector: 'app-root',
+  selector: 'mint-root',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
     './app.component.css'
   ],
   template: `
-<app-header></app-header>
+<mint-header></mint-header>
 
 <div class="content-container content">
     <router-outlet></router-outlet>

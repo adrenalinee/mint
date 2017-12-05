@@ -1,7 +1,7 @@
 // import { RequestExpander } from 'app/requestExpansion';
 
-import {RequestExpander} from './requestExpansions';
-import {isNull, isUndefined} from 'util';
+import { RequestExpander } from './requestExpansions';
+import { isNull, isUndefined } from 'util';
 
 /**
  * 하나의 request를 화면에 그리기 위한 모든 데이터 저장

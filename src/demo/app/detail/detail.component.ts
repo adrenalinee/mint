@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-detail',
+  selector: 'mint-detail',
   template: `
-   <app-http-client></app-http-client> 
+   <mint-http-client></mint-http-client> 
   `})
 export class DetailComponent {
 

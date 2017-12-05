@@ -8,7 +8,7 @@ import { AppState } from '../app.service';
 
 @Component({
 
-  selector: 'app-home',  // <home></home>
+  selector: 'mint-home',  // <home></home>
   /**
    * Our list of styles in our component. We may add more to compose many styles together.
    */

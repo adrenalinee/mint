@@ -3,7 +3,7 @@ import { BodyViewerComponent } from '../requestExpansions';
 import { RequestView } from '../requestViews';
 
 @Component({
-    selector: 'app-response-body-basic',
+    selector: 'mint-response-body-basic',
     templateUrl: './response-body-basic.component.html',
     styleUrls: ['./response-body-basic.component.css']
 })

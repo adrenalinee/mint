@@ -1,5 +1,5 @@
-import {NameValue} from './requestViews';
-import {RequestExpansion} from './requestExpansions';
+import { NameValue } from './requestViews';
+import { RequestExpansion } from './requestExpansions';
 
 /**
  * http client 의 설정 정보

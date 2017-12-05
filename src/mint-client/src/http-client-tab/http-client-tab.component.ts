@@ -1,13 +1,13 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {MatMenuTrigger, MatSnackBar} from '@angular/material';
-import {RequestView} from '../requestViews';
-import {RequestExpansion} from '../requestExpansions';
-import {DefaultRequestExpansionBuilder} from '../expansions/DefaultRequestExpansionBuilder';
-import {HttpClientConfig} from '../httpClientConfig';
-import {HttpClientsPreference} from '../httpClientsPreference';
+import { Component, OnInit, Input } from '@angular/core';
+import { MatMenuTrigger, MatSnackBar } from '@angular/material';
+import { RequestView } from '../requestViews';
+import { RequestExpansion } from '../requestExpansions';
+import { DefaultRequestExpansionBuilder } from '../expansions/DefaultRequestExpansionBuilder';
+import { HttpClientConfig } from '../httpClientConfig';
+import { HttpClientsPreference } from '../httpClientsPreference';
 
 @Component({
-  selector: 'app-http-clients',
+  selector: 'mint-http-clients',
   templateUrl: './http-client-tab.component.html',
   // providers: [HttpClientExpansionService]
 })

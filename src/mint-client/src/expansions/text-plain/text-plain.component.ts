@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NameValue } from '../../requestViews';
 
 @Component({
-  selector: 'app-text-plain',
+  selector: 'mint-text-plain',
   templateUrl: './text-plain.component.html',
   styleUrls: ['./text-plain.component.css']
 })

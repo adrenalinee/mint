@@ -6,7 +6,7 @@ import { BuilderDialogComponent } from '../builder-dialog/builder-dialog.compone
 import { isUndefined } from 'util';
 
 @Component({
-  selector: 'app-name-values',
+  selector: 'mint-name-values',
   templateUrl: './name-values.component.html',
 })
 export class NameValuesComponent implements OnInit {

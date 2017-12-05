@@ -3,10 +3,10 @@ import { HttpClientConfig } from '../../../mint-client/src/httpClientConfig';
 // import { RequestView } from '../../../mint-client/src/requestViews';
 
 @Component({
-  selector: 'app-single-client',
+  // selector: 'mint-single-client',
   template: `
 <div style="padding: 0.5em">
-    <app-http-client></app-http-client>
+    <mint-http-client></mint-http-client>
 </div>
   `
 })

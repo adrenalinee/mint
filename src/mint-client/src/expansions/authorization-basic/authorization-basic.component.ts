@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-authorization-basic',
+  selector: 'mint-authorization-basic',
   templateUrl: './authorization-basic.component.html',
   styleUrls: ['./authorization-basic.component.css']
 })

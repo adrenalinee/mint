@@ -25,7 +25,7 @@ export class BodyViewerHostDirective implements OnInit {
 }
 
 @Component({
-    selector: 'app-http-response',
+    selector: 'mint-http-response',
     templateUrl: './http-response.component.html',
 })
 export class HttpResponseComponent implements OnInit {
@@ -80,8 +80,11 @@ export class HttpResponseComponent implements OnInit {
                     this.requestView.resDisplayMode = 'html';
                     this.requestView.resContentType = 'text/html';
                 } else if (h.value.startsWith('text/css')) {
-                    this.requestView.resDisplayMode = 'css';
-                    this.requestView.resContentType = 'text/css';
+                  this.requestView.resDisplayMode = 'css';
+                  this.requestView.resContentType = 'text/css';
+                } else if (h.value.startsWith('text/javascript')) {
+                  this.requestView.resDisplayMode = 'javascript';
+                  this.requestView.resContentType = 'text/javascript';
                 } else {
                   this.requestView.resDisplayMode = 'text';
                   this.requestView.resContentType = 'text/plain';

@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import {DefinedRequestInfo, HttpClientConfig} from '../httpClientConfig';
-import {RequestInfo, RequestView} from '../requestViews';
+import { DefinedRequestInfo, HttpClientConfig } from '../httpClientConfig';
+import { RequestInfo, RequestView } from '../requestViews';
 import { RequestExpansion } from '../requestExpansions';
 import { HttpResponseComponent } from '../http-response/http-response.component';
 import { DefaultRequestExpansionBuilder } from '../expansions/DefaultRequestExpansionBuilder';
 
 @Component({
-  selector: 'app-http-client',
+  selector: 'mint-http-client',
   templateUrl: './http-client.component.html'
 })
 export class HttpClientComponent implements OnInit {

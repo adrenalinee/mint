@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { RequestExpander } from '../requestExpansions';
 
 @Component({
-  selector: 'app-builder-dialog',
+  selector: 'mint-builder-dialog',
   templateUrl: './builder-dialog.component.html',
 })
 export class BuilderDialogComponent implements OnInit {

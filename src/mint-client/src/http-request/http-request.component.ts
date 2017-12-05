@@ -8,7 +8,7 @@ import { HttpClientService } from '../http-client.service';
 
 
 @Component({
-  selector: 'app-http-request',
+  selector: 'mint-http-request',
   templateUrl: './http-request.component.html',
   providers: [HttpClientService]
 })

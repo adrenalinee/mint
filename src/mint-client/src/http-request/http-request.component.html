@@ -43,7 +43,7 @@
           </span>
         </ng-template>
         <div style="padding: 0.5em">
-          <app-name-values [nameValues]="requestView.request.queryParams" [nameValueBuilders]="queryParamBuilders"></app-name-values>
+          <mint-name-values [nameValues]="requestView.request.queryParams" [nameValueBuilders]="queryParamBuilders"></mint-name-values>
         </div>
       </mat-tab>
       <mat-tab>
@@ -54,7 +54,7 @@
           </span>
         </ng-template>
         <div style="padding: 0.5em">
-          <app-name-values [nameValues]="requestView.request.urlParams" [nameValueBuilders]="urlParamBuilders"></app-name-values>
+          <mint-name-values [nameValues]="requestView.request.urlParams" [nameValueBuilders]="urlParamBuilders"></mint-name-values>
         </div>
       </mat-tab>
     </mat-tab-group>
@@ -79,7 +79,7 @@
         </span>
       </ng-template>
       <div fxLayout="column" style="padding: 0.5em">
-        <app-request-body [requestView]="requestView" [reqBodyBuilders]="reqBodyBuilders"></app-request-body>
+        <mint-request-body [requestView]="requestView" [reqBodyBuilders]="reqBodyBuilders"></mint-request-body>
       </div>
     </mat-tab>
     <mat-tab>
@@ -90,7 +90,7 @@
         </span>
       </ng-template>
       <div style="padding: 0.5em">
-        <app-name-values [nameValues]="requestView.request.headers" [nameValueBuilders]="headerBuilders"></app-name-values>
+        <mint-name-values [nameValues]="requestView.request.headers" [nameValueBuilders]="headerBuilders"></mint-name-values>
       </div>
     </mat-tab>
   </mat-tab-group>

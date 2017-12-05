@@ -15,7 +15,7 @@ export class SafeHtmlPipe implements PipeTransform {
 }
 
 @Component({
-  selector: 'app-text-html-viewer',
+  selector: 'mint-text-html-viewer',
   templateUrl: './text-html-viewer.component.html',
   styleUrls: ['./text-html-viewer.component.css']
 })
