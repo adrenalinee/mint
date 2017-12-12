@@ -7,15 +7,19 @@ import { HttpClientConfig } from '../httpClientConfig';
 import { HttpClientsPreference } from '../httpClientsPreference';
 
 @Component({
-  selector: 'mint-http-clients',
+  selector: 'mint-http-client-tab',
   templateUrl: './http-client-tab.component.html',
   // providers: [HttpClientExpansionService]
 })
 export class HttpClientTabComponent implements OnInit {
   @Input() preference?: HttpClientsPreference;
 
-  requestViews: Array<RequestView> = new Array();
-  requestExpansions?: Array<RequestExpansion>;
+  // requestViews: Array<RequestView> = new Array();
+
+  // httpClientConfigs: HttpClientConfig[] = [];
+  clientTabs: ClientTab[] = [];
+
+  // requestExpansions?: Array<RequestExpansion>;
 
   /**
    * 탭 생성할때 부여할 번호. 이름을 구분하기 위해 사용
@@ -41,10 +45,10 @@ export class HttpClientTabComponent implements OnInit {
       // this.preference.addAllDefaultStatus();
     }
 
-    if (this.requestExpansions == null) {
-      // this.requestExpansions = new Array(); //TODO 입력받은 값이 없을 경우 기본 확장 셋이 등록되어야 한다.
-      this.requestExpansions = DefaultRequestExpansionBuilder.build();
-    }
+    // if (this.requestExpansions == null) {
+    //   // this.requestExpansions = new Array(); //TODO 입력받은 값이 없을 경우 기본 확장 셋이 등록되어야 한다.
+    //   this.requestExpansions = DefaultRequestExpansionBuilder.build();
+    // }
 
     this.addClient();
 
@@ -100,12 +104,21 @@ export class HttpClientTabComponent implements OnInit {
     }
 
     // TODO config 처리..
+    if (config == null) {
+      config = new HttpClientConfig();
+    }
 
-    const requestView: RequestView = new RequestView('SandBox-' + this.tabCount++);
-    const addedIndex = this.requestViews.push(requestView);
+    const addedIndex = this.clientTabs.push(new ClientTab(config, 'SandBox-' + this.tabCount++));
     if (focus) {
       this.selectedIndex = addedIndex;
     }
+
+
+    // const requestView: RequestView = new RequestView('SandBox-' + this.tabCount++);
+    // const addedIndex = this.requestViews.push(requestView);
+    // if (focus) {
+    //   this.selectedIndex = addedIndex;
+    // }
   }
 
   /**
@@ -113,7 +126,7 @@ export class HttpClientTabComponent implements OnInit {
    * @param index
    */
   closeClient(index: number) {
-    this.requestViews.splice(index, 1);
+    this.clientTabs.splice(index, 1);
   }
 
   /**
@@ -126,19 +139,28 @@ export class HttpClientTabComponent implements OnInit {
       return;
     }
 
-    const requestView: RequestView = this.requestViews[index];
-    const newRequestView = new RequestView('SandBox-' + this.tabCount++);
-    newRequestView.requestUrl = requestView.requestUrl;
+    const clientTab = this.clientTabs[index];
+
+    const httpClientConfig = new HttpClientConfig();
+
+    const newClientTab = new ClientTab(httpClientConfig, 'SandBox-' + this.tabCount++);
     // TODO 필요한 정보를 모두 복사
 
-    this.requestViews.splice(index + 1, 0, newRequestView);
+    this.clientTabs.splice(index + 1, 0, newClientTab);
+
+    // const requestView: RequestView = this.requestViews[index];
+    // const newRequestView = new RequestView('SandBox-' + this.tabCount++);
+    // newRequestView.requestUrl = requestView.requestUrl;
+    // // TODO 필요한 정보를 모두 복사
+    //
+    // this.requestViews.splice(index + 1, 0, newRequestView);
   }
 
   /**
    * 클라이언트 탭 을 추가로 생성할 수 있는지 알려준다.
    */
   private isAvailableAddTab(): boolean {
-    if (this.requestViews.length >= this.preference.maxClientTabCount) {
+    if (this.clientTabs.length >= this.preference.maxClientTabCount) {
       this.snackBar.open('You can not create tabs any more .', null, {
         duration: 3000
       });
@@ -146,5 +168,12 @@ export class HttpClientTabComponent implements OnInit {
     } else {
       return true;
     }
+  }
+}
+
+class ClientTab {
+  constructor(
+    public httpClientConfig: HttpClientConfig,
+    public name: string) {
   }
 }

@@ -6,7 +6,7 @@ import { HttpClientConfig } from '../../../mint-client/src/httpClientConfig';
   // selector: 'mint-single-client',
   template: `
 <div style="padding: 0.5em">
-    <mint-http-client></mint-http-client>
+    <mint-http-client [config]="httpClientConfig"></mint-http-client>
 </div>
   `
 })
@@ -23,7 +23,7 @@ export class SingleClientComponent implements OnInit {
     // this.requestView.requestUrl = 'assets/test.json';
 
     this.httpClientConfig = new HttpClientConfig();
-
+    this.httpClientConfig.definedRequestInfo.url = 'assets/test.json';
   }
 
 }

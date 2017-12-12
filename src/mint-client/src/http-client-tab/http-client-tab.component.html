@@ -1,8 +1,8 @@
 <mat-tab-group dynamicHeight="true" [selectedIndex]="selectedIndex">
-	<mat-tab *ngFor="let requestView of requestViews; index as i">
+	<mat-tab *ngFor="let clientTab of clientTabs; index as i">
 		<ng-template mat-tab-label>
 			<div>
-				{{requestView.title}}
+				{{clientTab.name}}
 				<button mat-icon-button [matMenuTriggerFor]="menu">
 					<mat-icon>more_vert</mat-icon>
 				</button>
@@ -12,7 +12,7 @@
 						<span>Duplicate</span>
 						{{menu.menu}}
 					</button>
-					<button mat-menu-item (click)="closeClient(i)" *ngIf="requestViews.length > 1">
+					<button mat-menu-item (click)="closeClient(i)" *ngIf="clientTabs.length > 1">
 						<mat-icon>close</mat-icon>
 						<span>Close</span>
 					</button>

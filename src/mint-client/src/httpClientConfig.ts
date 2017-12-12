@@ -26,6 +26,13 @@ export class HttpClientConfig {
    * @type {boolean}
    */
   useDefaultExpander: Boolean = true;
+
+  /**
+   * TODO
+   * strict mode 에서는 미리 입력된 정보들을 지울 수 없다
+   * @type {boolean}
+   */
+  useStrictMode: Boolean = false;
 }
 
 /**
