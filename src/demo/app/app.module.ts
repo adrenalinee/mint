@@ -51,6 +51,7 @@ import { MultiClientTabComponent } from './multi-client/multi-client-tab.compone
 import { HeaderComponent } from './components/header.component';
 import {
   MatButtonModule,
+  MatCardModule,
   MatIconModule,
   MatMenuModule,
   MatTabsModule,
@@ -84,6 +85,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     HttpClientModule,
     MyLibModule,
     MatButtonModule,
+    MatCardModule,
     MatIconModule,
     MatMenuModule,
     MatTabsModule,

@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClientConfig } from '../../../mint-client/src/httpClientConfig';
+import {Component, OnInit} from '@angular/core';
+import {HttpClientConfig} from '../../../mint-client/src/httpClientConfig';
+
 // import { RequestView } from '../../../mint-client/src/requestViews';
 
 @Component({
   // selector: 'mint-single-client',
   template: `
-<div style="padding: 0.5em">
-    <mint-http-client [config]="httpClientConfig"></mint-http-client>
-</div>
+      <mat-card class="content">
+          <mint-http-client [config]="httpClientConfig"></mint-http-client>
+      </mat-card>
   `
 })
 export class SingleClientComponent implements OnInit {
@@ -16,7 +17,8 @@ export class SingleClientComponent implements OnInit {
 
   httpClientConfig: HttpClientConfig;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     // this.requestView = new RequestView(null);
