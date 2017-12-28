@@ -7,18 +7,26 @@ import { RequestExpander } from '../requestExpansions';
   templateUrl: './builder-dialog.component.html',
 })
 export class BuilderDialogComponent implements OnInit {
-  expanderView: ExpanderView;
+  // expanderView: ExpanderView;
 
   constructor(
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<BuilderDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any) { }
+    @Inject(MAT_DIALOG_DATA) public expanderView: ExpanderView) { }
 
   ngOnInit() {
-    this.expanderView = new ExpanderView();
-    this.expanderView.title = this.data.title;
-    this.expanderView.expanders = this.data.expanders;
-    this.expanderView.selectedExpander = this.data.selectedExpander;
+    // this.expanderView = new ExpanderView();
+    // this.expanderView.title = this.data.title;
+    // this.expanderView.expanders = this.data.expanders;
+    // this.expanderView.selectedExpander = this.data.selectedExpander;
+
+    if (this.expanderView.expanders != null ||
+      this.expanderView.selectedExpander == null) {
+
+      if (this.expanderView.expanders.length > 0) {
+        this.expanderView.selectedExpander = this.expanderView.expanders[0];
+      }
+    }
   }
 
   openBuilder() {
@@ -52,7 +60,8 @@ export class BuilderDialogComponent implements OnInit {
 }
 
 export class ExpanderView {
-  title: string;
-  selectedExpander: RequestExpander;
-  expanders: Array<RequestExpander>;
+  constructor(
+    public title: string,
+    public selectedExpander: RequestExpander,
+    public expanders: Array<RequestExpander>) { }
 }

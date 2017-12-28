@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { NameValue } from '../requestViews';
 import { RequestExpander } from '../requestExpansions';
-import { BuilderDialogComponent } from '../builder-dialog/builder-dialog.component';
+import { BuilderDialogComponent, ExpanderView } from '../builder-dialog/builder-dialog.component';
 import { isUndefined } from 'util';
 
 @Component({
@@ -14,7 +14,8 @@ export class NameValuesComponent implements OnInit {
 
   @Input() nameValues: Array<NameValue>;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   ngOnInit() {
     if (this.nameValueBuilders == null) {
@@ -45,11 +46,12 @@ export class NameValuesComponent implements OnInit {
 
   openBuilder(selectedIndex: number) {
     const header: NameValue = this.nameValues[selectedIndex];
-      if (header.name == null) {
+    if (header.name == null) {
       // TODO 에러 처리
-        return;
+      return;
     }
 
+    // TODO 좀더 효율적인 검색 방법을 찾아야함
     const headerName: string = header.name.toLowerCase();
 
     const matchedHeaderBuilders: RequestExpander[] =
@@ -57,23 +59,32 @@ export class NameValuesComponent implements OnInit {
         .filter(builder => !isUndefined(builder.get(headerName)))
         .map(builder => <RequestExpander> builder.get(headerName));
 
+    // TODO matchedHeaderBuilders 가 한개 항목밖에 없을 선택 다이얼로그 없이 경우 바로 빌더를 띄운다
+    if (matchedHeaderBuilders.length === 1) {
+
+    }
+
     this.dialog.open(BuilderDialogComponent, {
-      data: {
-        title: header.name + ' Builder Select',
-        expanders: matchedHeaderBuilders,
-        selectedExpander: this.nameValues[selectedIndex].selectedExpander
-      }
+      data: new ExpanderView(
+        header.name + ' Builder Select',
+        this.nameValues[selectedIndex].selectedExpander,
+        matchedHeaderBuilders)
+      // data: {
+      //   title: header.name + ' Builder Select',
+      //   expanders: matchedHeaderBuilders,
+      //   selectedExpander: this.nameValues[selectedIndex].selectedExpander
+      // }
     })
-    .afterClosed()
-    .subscribe(data => {
-      if (data != null) {
-        if (data.value != null) {
-          header.value = data.value;
-          this.nameValues[selectedIndex].selectedExpander = data.selectedExpander;
-          this.addNameValue(selectedIndex);
+      .afterClosed()
+      .subscribe(data => {
+        if (data != null) {
+          if (data.value != null) {
+            header.value = data.value;
+            this.nameValues[selectedIndex].selectedExpander = data.selectedExpander;
+            this.addNameValue(selectedIndex);
+          }
         }
-      }
-    });
+      });
   }
 
   addNameValue(selectedIndex: number) {
@@ -101,7 +112,7 @@ export class NameValuesComponent implements OnInit {
         return true;
       }
     }
-      return false;
+    return false;
   }
 
   /**
@@ -117,7 +128,7 @@ export class NameValuesComponent implements OnInit {
     selectedNameValue.enabled = false;
   }
 
-    enabled(selectedIndex: number) {
+  enabled(selectedIndex: number) {
     const selectedNameValue: NameValue = this.nameValues[selectedIndex];
     selectedNameValue.enabled = true;
   }

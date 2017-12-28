@@ -6,7 +6,7 @@
       fxFlex
       placeholder="{{expanderView.title}} select"
       [(ngModel)]="expanderView.selectedExpander">
-      <mat-option [value]="">No Select</mat-option>
+      <!--<mat-option [value]="">No Select</mat-option>-->
       <mat-option *ngFor="let expander of expanderView.expanders" [value]="expander">{{expander.name}}</mat-option>
     </mat-select>
   </mat-form-field>

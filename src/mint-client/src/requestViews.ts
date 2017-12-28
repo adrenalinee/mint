@@ -98,8 +98,18 @@ export class NameValue {
   FixedValue: boolean;
 
   enableBuilder?: boolean;
+
   selectedExpander?: RequestExpander;
+
+  /**
+   * 닫기 버튼을 표시할지 여부
+   */
   showCloseButton?: boolean;
+
+  /**
+   * 사용중인지 알려줌
+   * @type {boolean}
+   */
   enabled: boolean = true;
 
   constructor(name?: string, value?: string) {
