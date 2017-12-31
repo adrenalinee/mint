@@ -24,27 +24,15 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
+// import { HomeComponent } from './home';
 import { NoContentComponent } from './no-content';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
-// Application wide providers
-const APP_PROVIDERS = [
-  ...APP_RESOLVER_PROVIDERS,
-  AppState
-];
-
-export interface StoreType {
-  state: InternalStateType;
-  restoreInputValues: () => void;
-  disposeOldHosts: () => void;
-}
-
-import { MyLibModule } from 'my-lib';
+// import { MyLibModule } from 'my-lib';
 import { MintClientModule } from 'mint-client';
-import { DetailComponent } from './detail/detail.component';
+// import { DetailComponent } from './detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SingleClientComponent } from './single-client/single-client.component';
 import { MultiClientTabComponent } from './multi-client/multi-client-tab.component';
@@ -58,7 +46,19 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+// Application wide providers
+const APP_PROVIDERS = [
+  ...APP_RESOLVER_PROVIDERS,
+  AppState
+];
+
+export interface StoreType {
+  state: InternalStateType;
+  restoreInputValues: () => void;
+  disposeOldHosts: () => void;
+}
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -67,8 +67,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    HomeComponent,
-    DetailComponent,
+    // HomeComponent,
+    // DetailComponent,
     NoContentComponent,
     HeaderComponent,
     SingleClientComponent,
@@ -83,7 +83,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     FormsModule,
     FlexLayoutModule,
     HttpClientModule,
-    MyLibModule,
+    // MyLibModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
