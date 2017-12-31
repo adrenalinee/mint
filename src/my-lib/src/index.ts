@@ -1,1 +1,0 @@
-export { MyLibModule } from './module';

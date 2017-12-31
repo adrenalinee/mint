@@ -5,7 +5,7 @@ import { ResponseBodyBasicComponent } from '../response-body-basic/response-body
 import { isUndefined } from 'util';
 
 @Directive({
-    selector: '[body-viewer-host]'
+    selector: '[mintBodyViewerHost]'
 })
 export class BodyViewerHostDirective implements OnInit {
     @Input() bodyViewer: RequestExpander;

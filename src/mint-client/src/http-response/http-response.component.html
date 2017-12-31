@@ -50,7 +50,7 @@
         <div
           *ngFor="let resBodyVeiwer of matchedResBodyViewers"
           [hidden]="selectedBodyViewer != resBodyVeiwer">
-          <ng-template body-viewer-host
+          <ng-template mintBodyViewerHost
             [bodyViewer]="resBodyVeiwer" [requestView]="requestView"></ng-template>
         </div>
       </div>
