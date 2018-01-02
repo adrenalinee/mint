@@ -2,7 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NameValue, RequestView} from '../requestViews';
 import {RequestExpander} from '../requestExpansions';
-import {BuilderDialogComponent} from '../builder-dialog/builder-dialog.component';
+import {BuilderDialogComponent, ExpanderView} from '../builder-dialog/builder-dialog.component';
 
 
 @Component({
@@ -97,20 +97,67 @@ export class RequestBodyComponent implements OnInit {
         .filter(builder => builder.has(reqContentType))
         .map(builder => <RequestExpander> builder.get(reqContentType));
 
+    if (matchedBuilders.length === 1) {
+      this.openBuilderDialog(matchedBuilders[0]);
+    } else {
+      this.openBuilderSelectDialog(matchedBuilders);
+    }
+
+    // this.dialog.open(BuilderDialogComponent, {
+    //   data: {
+    //     title: 'Request Body Builder Select',
+    //     expanders: matchedBuilders,
+    //     selectedExpander: this.selectedReqBodyExpander
+    //   }
+    // }).afterClosed()
+    //   .subscribe((data) => {
+    //     if (data != null) {
+    //       if (data.value != null) {
+    //         this.requestView.request.body = data.value;
+    //         this.selectedReqBodyExpander = data.selectedExpander;
+    //       }
+    //     }
+    //   });
+  }
+
+  private openBuilderSelectDialog(matchedBuilders: RequestExpander[]) {
     this.dialog.open(BuilderDialogComponent, {
       data: {
         title: 'Request Body Builder Select',
         expanders: matchedBuilders,
         selectedExpander: this.selectedReqBodyExpander
       }
-    }).afterClosed()
-      .subscribe((data) => {
-        if (data != null) {
-          if (data.value != null) {
-            this.requestView.request.body = data.value;
-            this.selectedReqBodyExpander = data.selectedExpander;
-          }
+    })
+    .afterClosed()
+    .subscribe((data) => {
+      if (data != null) {
+        if (data.value != null) {
+          this.requestView.request.body = data.value;
+          this.selectedReqBodyExpander = data.selectedExpander;
         }
-      });
+      }
+    });
+  }
+
+  private openBuilderDialog(reqBodyExpander: RequestExpander) {
+    if (reqBodyExpander.component == null) {
+      // TODO
+      console.warn('not registered builder component!!');
+      return;
+    }
+
+    this.dialog.open(reqBodyExpander.component, {
+      disableClose: true,
+      data: {
+        viewModel: reqBodyExpander.viewModel
+      }
+    })
+    .afterClosed()
+    .subscribe(data => {
+      if (data != null) {
+        reqBodyExpander.viewModel = data.viewModel;
+        this.requestView.request.body = data.value;
+      }
+    });
   }
 }

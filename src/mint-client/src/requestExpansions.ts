@@ -38,6 +38,9 @@ export class RequestExpansion {
     resBodyVeiwers = new Map<string, RequestExpander>();
 }
 
+/**
+ *
+ */
 export class RequestExpander {
     constructor(
         public name: string,
@@ -46,6 +49,9 @@ export class RequestExpander {
         public viewModel?: any) { }
 }
 
+/**
+ *
+ */
 export interface BodyViewerComponent {
     requestView: RequestView;
 }

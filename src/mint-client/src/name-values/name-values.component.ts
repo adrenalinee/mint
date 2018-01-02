@@ -45,46 +45,70 @@ export class NameValuesComponent implements OnInit {
   }
 
   openBuilder(selectedIndex: number) {
-    const header: NameValue = this.nameValues[selectedIndex];
-    if (header.name == null) {
+    const nameValue: NameValue = this.nameValues[selectedIndex];
+    if (nameValue.name == null) {
       // TODO 에러 처리
       return;
     }
 
     // TODO 좀더 효율적인 검색 방법을 찾아야함
-    const headerName: string = header.name.toLowerCase();
+    const headerName: string = nameValue.name.toLowerCase();
 
-    const matchedHeaderBuilders: RequestExpander[] =
-      this.nameValueBuilders
+    const matchedBuilders: RequestExpander[] = this.nameValueBuilders
         .filter(builder => !isUndefined(builder.get(headerName)))
         .map(builder => <RequestExpander> builder.get(headerName));
 
     // TODO matchedHeaderBuilders 가 한개 항목밖에 없을 선택 다이얼로그 없이 경우 바로 빌더를 띄운다
-    if (matchedHeaderBuilders.length === 1) {
-
+    if (matchedBuilders.length === 1) {
+      this.openBuilderDialog(nameValue, matchedBuilders[0]);
+    } else {
+      this.openBuilderSelectDialog(nameValue, matchedBuilders, selectedIndex);
     }
+  }
 
+  private openBuilderSelectDialog(nameValue: NameValue, matchedBuilders: RequestExpander[], selectedIndex: number) {
     this.dialog.open(BuilderDialogComponent, {
       data: new ExpanderView(
-        header.name + ' Builder Select',
+        nameValue.name + ' Builder Select',
         this.nameValues[selectedIndex].selectedExpander,
-        matchedHeaderBuilders)
-      // data: {
-      //   title: header.name + ' Builder Select',
-      //   expanders: matchedHeaderBuilders,
-      //   selectedExpander: this.nameValues[selectedIndex].selectedExpander
-      // }
+        matchedBuilders)
     })
-      .afterClosed()
-      .subscribe(data => {
-        if (data != null) {
-          if (data.value != null) {
-            header.value = data.value;
-            this.nameValues[selectedIndex].selectedExpander = data.selectedExpander;
-            this.addNameValue(selectedIndex);
-          }
+    .afterClosed()
+    .subscribe(data => {
+      if (data != null) {
+        if (data.value != null) {
+          nameValue.value = data.value;
+          this.nameValues[selectedIndex].selectedExpander = data.selectedExpander;
+          this.addNameValue(selectedIndex);
         }
-      });
+      }
+    });
+  }
+
+  private openBuilderDialog(nameValue: NameValue, nameValueExpander: RequestExpander) {
+    if (nameValueExpander.component == null) {
+      // TODO
+      console.warn('not registered builder component!!');
+      return;
+    }
+
+    this.dialog.open(nameValueExpander.component, {
+      disableClose: true,
+      data: {
+        viewModel: nameValueExpander.viewModel
+      }
+    })
+    .afterClosed()
+    .subscribe(data => {
+      if (data != null) {
+        nameValueExpander.viewModel = data.viewModel;
+        nameValue.value = data.value;
+        // this.dialogRef.close({
+        //   value: data.value,
+        //   selectedExpander: this.expanderView.selectedExpander
+        // });
+      }
+    });
   }
 
   addNameValue(selectedIndex: number) {

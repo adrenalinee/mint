@@ -1,16 +1,12 @@
 <h1 mat-dialog-title>Basic Auth</h1>
 
 <div mat-dialog-content>
-  <div>
-    <mat-input-container>
-      <input mdInput placeholder="Username" [(ngModel)]="basicAuthView.username" />
-    </mat-input-container>
-  </div>
-  <div>
-  <mat-input-container>
-    <input mdInput placeholder="Password" [(ngModel)]="basicAuthView.password" />
-  </mat-input-container>
-  </div>
+    <mat-form-field>
+      <input matInput placeholder="Username" [(ngModel)]="basicAuthView.username" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" [(ngModel)]="basicAuthView.password" />
+    </mat-form-field>
 </div>
 
 <div mat-dialog-actions fxLayoutGap="1em">
