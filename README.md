@@ -3,7 +3,7 @@ Mint 는 사용자가 다양한 용도로 기능을 확장하여 사용될 수 �
 
 # Getting started
 ```
-git clone https://adrenalinee@bitbucket.org/adrenalinee/mint.git
+git clone https://github.com/adrenalinee/mint.git
 cd mint
 npm install
 npm start
@@ -27,6 +27,7 @@ Response
 
 
 # Loadmap
+TODO
 현재 아래와 같은 서브 모듈들을 걔발 진행할 예정입니다.
 
 * mint-core: 가장 핵심 로직이 담긴 web based http client component
