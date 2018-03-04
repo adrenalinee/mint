@@ -124,6 +124,7 @@
       true,
       "element",
       "mint",
+      "app",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

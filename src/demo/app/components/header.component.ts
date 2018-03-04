@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'mint-header',
+  selector: 'app-header',
   template: `
 <mat-toolbar color="primary">
     <span>

@@ -1,8 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {MatDialog} from '@angular/material';
-import {NameValue, RequestView} from '../requestViews';
-import {RequestExpander} from '../requestExpansions';
-import {BuilderDialogComponent, ExpanderView} from '../builder-dialog/builder-dialog.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { NameValue, RequestView } from '../requestViews';
+import { RequestExpander } from '../requestExpansions';
+import { BuilderDialogComponent, ExpanderView } from '../builder-dialog/builder-dialog.component';
 
 
 @Component({
@@ -128,15 +128,15 @@ export class RequestBodyComponent implements OnInit {
         selectedExpander: this.selectedReqBodyExpander
       }
     })
-    .afterClosed()
-    .subscribe((data) => {
-      if (data != null) {
-        if (data.value != null) {
-          this.requestView.request.body = data.value;
-          this.selectedReqBodyExpander = data.selectedExpander;
+      .afterClosed()
+      .subscribe((data) => {
+        if (data != null) {
+          if (data.value != null) {
+            this.requestView.request.body = data.value;
+            this.selectedReqBodyExpander = data.selectedExpander;
+          }
         }
-      }
-    });
+      });
   }
 
   private openBuilderDialog(reqBodyExpander: RequestExpander) {
@@ -152,12 +152,12 @@ export class RequestBodyComponent implements OnInit {
         viewModel: reqBodyExpander.viewModel
       }
     })
-    .afterClosed()
-    .subscribe(data => {
-      if (data != null) {
-        reqBodyExpander.viewModel = data.viewModel;
-        this.requestView.request.body = data.value;
-      }
-    });
+      .afterClosed()
+      .subscribe(data => {
+        if (data != null) {
+          reqBodyExpander.viewModel = data.viewModel;
+          this.requestView.request.body = data.value;
+        }
+      });
   }
 }

@@ -94,7 +94,10 @@ export interface StoreType {
     MintClientModule,
     RouterModule.forRoot(
       ROUTES,
-      {useHash: true, preloadingStrategy: PreloadAllModules})
+      {
+        useHash: true,
+        preloadingStrategy: PreloadAllModules
+      })
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

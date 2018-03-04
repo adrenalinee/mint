@@ -3,7 +3,7 @@ import { MatMenuTrigger, MatSnackBar } from '@angular/material';
 import { RequestView } from '../requestViews';
 import { RequestExpansion } from '../requestExpansions';
 import { DefaultRequestExpansionBuilder } from '../expansions/DefaultRequestExpansionBuilder';
-import { HttpClientConfig } from '../httpClientConfig';
+import { HttpClientConfig, HttpClientConfigs } from '../httpClientConfig';
 import { HttpClientsPreference } from '../httpClientsPreference';
 
 @Component({
@@ -14,12 +14,7 @@ import { HttpClientsPreference } from '../httpClientsPreference';
 export class HttpClientTabComponent implements OnInit {
   @Input() preference?: HttpClientsPreference;
 
-  // requestViews: Array<RequestView> = new Array();
-
-  // httpClientConfigs: HttpClientConfig[] = [];
   clientTabs: ClientTab[] = [];
-
-  // requestExpansions?: Array<RequestExpansion>;
 
   /**
    * 탭 생성할때 부여할 번호. 이름을 구분하기 위해 사용
@@ -139,9 +134,10 @@ export class HttpClientTabComponent implements OnInit {
       return;
     }
 
-    const clientTab = this.clientTabs[index];
+    const clientTab: ClientTab = this.clientTabs[index];
 
-    const httpClientConfig = new HttpClientConfig();
+    // const httpClientConfig = new HttpClientConfig();
+    const httpClientConfig = HttpClientConfigs.duplicate(clientTab.httpClientConfig);
 
     const newClientTab = new ClientTab(httpClientConfig, 'SandBox-' + this.tabCount++);
     // TODO 필요한 정보를 모두 복사

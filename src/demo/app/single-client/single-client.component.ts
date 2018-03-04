@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClientConfig} from '../../../mint-client/src/httpClientConfig';
+import { Component, OnInit } from '@angular/core';
+import { HttpClientConfig, HttpClientConfigs } from '../../../mint-client/src/httpClientConfig';
 
 // import { RequestView } from '../../../mint-client/src/requestViews';
 
@@ -24,8 +24,9 @@ export class SingleClientComponent implements OnInit {
     // this.requestView = new RequestView(null);
     // this.requestView.requestUrl = 'assets/test.json';
 
-    this.httpClientConfig = new HttpClientConfig();
-    this.httpClientConfig.definedRequestInfo.url = 'assets/test.json';
+    this.httpClientConfig = HttpClientConfigs.createDefault();
+    // this.httpClientConfig.definedRequestInfo.method = 'POST';
+    this.httpClientConfig.definedRequestInfo.url = 'http://localhost:3000/assets/test.json';
   }
 
 }

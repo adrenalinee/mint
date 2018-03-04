@@ -20,7 +20,9 @@
 			</div>
 		</ng-template>
 		<div fxLayout="column" style="padding: 0.5em">
-			<mint-http-client [config]="clientTabs[i].httpClientConfig"></mint-http-client>
+			<mint-http-client
+				[config]="clientTabs[i].httpClientConfig"
+				[requestView]="clientTabs[i].requestView"></mint-http-client>
 		</div>
 	</mat-tab>
 </mat-tab-group>

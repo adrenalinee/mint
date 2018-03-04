@@ -30,7 +30,6 @@ export class HttpRequestComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.httpMethods = [
       'GET',
       'POST',
@@ -134,7 +133,6 @@ export class HttpRequestComponent implements OnInit {
   }
 
   findParams($event: KeyboardEvent) {
-
     const url: string = this.requestView.requestUrl;
     if (url == null || '' === url) {
       return;

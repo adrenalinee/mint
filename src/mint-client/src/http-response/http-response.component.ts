@@ -16,8 +16,8 @@ export class BodyViewerHostDirective implements OnInit {
     }
 
     ngOnInit() {
-        const componentFactory =
-            this.componentFactoryResolver.resolveComponentFactory(this.bodyViewer.component);
+        const componentFactory = this.componentFactoryResolver
+          .resolveComponentFactory(this.bodyViewer.component);
 
         const componentRef = this.viewContainerRef.createComponent(componentFactory);
         (<BodyViewerComponent> componentRef.instance).requestView = this.requestView;

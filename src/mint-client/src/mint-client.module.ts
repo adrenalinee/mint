@@ -83,7 +83,6 @@ import { RequestBodyComponent } from './request-body/request-body.component';
     HttpModule,
     AceEditorModule,
     MatButtonModule,
-    // MatButtonToggleModule,
     MatCheckboxModule,
     MatDialogModule,
     MatIconModule,
@@ -92,7 +91,6 @@ import { RequestBodyComponent } from './request-body/request-body.component';
     MatProgressBarModule,
     MatRadioModule,
     MatSelectModule,
-    // MatSidenavModule,
     MatSnackBarModule,
     MatTabsModule,
     MatTooltipModule

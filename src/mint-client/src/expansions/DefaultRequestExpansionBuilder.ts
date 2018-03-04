@@ -9,16 +9,13 @@ import { TextHtmlViewerComponent } from './text-html-viewer/text-html-viewer.com
  */
 export class DefaultRequestExpansionBuilder {
 
-    static build(): Array<RequestExpansion> {
-        const requestExpansion = new RequestExpansion();
-        requestExpansion.headerBuilders.set('authorization', new RequestExpander('Basic Auth', AuthorizationBasicComponent));
-        requestExpansion.bodyBuilders.set('application/x-www-form-urlencoded', new RequestExpander('Default', XWwwFormUrlencodedComponent));
-        requestExpansion.bodyBuilders.set('text/plain', new RequestExpander('Default', TextPlainComponent));
-        requestExpansion.resBodyVeiwers.set('text/html', new RequestExpander('HTML View', TextHtmlViewerComponent));
+  static build(): RequestExpansion {
+    const requestExpansion = new RequestExpansion();
+    requestExpansion.headerBuilders.set('authorization', new RequestExpander('Basic Auth', AuthorizationBasicComponent));
+    requestExpansion.bodyBuilders.set('application/x-www-form-urlencoded', new RequestExpander('Default', XWwwFormUrlencodedComponent));
+    requestExpansion.bodyBuilders.set('text/plain', new RequestExpander('Request data builder', TextPlainComponent));
+    requestExpansion.resBodyVeiwers.set('text/html', new RequestExpander('HTML view', TextHtmlViewerComponent));
 
-        const requestExpansions = new Array<RequestExpansion>();
-        requestExpansions.push(requestExpansion);
-
-        return requestExpansions;
-    }
+    return requestExpansion;
+  }
 }

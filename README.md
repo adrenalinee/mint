@@ -28,7 +28,7 @@ Response
 
 # Loadmap
 TODO
-현재 아래와 같은 서브 모듈들을 걔발 진행할 예정입니다.
+현재 아래와 같은 서브 모듈들을 개발 진행할 예정입니다.
 
 * mint-core: 가장 핵심 로직이 담긴 web based http client component
 * mint-clients: http cloent 를 동시에 여러개를 보여줄 수 있는 컨테이너 탭 component

@@ -6,20 +6,23 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import {AppState} from './app.service';
+import { AppState } from './app.service';
+import { HttpClientConfigs } from '../../mint-client/src/httpClientConfig';
+import { RequestExpander, RequestExpansion } from '../../mint-client/src/requestExpansions';
+import { AuthorizationBasicComponent } from '../../mint-client/src/expansions/authorization-basic/authorization-basic.component';
 
 /**
  * App Component
  * Top Level Component
  */
 @Component({
-  selector: 'mint-root',
+  selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
     './app.component.css'
   ],
   template: `
-      <mint-header></mint-header>
+      <app-header></app-header>
 
       <div class="content-container">
           <router-outlet></router-outlet>
@@ -31,6 +34,11 @@ export class AppComponent implements OnInit {
   public url = 'https://twitter.com/AngularClass';
 
   constructor(public appState: AppState) {
+    HttpClientConfigs.requestExpansion = () => {
+      const requestExpansion = new RequestExpansion();
+      requestExpansion.queryParamBuilders.set('test', new RequestExpander('test param', AuthorizationBasicComponent));
+      return requestExpansion;
+    };
   }
 
   public ngOnInit() {
