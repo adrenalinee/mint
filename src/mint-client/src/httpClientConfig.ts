@@ -1,5 +1,6 @@
 import { NameValue } from './requestViews';
 import { RequestExpansion } from './requestExpansions';
+import { DefaultRequestExpansionBuilder } from './expansions/DefaultRequestExpansionBuilder';
 
 /**
  * http client 의 설정 정보
@@ -29,7 +30,7 @@ export class HttpClientConfig {
 
   /**
    * TODO
-   * strict mode 에서는 미리 입력된 정보들을 지울 수 없다
+   * strict mode 에서는 미리 입력된 정보들(DefinedRequestInfo)을 지울 수 없다
    * @type {boolean}
    */
   useStrictMode: Boolean = false;
@@ -54,6 +55,8 @@ export class DefinedRequestInfo {
  *
  */
 export class HttpClientConfigs {
+  private static defulatConfig?: HttpClientConfig;
+
   // private static requestExpansions: Array<RequestExpansion>;
   private static useDefaultExpander: Boolean = true;
 
@@ -64,21 +67,28 @@ export class HttpClientConfigs {
   }
 
   static requestExpansion = (): RequestExpansion => {
-    return new RequestExpansion();
+    // return new RequestExpansion();
+    return DefaultRequestExpansionBuilder.build();
   }
 
   // static create(): HttpClientConfig {
   //   return new HttpClientConfig();
   // }
 
-  static createDefault(): HttpClientConfig {
-    const config = new HttpClientConfig();
-    config.useDefaultExpander = HttpClientConfigs.useDefaultExpander;
-    config.useStrictMode = HttpClientConfigs.useStrictMode;
-    config.definedRequestInfo = HttpClientConfigs.definedRequestInfo();
-    config.requestExpansions.push(HttpClientConfigs.requestExpansion());
+  static setDefault(config: HttpClientConfig) {
+    this.defulatConfig = config;
+  }
 
-    return config;
+  static createDefault(): HttpClientConfig {
+    return this.duplicate(this.defulatConfig);
+
+    // const config = new HttpClientConfig();
+    // config.useDefaultExpander = HttpClientConfigs.useDefaultExpander;
+    // config.useStrictMode = HttpClientConfigs.useStrictMode;
+    // config.definedRequestInfo = HttpClientConfigs.definedRequestInfo();
+    // config.requestExpansions.push(HttpClientConfigs.requestExpansion());
+    //
+    // return config;
   }
 
   static duplicate(source: HttpClientConfig): HttpClientConfig {

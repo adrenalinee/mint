@@ -3,7 +3,6 @@ import { DefinedRequestInfo, HttpClientConfig, HttpClientConfigs } from '../http
 import { RequestInfo, RequestView } from '../requestViews';
 import { RequestExpansion } from '../requestExpansions';
 import { HttpResponseComponent } from '../http-response/http-response.component';
-import { DefaultRequestExpansionBuilder } from '../expansions/DefaultRequestExpansionBuilder';
 
 @Component({
   selector: 'mint-http-client',
@@ -34,7 +33,7 @@ export class HttpClientComponent implements OnInit {
     //   this.requestExpansions = [];
     // }
     if (this.config.useDefaultExpander) {
-        this.requestExpansions.push(DefaultRequestExpansionBuilder.build());
+      this.config.requestExpansions.forEach(requestExpansion => this.requestExpansions.push(requestExpansion));
     }
 
     const definedRequestInfo: DefinedRequestInfo = this.config.definedRequestInfo;
