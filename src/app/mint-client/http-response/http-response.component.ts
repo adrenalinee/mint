@@ -49,6 +49,8 @@ export class HttpResponseComponent implements OnInit {
     ngOnInit() {
         this.basicResBodyViewer = new RequestExpander('Basic', ResponseBodyBasicComponent);
 
+        console.log(this.requestExpansions);
+
         this.resBodyVeiwers = this.requestExpansions.map(requestExpansion => requestExpansion.resBodyVeiwers);
     }
 

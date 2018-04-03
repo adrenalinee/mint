@@ -43,7 +43,7 @@ requestExpansions: Array<RequestExpansion> = [];
  */
 export class DefinedRequestInfo {
   url: string;
-  method: string = 'GET';
+  method = 'GET';
   queryParams: Array<NameValue> = [new NameValue()];
   urlParams: Array<NameValue> = [new NameValue()];
 
@@ -92,13 +92,14 @@ export class HttpClientConfigs {
   }
 
   static duplicate(source: HttpClientConfig): HttpClientConfig {
-    const json = JSON.stringify(source);
-    console.log(json);
-    const config: HttpClientConfig = JSON.parse(json);
-    console.log(config.definedRequestInfo.url);
+    // const json = JSON.stringify(source);
+    // console.log(json);
+    // const config: HttpClientConfig = JSON.parse(json);
+    // console.log(config.definedRequestInfo.url);
+    //
+    // return config;
 
-    return config;
-
+    return null;
 
     // const config = new HttpClientConfig();
     // config.useStrictMode = source.useStrictMode;
