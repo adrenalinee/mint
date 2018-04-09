@@ -89,7 +89,7 @@ export class HttpRequestComponent implements OnInit {
       fianlRequestUrl = url;
     } else {
       let uri: string = url;
-      let queryString: string = '';
+      let queryString = '';
 
       const qIndex = url.indexOf('?');
 
@@ -146,7 +146,7 @@ export class HttpRequestComponent implements OnInit {
     }
 
     let uri: string = url;
-    let queryString: string = '';
+    let queryString = '';
 
     const qIndex = url.indexOf('?');
 

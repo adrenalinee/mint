@@ -6,6 +6,8 @@ import { DefaultRequestExpansionBuilder } from './expansions/DefaultRequestExpan
  * http client 의 설정 정보
  */
 export class HttpClientConfig {
+  static defulatConfig: HttpClientConfig;
+
   // /**
   //  * clinet 의 이름. tab 에서 tab의 이름이 된다.
   //  */
@@ -14,7 +16,7 @@ export class HttpClientConfig {
   /**
    * 기본적으로 추가되어 있는 확장. RequestExpansion 설명 참조
    */
-requestExpansions: Array<RequestExpansion> = [];
+  requestExpansions: Array<RequestExpansion> = [];
 
   /**
    * 기본 지정된 요청 정보. DefinedRequestInfo 설명 참조
@@ -34,6 +36,18 @@ requestExpansions: Array<RequestExpansion> = [];
    * @type {boolean}
    */
   useStrictMode: Boolean = false;
+
+  // static getDefault(): HttpClientConfig {
+  //   return clone(HttpClientConfig.defulatConfig);
+  // }
+
+  static get defulatConfig(): HttpClientConfig {
+      return new HttpClientConfig();
+  }
+
+  static duplicate(config: HttpClientConfig): HttpClientConfig {
+    return clone(config);
+  }
 }
 
 
@@ -51,69 +65,76 @@ export class DefinedRequestInfo {
   body: string;
 }
 
-/**
- *
- */
-export class HttpClientConfigs {
-  private static defulatConfig?: HttpClientConfig;
+// /**
+//  *
+//  */
+// export class HttpClientConfigs {
+//   private  static defulatConfig: HttpClientConfig = new HttpClientConfig();
+//
+//   private static useDefaultExpander: Boolean = true;
+//
+//   private static useStrictMode: Boolean = false;
+//
+//   // private static definedRequestInfo = (): DefinedRequestInfo => {
+//   //   return new DefinedRequestInfo();
+//   // }
+//
+//   // static requestExpansion = (): RequestExpansion => {
+//   //   // return new RequestExpansion();
+//   //   return DefaultRequestExpansionBuilder.build();
+//   // }
+//
+//   // static create(): HttpClientConfig {
+//   //   return new HttpClientConfig();
+//   // }
+//
+//   static setDefault(config: HttpClientConfig) {
+//     // this.defulatConfig = config;
+//   }
+//
+//   static createDefault(): HttpClientConfig {
+//     return clone(HttpClientConfigs.defulatConfig);
+//
+//     // return this.duplicate(this.defulatConfig);
+//
+//     // const config = new HttpClientConfig();
+//     // config.useDefaultExpander = HttpClientConfigs.useDefaultExpander;
+//     // config.useStrictMode = HttpClientConfigs.useStrictMode;
+//     // config.definedRequestInfo = HttpClientConfigs.definedRequestInfo();
+//     // config.requestExpansions.push(HttpClientConfigs.requestExpansion());
+//     //
+//     // return config;
+//   }
+//
+//   static duplicate(source: HttpClientConfig): HttpClientConfig {
+//     // const json = JSON.stringify(source);
+//     // console.log(json);
+//     // const config: HttpClientConfig = JSON.parse(json);
+//     // console.log(config.definedRequestInfo.url);
+//     //
+//     // return config;
+//
+//     return clone(source);
+//
+//     // const config = new HttpClientConfig();
+//     // config.useStrictMode = source.useStrictMode;
+//     // config.useDefaultExpander = source.useDefaultExpander;
+//     //
+//     // if (source.definedRequestInfo != null) {
+//     //   const requestInfo = new DefinedRequestInfo();
+//     //   requestInfo.method = source.definedRequestInfo.method;
+//     //   requestInfo.body = source.definedRequestInfo.body;
+//     //   // TODO
+//     //   config.definedRequestInfo = requestInfo;
+//     // }
+//     //
+//     // return config;
+//   }
+//
+// }
 
-  // private static requestExpansions: Array<RequestExpansion>;
-  private static useDefaultExpander: Boolean = true;
-
-  private static useStrictMode: Boolean = false;
-
-  private static definedRequestInfo = (): DefinedRequestInfo => {
-    return new DefinedRequestInfo();
-  }
-
-  static requestExpansion = (): RequestExpansion => {
-    // return new RequestExpansion();
-    return DefaultRequestExpansionBuilder.build();
-  }
-
-  // static create(): HttpClientConfig {
-  //   return new HttpClientConfig();
-  // }
-
-  static setDefault(config: HttpClientConfig) {
-    this.defulatConfig = config;
-  }
-
-  static createDefault(): HttpClientConfig {
-    return this.duplicate(this.defulatConfig);
-
-    // const config = new HttpClientConfig();
-    // config.useDefaultExpander = HttpClientConfigs.useDefaultExpander;
-    // config.useStrictMode = HttpClientConfigs.useStrictMode;
-    // config.definedRequestInfo = HttpClientConfigs.definedRequestInfo();
-    // config.requestExpansions.push(HttpClientConfigs.requestExpansion());
-    //
-    // return config;
-  }
-
-  static duplicate(source: HttpClientConfig): HttpClientConfig {
-    // const json = JSON.stringify(source);
-    // console.log(json);
-    // const config: HttpClientConfig = JSON.parse(json);
-    // console.log(config.definedRequestInfo.url);
-    //
-    // return config;
-
-    return null;
-
-    // const config = new HttpClientConfig();
-    // config.useStrictMode = source.useStrictMode;
-    // config.useDefaultExpander = source.useDefaultExpander;
-    //
-    // if (source.definedRequestInfo != null) {
-    //   const requestInfo = new DefinedRequestInfo();
-    //   requestInfo.method = source.definedRequestInfo.method;
-    //   requestInfo.body = source.definedRequestInfo.body;
-    //   // TODO
-    //   config.definedRequestInfo = requestInfo;
-    // }
-    //
-    // return config;
-  }
-
+function clone<T>(instance: T): T {
+  const copy = new (instance.constructor as { new (): T })();
+  Object.assign(copy, instance);
+  return copy;
 }

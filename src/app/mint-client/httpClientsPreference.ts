@@ -5,7 +5,7 @@ export class HttpClientsPreference {
   /**
    * 허용하는 탭의 최대 갯수
    */
-  maxClientTabCount: number = 10;
+  maxClientTabCount = 10;
 
   // definedMethods: Array<string> = new Array();
 

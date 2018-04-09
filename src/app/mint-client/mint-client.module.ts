@@ -39,7 +39,7 @@ import { TextHtmlViewerComponent } from './expansions/text-html-viewer/text-html
 import { TextPlainComponent } from './expansions/text-plain/text-plain.component';
 import { XWwwFormUrlencodedComponent } from './expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 import { HttpClientComponent } from './http-client/http-client.component';
-import { HttpClientTabComponent } from './http-client-tab/http-client-tab.component';
+// import { HttpClientTabComponent } from '../mint-client-tab/http-client-tab.component';
 import { BuilderDialogComponent } from './builder-dialog/builder-dialog.component';
 import { ResponseBodyBasicComponent } from './response-body-basic/response-body-basic.component';
 import { HttpRequestComponent } from './http-request/http-request.component';
@@ -59,7 +59,7 @@ import { RequestBodyComponent } from './request-body/request-body.component';
     RequestBodyComponent,
     TextPlainComponent,
     HttpClientComponent,
-    HttpClientTabComponent,
+    // HttpClientTabComponent,
     ResponseBodyBasicComponent,
     BodyViewerHostDirective,
     TextHtmlViewerComponent,
@@ -75,7 +75,7 @@ import { RequestBodyComponent } from './request-body/request-body.component';
   ],
   exports: [
     HttpClientComponent,
-    HttpClientTabComponent
+    // HttpClientTabComponent
   ],
   imports: [
     CommonModule,

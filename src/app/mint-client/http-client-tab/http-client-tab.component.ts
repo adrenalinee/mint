@@ -3,7 +3,7 @@ import { MatMenuTrigger, MatSnackBar } from '@angular/material';
 import { RequestView } from '../requestViews';
 import { RequestExpansion } from '../requestExpansions';
 import { DefaultRequestExpansionBuilder } from '../expansions/DefaultRequestExpansionBuilder';
-import { HttpClientConfig, HttpClientConfigs } from '../httpClientConfig';
+import { HttpClientConfig } from '../httpClientConfig';
 import { HttpClientsPreference } from '../httpClientsPreference';
 
 @Component({
@@ -137,7 +137,7 @@ export class HttpClientTabComponent implements OnInit {
     const clientTab: ClientTab = this.clientTabs[index];
 
     // const httpClientConfig = new HttpClientConfig();
-    const httpClientConfig = HttpClientConfigs.duplicate(clientTab.httpClientConfig);
+    const httpClientConfig = HttpClientConfig.duplicate(clientTab.httpClientConfig);
 
     const newClientTab = new ClientTab(httpClientConfig, 'SandBox-' + this.tabCount++);
     // TODO 필요한 정보를 모두 복사
