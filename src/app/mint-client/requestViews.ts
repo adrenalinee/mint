@@ -108,9 +108,8 @@ export class NameValue {
 
   /**
    * 사용중인지 알려줌
-   * @type {boolean}
    */
-  enabled: boolean = true;
+  enabled = true;
 
   constructor(name?: string, value?: string) {
     this.name = isUndefined(name) ? '' : <string> name;

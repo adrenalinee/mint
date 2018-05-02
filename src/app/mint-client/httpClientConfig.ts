@@ -1,12 +1,12 @@
 import { NameValue } from './requestViews';
 import { RequestExpansion } from './requestExpansions';
-import { DefaultRequestExpansionBuilder } from './expansions/DefaultRequestExpansionBuilder';
+// import { DefaultRequestExpansionBuilder } from './expansions/DefaultRequestExpansionBuilder';
 
 /**
  * http client 의 설정 정보
  */
 export class HttpClientConfig {
-  static defulatConfig: HttpClientConfig;
+  private static defulatConfig: HttpClientConfig = new HttpClientConfig();
 
   // /**
   //  * clinet 의 이름. tab 에서 tab의 이름이 된다.
@@ -26,14 +26,12 @@ export class HttpClientConfig {
   /**
    * DefaultRequestExpansionBuilder 를 통해 기본적인 http request 정보를 생성할 수 있는
    * expander 를 추가한다.
-   * @type {boolean}
    */
   useDefaultExpander: Boolean = true;
 
   /**
    * TODO
    * strict mode 에서는 미리 입력된 정보들(DefinedRequestInfo)을 지울 수 없다
-   * @type {boolean}
    */
   useStrictMode: Boolean = false;
 
@@ -41,8 +39,12 @@ export class HttpClientConfig {
   //   return clone(HttpClientConfig.defulatConfig);
   // }
 
-  static get defulatConfig(): HttpClientConfig {
-      return new HttpClientConfig();
+  // static get defulatConfig(): HttpClientConfig {
+  //     return new HttpClientConfig();
+  // }
+
+  static getDefaultConfig(): HttpClientConfig {
+    return HttpClientConfig.defulatConfig;
   }
 
   static duplicate(config: HttpClientConfig): HttpClientConfig {
@@ -133,7 +135,7 @@ export class DefinedRequestInfo {
 //
 // }
 
-function clone<T>(instance: T): T {
+export function clone<T>(instance: T): T {
   const copy = new (instance.constructor as { new (): T })();
   Object.assign(copy, instance);
   return copy;

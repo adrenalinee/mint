@@ -1,7 +1,17 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-  "lib": {
-    "entryFile": "public_api.ts"
-  }
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "angular",
+    "core-js",
+    "ng2-ace-editor",
+    "npm",
+    "rxjs",
+    "zone.js"
+  ]
 }
 

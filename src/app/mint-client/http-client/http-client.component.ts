@@ -24,7 +24,7 @@ export class HttpClientComponent implements OnInit {
   ngOnInit() {
     console.log('HttpClientComponent ngOnInit');
     if (this.config == null) {
-      this.config = HttpClientConfig.defulatConfig;
+      this.config = HttpClientConfig.getDefaultConfig();
     }
 
     if (this.requestView == null) {
