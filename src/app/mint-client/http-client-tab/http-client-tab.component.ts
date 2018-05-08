@@ -100,7 +100,7 @@ export class HttpClientTabComponent implements OnInit {
 
     // TODO config 처리..
     if (config == null) {
-      config = new HttpClientConfig();
+      config = HttpClientConfig.getDefaultConfig();
     }
 
     const addedIndex = this.clientTabs.push(new ClientTab(config, 'SandBox-' + this.tabCount++));

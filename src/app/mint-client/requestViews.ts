@@ -10,6 +10,7 @@ import { isNull, isUndefined } from 'util';
 export class RequestView {
   /**
    * 해당 요청의 탭에 표시될 이름
+   * //TODO client tab 쪽에서 처리해야 함
    */
   title?: string;
 
@@ -24,14 +25,14 @@ export class RequestView {
    * 요청 해더에 입력한 content type을 이 필드에 따로 저장한다.
    * 요청 바디의 syntax highlight 처리를 위해 이값을 따로 관리함
    */
-  reqContentType: string = '';
+  reqContentType = '';
 
   /**
    * 요청 바디를 화면에 표시할 방법
    * ace editor 에 의존적인 값으로 요청 바디를 그리는 ace editor의 syntax highlight를 지정하는 값이다.
    * 참조: https://ace.c9.io/build/kitchen-sink.html (모드 종류)
    */
-  reqDisplayMode: string = 'text';
+  reqDisplayMode = 'text';
 
   /**
    *
@@ -48,10 +49,10 @@ export class RequestView {
   requestStatus: RequestStatus = RequestStatus.PreSend;
 
   // isOpenResponse: boolean;
-  resContentType: string = ''; // response viewer 를 결정
-  resDisplayMode: string = 'text'; // syntax high light 를 결정
-  resBodyWrap: boolean = true;
-  resBodyFormat: boolean = false;
+  resContentType = ''; // response viewer 를 결정
+  resDisplayMode = 'text'; // syntax high light 를 결정
+  resBodyWrap = true;
+  resBodyFormat = false;
 
   request: RequestInfo = new RequestInfo();
   response: ResponseInfo = new ResponseInfo();
@@ -63,7 +64,7 @@ export class RequestView {
 
 export class RequestInfo {
   url: string;
-  method: string = 'GET';
+  method = 'GET';
   queryParams = [new NameValue()];
   urlParams = [new NameValue()];
 

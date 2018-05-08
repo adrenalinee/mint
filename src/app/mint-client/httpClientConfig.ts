@@ -6,7 +6,7 @@ import { RequestExpansion } from './requestExpansions';
  * http client 의 설정 정보
  */
 export class HttpClientConfig {
-  private static defulatConfig: HttpClientConfig = new HttpClientConfig();
+  private static defulatConfig: HttpClientConfig;
 
   // /**
   //  * clinet 의 이름. tab 에서 tab의 이름이 된다.
@@ -43,7 +43,12 @@ export class HttpClientConfig {
   //     return new HttpClientConfig();
   // }
 
+  // private constructor() {}
+
   static getDefaultConfig(): HttpClientConfig {
+    if (HttpClientConfig.defulatConfig == null) {
+      HttpClientConfig.defulatConfig = new HttpClientConfig();
+    }
     return HttpClientConfig.defulatConfig;
   }
 
@@ -60,11 +65,13 @@ export class HttpClientConfig {
 export class DefinedRequestInfo {
   url: string;
   method = 'GET';
-  queryParams: Array<NameValue> = [new NameValue()];
-  urlParams: Array<NameValue> = [new NameValue()];
+  queryParams = [new NameValue()];
+  urlParams = [new NameValue()];
 
-  headers: Array<NameValue> = [new NameValue()];
+  headers = [new NameValue()];
   body: string;
+
+  constructor() {}
 }
 
 // /**
