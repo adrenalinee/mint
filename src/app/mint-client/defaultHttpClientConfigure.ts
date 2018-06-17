@@ -9,7 +9,7 @@ import {TextPlainComponent} from './expansions/text-plain/text-plain.component';
 /**
  *
  */
-export class DefaultHttpClientConfig extends HttpClientConfigurer {
+export class DefaultHttpClientConfigere extends HttpClientConfigurer {
 
   addRequestExpansion(expansionRegistry: ClientExpansionRegistry) {
     expansionRegistry.addHeaderBuilder('authorization', new RequestExpander('Basic Auth', AuthorizationBasicComponent));
@@ -22,7 +22,7 @@ export class DefaultHttpClientConfig extends HttpClientConfigurer {
   }
 
   configureAvailableHttpMethod(httpMethodRegistry: HttpMethodRegistry) {
-    httpMethodRegistry.addHttpMethod()
+    // httpMethodRegistry.addHttpMethod();
   }
 
 }

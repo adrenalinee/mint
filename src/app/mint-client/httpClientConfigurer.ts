@@ -13,6 +13,9 @@ export abstract class HttpClientConfigurer {
   abstract configureAvailableHttpMethod(httpMethodRegistry: HttpMethodRegistry);
 }
 
+export interface ClientExpansionRegister {
+  (expansionRegistry: ClientExpansionRegistry);
+}
 
 /**
  *
@@ -70,5 +73,15 @@ export class ClientExpansionRegistry {
   addResBodyVeiwer(contentType: string, expansion: RequestExpander) {
     this.resBodyVeiwers.set(contentType, expansion);
     return this;
+  }
+
+  createRequestExpansion(): RequestExpansion {
+    const requestExpansion = new RequestExpansion();
+    requestExpansion.headerBuilders = this.headerBuilders;
+    requestExpansion.urlParamBuilders = this.urlParamBuilders;
+    requestExpansion.bodyBuilders = this.reqBodyBuilders;
+    requestExpansion.resBodyVeiwers = this.resBodyVeiwers;
+
+    return requestExpansion;
   }
 }

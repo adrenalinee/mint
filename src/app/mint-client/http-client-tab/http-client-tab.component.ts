@@ -3,7 +3,7 @@ import { MatMenuTrigger, MatSnackBar } from '@angular/material';
 import { RequestView } from '../requestViews';
 import { RequestExpansion } from '../requestExpansions';
 import { DefaultRequestExpansionBuilder } from '../expansions/DefaultRequestExpansionBuilder';
-import { HttpClientConfig } from '../httpClientConfig';
+import {HttpClientConfig, HttpClientConfigs} from '../httpClientConfig';
 import { HttpClientsPreference } from '../httpClientsPreference';
 
 @Component({
@@ -100,7 +100,8 @@ export class HttpClientTabComponent implements OnInit {
 
     // TODO config 처리..
     if (config == null) {
-      config = HttpClientConfig.getDefaultConfig();
+      // config = HttpClientConfig.getDefaultConfig();
+      config = HttpClientConfigs.createDefaultConfig();
     }
 
     const addedIndex = this.clientTabs.push(new ClientTab(config, 'SandBox-' + this.tabCount++));

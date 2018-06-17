@@ -1,27 +1,32 @@
 import { NameValue } from './requestViews';
-import { RequestExpansion } from './requestExpansions';
-// import { DefaultRequestExpansionBuilder } from './expansions/DefaultRequestExpansionBuilder';
+import {RequestExpander} from './requestExpansions';
+import {ClientExpansionRegister, ClientExpansionRegistry} from './httpClientConfigurer';
+import {TextHtmlViewerComponent} from './expansions/text-html-viewer/text-html-viewer.component';
+import {AuthorizationBasicComponent} from './expansions/authorization-basic/authorization-basic.component';
+import {TextPlainComponent} from './expansions/text-plain/text-plain.component';
+import {XWwwFormUrlencodedComponent} from './expansions/xwww-form-urlencoded/xwww-form-urlencoded.component';
 
 /**
  * http client 의 설정 정보
  */
 export class HttpClientConfig {
-  private static defulatConfig: HttpClientConfig;
+  // private static defulatConfig: HttpClientConfig;
 
   // /**
   //  * clinet 의 이름. tab 에서 tab의 이름이 된다.
   //  */
   // private name: string;
 
-  /**
-   * 기본적으로 추가되어 있는 확장. RequestExpansion 설명 참조
-   */
-  requestExpansions: Array<RequestExpansion> = [];
+  // requestExpansions: Array<RequestExpansion> = [];
+
+  // requestExpansion: RequestExpansion;
+
+  expansionRegister: ClientExpansionRegister;
 
   /**
    * 기본 지정된 요청 정보. DefinedRequestInfo 설명 참조
    */
-  definedRequestInfo: DefinedRequestInfo = new DefinedRequestInfo();
+  definedRequestInfo: DefinedRequestInfo; // = new DefinedRequestInfo();
 
   /**
    * DefaultRequestExpansionBuilder 를 통해 기본적인 http request 정보를 생성할 수 있는
@@ -29,28 +34,12 @@ export class HttpClientConfig {
    */
   useDefaultExpander: Boolean = true;
 
+  useBasicExpander: Boolean = true;
+
   /**
-   * TODO
    * strict mode 에서는 미리 입력된 정보들(DefinedRequestInfo)을 지울 수 없다
    */
   useStrictMode: Boolean = false;
-
-  // static getDefault(): HttpClientConfig {
-  //   return clone(HttpClientConfig.defulatConfig);
-  // }
-
-  // static get defulatConfig(): HttpClientConfig {
-  //     return new HttpClientConfig();
-  // }
-
-  // private constructor() {}
-
-  static getDefaultConfig(): HttpClientConfig {
-    if (HttpClientConfig.defulatConfig == null) {
-      HttpClientConfig.defulatConfig = new HttpClientConfig();
-    }
-    return HttpClientConfig.defulatConfig;
-  }
 
   static duplicate(config: HttpClientConfig): HttpClientConfig {
     return clone(config);
@@ -72,6 +61,43 @@ export class DefinedRequestInfo {
   body: string;
 
   constructor() {}
+}
+
+export class HttpClientConfigs {
+  // private static configurer = new Array<HttpClientConfigurer>();
+  private static expansionRegisters = new Array<ClientExpansionRegister>();
+
+  private static useDefaultExpander: Boolean = true;
+
+  private static useBasicExpander: Boolean = true;
+
+  private static useStrictMode: Boolean = false;
+
+  static createDefaultConfig(): HttpClientConfig {
+    const config = new HttpClientConfig();
+    config.useDefaultExpander = HttpClientConfigs.useDefaultExpander;
+    config.useBasicExpander = HttpClientConfigs.useBasicExpander;
+    config.useStrictMode = HttpClientConfigs.useStrictMode;
+
+    return config;
+  }
+
+  static addDefaultExpansionRegister(expansionRegister: ClientExpansionRegister) {
+    HttpClientConfigs.expansionRegisters.push(expansionRegister);
+  }
+
+  static applyDefaultExpansions(expansionRegistry: ClientExpansionRegistry) {
+    HttpClientConfigs.expansionRegisters.forEach(expansionRegister => {
+      expansionRegister(expansionRegistry);
+    });
+  }
+
+  static applyBasicExpander(expansionRegistry: ClientExpansionRegistry) {
+    expansionRegistry.addHeaderBuilder('authorization', new RequestExpander('Basic Auth', AuthorizationBasicComponent));
+    expansionRegistry.addReqBodyBuilder('application/x-www-form-urlencoded', new RequestExpander('Default', XWwwFormUrlencodedComponent));
+    expansionRegistry.addReqBodyBuilder('text/plain', new RequestExpander('Request data builder', TextPlainComponent));
+    expansionRegistry.addResBodyVeiwer('text/html', new RequestExpander('HTML view', TextHtmlViewerComponent));
+  }
 }
 
 // /**

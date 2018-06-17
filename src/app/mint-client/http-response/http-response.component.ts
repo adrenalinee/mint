@@ -32,7 +32,8 @@ export class HttpResponseComponent implements OnInit {
     RequestStatus: any = RequestStatus;
 
     @Input() requestView: RequestView;
-    @Input() requestExpansions: RequestExpansion[];
+    // @Input() requestExpansions: RequestExpansion[];
+  @Input() requestExpansion: RequestExpansion;
 
     @ViewChild(BodyViewerHostDirective)
     bodyViewerHost: BodyViewerHostDirective;
@@ -48,8 +49,6 @@ export class HttpResponseComponent implements OnInit {
 
     ngOnInit() {
         this.basicResBodyViewer = new RequestExpander('Basic', ResponseBodyBasicComponent);
-
-        console.log(this.requestExpansions);
 
         this.resBodyVeiwers = this.requestExpansions.map(requestExpansion => requestExpansion.resBodyVeiwers);
     }

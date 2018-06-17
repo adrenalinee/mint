@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { DefinedRequestInfo, HttpClientConfig } from '../httpClientConfig';
-import { RequestInfo, RequestView } from '../requestViews';
-import { RequestExpansion } from '../requestExpansions';
-import { HttpResponseComponent } from '../http-response/http-response.component';
-import {DefaultRequestExpansionBuilder} from '../expansions/DefaultRequestExpansionBuilder';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {DefinedRequestInfo, HttpClientConfig, HttpClientConfigs} from '../httpClientConfig';
+import {RequestInfo, RequestView} from '../requestViews';
+import {RequestExpansion} from '../requestExpansions';
+import {HttpResponseComponent} from '../http-response/http-response.component';
+import {ClientExpansionRegistry} from '../httpClientConfigurer';
 
 @Component({
   selector: 'mint-http-client',
@@ -16,29 +16,38 @@ export class HttpClientComponent implements OnInit {
   // requestView: RequestView = new RequestView();
 
   // requestExpansions: RequestExpansion[];
+  requestExpansion: RequestExpansion;
 
   @ViewChild(HttpResponseComponent) httpResponse: HttpResponseComponent;
 
   constructor() { }
 
   ngOnInit() {
-    console.log('HttpClientComponent ngOnInit');
     if (this.config == null) {
-      this.config = HttpClientConfig.getDefaultConfig();
+      this.config = HttpClientConfigs.createDefaultConfig();
     }
+
+    const expansionRegistry = new ClientExpansionRegistry();
+    if (this.config.useDefaultExpander) {
+      HttpClientConfigs.applyDefaultExpansions(expansionRegistry);
+    }
+
+    if (this.config.useBasicExpander) {
+      HttpClientConfigs.applyBasicExpander(expansionRegistry);
+    }
+
+    if (this.config.expansionRegister !== undefined) {
+      this.config.expansionRegister(expansionRegistry);
+    }
+
+    this.requestExpansion = expansionRegistry.createRequestExpansion();
 
     if (this.requestView == null) {
       this.requestView = new RequestView();
     }
 
-    // this.requestExpansions = this.config.requestExpansions;
-    if (this.config.requestExpansions == null) {
-      this.config.requestExpansions = [];
-    }
-
-    if (this.config.useDefaultExpander) {
-      this.config.requestExpansions.push(DefaultRequestExpansionBuilder.build());
-      // this.config.requestExpansions.forEach(requestExpansion => this.requestExpansions.push(requestExpansion));
+    if (this.config.definedRequestInfo === undefined) {
+      this.config.definedRequestInfo = new DefinedRequestInfo();
     }
 
     const definedRequestInfo: DefinedRequestInfo = this.config.definedRequestInfo;
