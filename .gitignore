@@ -46,3 +46,7 @@ Thumbs.db
 /.ng_pkg_build
 package-lock.json
 dist.tgz
+
+/.awcache
+/.idea
+/.settings
