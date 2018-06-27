@@ -38,22 +38,22 @@ export class ClientExpansionRegistry {
   /**
    * header 값을 생성해주는 빌더
    */
-  private readonly headerBuilders = new Map<string, RequestExpander>();
+  private readonly headerBuilders = new Map<string, RequestExpander[]>();
 
   /**
    * url parameter 값을 생성해주는 빌더
    */
-  private readonly urlParamBuilders = new Map<string, RequestExpander>();
+  private readonly urlParamBuilders = new Map<string, RequestExpander[]>();
 
   /**
    * request body 를 생성해주는 빌더
    */
-  private readonly reqBodyBuilders = new Map<string, RequestExpander>();
+  private readonly reqBodyBuilders = new Map<string, RequestExpander[]>();
 
   /**
    * response body 를 보여주는 뷰어
    */
-  private readonly resBodyVeiwers = new Map<string, RequestExpander>();
+  private readonly resBodyVeiwers = new Map<string, RequestExpander[]>();
 
   addHeaderBuilder(headerName: string, expansion: RequestExpander) {
     this.headerBuilders.set(headerName, expansion);
