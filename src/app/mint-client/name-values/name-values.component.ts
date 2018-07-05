@@ -10,16 +10,16 @@ import { isUndefined } from 'util';
   templateUrl: './name-values.component.html',
 })
 export class NameValuesComponent implements OnInit {
-  @Input() nameValueBuilders: Map<string, RequestExpander>[];
+  @Input() nameValueBuilders: Map<string, RequestExpander[]>;
 
-  @Input() nameValues: Array<NameValue>;
+  @Input() nameValues: NameValue[];
 
   constructor(private dialog: MatDialog) {
   }
 
   ngOnInit() {
     if (this.nameValueBuilders == null) {
-      this.nameValueBuilders = new Array<Map<string, RequestExpander>>();
+      this.nameValueBuilders = new Map<string, RequestExpander[]>();
     }
 
     if (this.nameValues == null) {
@@ -28,16 +28,17 @@ export class NameValuesComponent implements OnInit {
   }
 
   findBuilder(selectedIndex: number) {
-    const header: NameValue = this.nameValues[selectedIndex];
-    if (header.name == null) {
+    const nameValue: NameValue = this.nameValues[selectedIndex];
+    if (nameValue.name == null) {
       // TODO 에러 처리
       return;
     }
 
-    const headerName: string = header.name.toLowerCase();
+    const name: string = nameValue.name.toLowerCase();
 
-    const headerBuilder = this.nameValueBuilders.find(b => !isUndefined(b.get(headerName)));
-    if (headerBuilder != null) {
+    // const valueBuilder = this.nameValueBuilders.find(b => !isUndefined(b.get(name)));
+    const valueBuilder = this.nameValueBuilders.get(name);
+    if (valueBuilder != null) {
       this.nameValues[selectedIndex].enableBuilder = true;
     } else {
       this.nameValues[selectedIndex].enableBuilder = false;
@@ -52,11 +53,13 @@ export class NameValuesComponent implements OnInit {
     }
 
     // TODO 좀더 효율적인 검색 방법을 찾아야함
-    const headerName: string = nameValue.name.toLowerCase();
+    const selectedName: string = nameValue.name.toLowerCase();
 
-    const matchedBuilders: RequestExpander[] = this.nameValueBuilders
-        .filter(builder => !isUndefined(builder.get(headerName)))
-        .map(builder => <RequestExpander> builder.get(headerName));
+    // const matchedBuilders: RequestExpander[] = this.nameValueBuilders
+    //     .filter(builder => !isUndefined(builder.get(headerName)))
+    //     .map(builder => <RequestExpander> builder.get(headerName));
+    const matchedBuilders = this.nameValueBuilders.get(selectedName);
+
 
     // TODO matchedHeaderBuilders 가 한개 항목밖에 없을 선택 다이얼로그 없이 경우 바로 빌더를 띄운다
     if (matchedBuilders.length === 1) {

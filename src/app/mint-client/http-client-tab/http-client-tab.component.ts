@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatMenuTrigger, MatSnackBar } from '@angular/material';
 import { RequestView } from '../requestViews';
 import { RequestExpansion } from '../requestExpansions';
-import { DefaultRequestExpansionBuilder } from '../expansions/DefaultRequestExpansionBuilder';
 import {HttpClientConfig, HttpClientConfigs} from '../httpClientConfig';
 import { HttpClientsPreference } from '../httpClientsPreference';
 

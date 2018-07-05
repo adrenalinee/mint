@@ -38,7 +38,7 @@ export class HttpResponseComponent implements OnInit {
     @ViewChild(BodyViewerHostDirective)
     bodyViewerHost: BodyViewerHostDirective;
 
-    resBodyVeiwers: Map<string, RequestExpander>[];
+    resBodyVeiwers: Map<string, RequestExpander[]>;
     matchedResBodyViewers: RequestExpander[];
 
     basicResBodyViewer: RequestExpander;
@@ -50,7 +50,8 @@ export class HttpResponseComponent implements OnInit {
     ngOnInit() {
         this.basicResBodyViewer = new RequestExpander('Basic', ResponseBodyBasicComponent);
 
-        this.resBodyVeiwers = this.requestExpansions.map(requestExpansion => requestExpansion.resBodyVeiwers);
+        // this.resBodyVeiwers = this.requestExpansions.map(requestExpansion => requestExpansion.resBodyVeiwers);
+        this.resBodyVeiwers = this.requestExpansion.resBodyVeiwers;
     }
 
     /**
@@ -93,10 +94,11 @@ export class HttpResponseComponent implements OnInit {
             });
 
         const contentType: string = this.requestView.resContentType;
-        this.matchedResBodyViewers = this.resBodyVeiwers
-            .filter(viewer => !isUndefined(viewer.get(contentType)))
-            .map(viewer => <RequestExpander> viewer.get(contentType));
+        // this.matchedResBodyViewers = this.resBodyVeiwers
+        //     .filter(viewer => !isUndefined(viewer.get(contentType)))
+        //     .map(viewer => <RequestExpander> viewer.get(contentType));
 
+        this.matchedResBodyViewers = this.resBodyVeiwers.get(contentType);
 
         // if (this.matchedResBodyViewers == null) {
         //   this.matchedResBodyViewers = new Array();
