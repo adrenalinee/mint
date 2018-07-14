@@ -63,6 +63,9 @@ export class DefinedRequestInfo {
   constructor() {}
 }
 
+/**
+ * 
+ */
 export class HttpClientConfigs {
   // private static configurer = new Array<HttpClientConfigurer>();
   private static expansionRegisters = new Array<ClientExpansionRegister>();
@@ -99,74 +102,6 @@ export class HttpClientConfigs {
     expansionRegistry.addResBodyVeiwer('text/html', new RequestExpander('HTML view', TextHtmlViewerComponent));
   }
 }
-
-// /**
-//  *
-//  */
-// export class HttpClientConfigs {
-//   private  static defulatConfig: HttpClientConfig = new HttpClientConfig();
-//
-//   private static useDefaultExpander: Boolean = true;
-//
-//   private static useStrictMode: Boolean = false;
-//
-//   // private static definedRequestInfo = (): DefinedRequestInfo => {
-//   //   return new DefinedRequestInfo();
-//   // }
-//
-//   // static requestExpansion = (): RequestExpansion => {
-//   //   // return new RequestExpansion();
-//   //   return DefaultRequestExpansionBuilder.build();
-//   // }
-//
-//   // static create(): HttpClientConfig {
-//   //   return new HttpClientConfig();
-//   // }
-//
-//   static setDefault(config: HttpClientConfig) {
-//     // this.defulatConfig = config;
-//   }
-//
-//   static createDefault(): HttpClientConfig {
-//     return clone(HttpClientConfigs.defulatConfig);
-//
-//     // return this.duplicate(this.defulatConfig);
-//
-//     // const config = new HttpClientConfig();
-//     // config.useDefaultExpander = HttpClientConfigs.useDefaultExpander;
-//     // config.useStrictMode = HttpClientConfigs.useStrictMode;
-//     // config.definedRequestInfo = HttpClientConfigs.definedRequestInfo();
-//     // config.requestExpansions.push(HttpClientConfigs.requestExpansion());
-//     //
-//     // return config;
-//   }
-//
-//   static duplicate(source: HttpClientConfig): HttpClientConfig {
-//     // const json = JSON.stringify(source);
-//     // console.log(json);
-//     // const config: HttpClientConfig = JSON.parse(json);
-//     // console.log(config.definedRequestInfo.url);
-//     //
-//     // return config;
-//
-//     return clone(source);
-//
-//     // const config = new HttpClientConfig();
-//     // config.useStrictMode = source.useStrictMode;
-//     // config.useDefaultExpander = source.useDefaultExpander;
-//     //
-//     // if (source.definedRequestInfo != null) {
-//     //   const requestInfo = new DefinedRequestInfo();
-//     //   requestInfo.method = source.definedRequestInfo.method;
-//     //   requestInfo.body = source.definedRequestInfo.body;
-//     //   // TODO
-//     //   config.definedRequestInfo = requestInfo;
-//     // }
-//     //
-//     // return config;
-//   }
-//
-// }
 
 export function clone<T>(instance: T): T {
   const copy = new (instance.constructor as { new (): T })();
