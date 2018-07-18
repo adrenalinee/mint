@@ -40,16 +40,16 @@ export class HttpClientComponent implements OnInit {
 
     this.requestExpansion = expansionRegistry.createRequestExpansion();
 
-    if (this.requestView == null) {
-      this.requestView = new RequestView();
-    }
-
     if (this.config.definedRequestInfo === undefined) {
       this.config.definedRequestInfo = new DefinedRequestInfo();
     }
 
     const definedRequestInfo: DefinedRequestInfo = this.config.definedRequestInfo;
-    this.requestView.requestUrl = definedRequestInfo.url;
+
+    if (this.requestView == null) {
+      this.requestView = new RequestView();
+      this.requestView.requestUrl = definedRequestInfo.url;
+    }
 
     const request: RequestInfo = this.requestView.request;
     request.method = definedRequestInfo.method;

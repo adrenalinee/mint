@@ -84,14 +84,14 @@ export class HttpClientTabComponent implements OnInit {
       return;
     }
 
-    const singleClient: SingleClient = this.clients[index];
+    const singleClient = this.clients[index];
     const httpClientConfig = HttpClientConfig.duplicate(singleClient.httpClientConfig);
     const requestModel = singleClient.requestModel.duplicate();
 
-    const newClientTab = new SingleClient(httpClientConfig, requestModel, singleClient.name + ' copy');
+    const newClient = new SingleClient(httpClientConfig, requestModel, singleClient.name + ' copy');
     // TODO 필요한 정보를 모두 복사
 
-    this.clients.splice(index + 1, 0, newClientTab);
+    this.clients.splice(index + 1, 0, newClient);
   }
 
   /**
