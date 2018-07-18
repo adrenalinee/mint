@@ -13,12 +13,10 @@ export class HttpClientComponent implements OnInit {
   @Input() config?: HttpClientConfig;
 
   @Input() requestView?: RequestView;
-  // requestView: RequestView = new RequestView();
-
-  // requestExpansions: RequestExpansion[];
-  requestExpansion: RequestExpansion;
 
   @ViewChild(HttpResponseComponent) httpResponse: HttpResponseComponent;
+  
+  requestExpansion: RequestExpansion;
 
   constructor() { }
 

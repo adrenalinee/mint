@@ -42,7 +42,25 @@ export class HttpClientConfig {
   useStrictMode: Boolean = false;
 
   static duplicate(config: HttpClientConfig): HttpClientConfig {
-    return clone(config);
+    const copiedClientConfig = new HttpClientConfig();
+    copiedClientConfig.useDefaultExpander = config.useDefaultExpander;
+    copiedClientConfig.useBasicExpander = config.useBasicExpander;
+    copiedClientConfig.useStrictMode = config.useStrictMode;
+
+    if (config.definedRequestInfo != null) {
+      const definedRequestInfo = new DefinedRequestInfo();
+      definedRequestInfo.body = config.definedRequestInfo.body;
+      definedRequestInfo.method = config.definedRequestInfo.method;
+      definedRequestInfo.url = config.definedRequestInfo.url;
+
+      copiedClientConfig.definedRequestInfo = definedRequestInfo;
+    }
+
+
+
+    return copiedClientConfig;
+
+    // return clone(config);
   }
 }
 
