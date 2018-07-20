@@ -10,7 +10,8 @@ import {
   MatDialogModule,
   MatIconModule,
   MatInputModule,
-  MatMenuModule, MatProgressBarModule,
+  MatMenuModule,
+  MatProgressBarModule,
   MatRadioModule,
   MatSelectModule,
   MatSnackBarModule,
@@ -46,6 +47,7 @@ import { HttpRequestComponent } from './http-request/http-request.component';
 import { BodyViewerHostDirective, HttpResponseComponent } from './http-response/http-response.component';
 import { NameValuesComponent } from './name-values/name-values.component';
 import { RequestBodyComponent } from './request-body/request-body.component';
+import { HttpClientTabComponent } from './http-client-tab/http-client-tab.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,7 @@ import { RequestBodyComponent } from './request-body/request-body.component';
     RequestBodyComponent,
     TextPlainComponent,
     HttpClientComponent,
-    // HttpClientTabComponent,
+    HttpClientTabComponent,
     ResponseBodyBasicComponent,
     BodyViewerHostDirective,
     TextHtmlViewerComponent,
@@ -75,7 +77,7 @@ import { RequestBodyComponent } from './request-body/request-body.component';
   ],
   exports: [
     HttpClientComponent,
-    // HttpClientTabComponent
+    HttpClientTabComponent
   ],
   imports: [
     CommonModule,

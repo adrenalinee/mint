@@ -15,27 +15,27 @@ export class RequestExpansion {
     /**
      * header 값을 생성해주는 빌더
      */
-    headerBuilders = new Map<string, RequestExpander>();
+    headerBuilders = new Map<string, RequestExpander[]>();
 
     /**
      * url parameter 값을 생성해주는 빌더
      */
-    urlParamBuilders = new Map<string, RequestExpander>();
+    urlParamBuilders = new Map<string, RequestExpander[]>();
 
     /**
      * query string paramter 값을 생성해주는 빌더
      */
-    queryParamBuilders = new Map<string, RequestExpander>();
+    queryParamBuilders = new Map<string, RequestExpander[]>();
 
     /**
      * request body 를 생성해주는 빌더
      */
-    bodyBuilders = new Map<string, RequestExpander>();
+    bodyBuilders = new Map<string, RequestExpander[]>();
 
     /**
      * response body 를 보여주는 뷰어
      */
-    resBodyVeiwers = new Map<string, RequestExpander>();
+    resBodyVeiwers = new Map<string, RequestExpander[]>();
 }
 
 /**

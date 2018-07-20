@@ -16,13 +16,18 @@ export class HttpRequestComponent implements OnInit {
   RequestStatus: any = RequestStatus;
 
   @Input() requestView: RequestView;
-  @Input() requestExpansions: Array<RequestExpansion>;
+  // @Input() requestExpansions: Array<RequestExpansion>;
+  @Input() requestExpansion: RequestExpansion;
   @Input() httpResponse: HttpResponseComponent;
 
-  headerBuilders: Array<Map<string, RequestExpander>>;
-  urlParamBuilders: Array<Map<string, RequestExpander>>;
-  queryParamBuilders: Array<Map<string, RequestExpander>>;
-  reqBodyBuilders: Array<Map<string, RequestExpander>>;
+  // headerBuilders: Array<Map<string, RequestExpander>>;
+  // urlParamBuilders: Array<Map<string, RequestExpander>>;
+  // queryParamBuilders: Array<Map<string, RequestExpander>>;
+  // reqBodyBuilders: Array<Map<string, RequestExpander>>;
+  headerBuilders: Map<string, RequestExpander[]>;
+  urlParamBuilders: Map<string, RequestExpander[]>;
+  queryParamBuilders: Map<string, RequestExpander[]>;
+  reqBodyBuilders: Map<string, RequestExpander[]>;
 
   httpMethods: string[];
 
@@ -39,11 +44,17 @@ export class HttpRequestComponent implements OnInit {
       'HEAD',
       'OPTIONS'
     ];
-    if (this.requestExpansions != null) {
-      this.headerBuilders = this.requestExpansions.map(re => re.headerBuilders);
-      this.urlParamBuilders = this.requestExpansions.map(re => re.urlParamBuilders);
-      this.queryParamBuilders = this.requestExpansions.map(re => re.queryParamBuilders);
-      this.reqBodyBuilders = this.requestExpansions.map(re => re.bodyBuilders);
+    // if (this.requestExpansions != null) {
+    //   this.headerBuilders = this.requestExpansions.map(re => re.headerBuilders);
+    //   this.urlParamBuilders = this.requestExpansions.map(re => re.urlParamBuilders);
+    //   this.queryParamBuilders = this.requestExpansions.map(re => re.queryParamBuilders);
+    //   this.reqBodyBuilders = this.requestExpansions.map(re => re.bodyBuilders);
+    // }
+    if (this.requestExpansion != null) {
+      this.headerBuilders = this.requestExpansion.headerBuilders;
+      this.urlParamBuilders = this.requestExpansion.urlParamBuilders;
+      this.queryParamBuilders = this.requestExpansion.queryParamBuilders;
+      this.reqBodyBuilders = this.requestExpansion.bodyBuilders;
     }
   }
 

@@ -38,14 +38,22 @@ export class RequestView {
    *
    */
   isOpenParams: boolean;
+
+  /**
+   * 
+   */
   paramTebSelectedIndex: number;
 
   reqBodyWrap: boolean;
+
+  /**
+   * 
+   */
   enableReqBodyBuilder: boolean;
-  // reqSyntaxHightlight: boolean = false;
-  // headerBuilders: Array<NameValue> = new Array();
 
-
+  /**
+   * 
+   */
   requestStatus: RequestStatus = RequestStatus.PreSend;
 
   // isOpenResponse: boolean;
@@ -60,6 +68,26 @@ export class RequestView {
   constructor(title?: string) {
     this.title = title;
   }
+
+  duplicate(): RequestView {
+    const requestModel = new RequestView();
+    requestModel.title = this.title;
+    requestModel.requestUrl = this.requestUrl;
+    requestModel.reqContentType = this.reqContentType;
+    requestModel.reqDisplayMode = this.reqDisplayMode;
+    requestModel.isOpenParams = this.isOpenParams;
+    requestModel.paramTebSelectedIndex = this.paramTebSelectedIndex;
+    requestModel.reqBodyWrap = this.reqBodyWrap;
+    requestModel.enableReqBodyBuilder = this.enableReqBodyBuilder;
+    requestModel.resContentType = this.resContentType;
+    requestModel.resDisplayMode = this.resDisplayMode;
+    requestModel.resBodyWrap = this.resBodyWrap;
+    requestModel.resBodyFormat = this.resBodyFormat;
+
+    requestModel.request = this.request.duplicate();
+
+    return requestModel;
+  }
 }
 
 export class RequestInfo {
@@ -70,6 +98,12 @@ export class RequestInfo {
 
   headers: Array<NameValue> = [new NameValue()];
   body: string;
+
+  duplicate(): RequestInfo {
+    const request = new RequestInfo();
+
+    return request;
+  }
 }
 
 export class ResponseInfo {

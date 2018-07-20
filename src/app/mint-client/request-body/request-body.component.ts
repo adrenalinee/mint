@@ -13,7 +13,7 @@ import { BuilderDialogComponent, ExpanderView } from '../builder-dialog/builder-
 export class RequestBodyComponent implements OnInit {
   @Input() requestView: RequestView;
 
-  @Input() reqBodyBuilders: Array<Map<string, RequestExpander>>;
+  @Input() reqBodyBuilders: Map<string, RequestExpander[]>;
 
   contentTypes: string[];
   displayModes: string[];
@@ -69,7 +69,8 @@ export class RequestBodyComponent implements OnInit {
       this.requestView.reqDisplayMode = 'text';
     }
 
-    const reqBodyBuilder = this.reqBodyBuilders.find(builder => builder.has(reqContentType));
+    // const reqBodyBuilder = this.reqBodyBuilders.find(builder => builder.has(reqContentType));
+    const reqBodyBuilder = this.reqBodyBuilders.get(reqContentType);
     if (reqBodyBuilder !== undefined) {
       this.requestView.enableReqBodyBuilder = true;
     } else {
@@ -92,10 +93,12 @@ export class RequestBodyComponent implements OnInit {
   openReqBodyBuilder() {
     const reqContentType: string = this.requestView.reqContentType;
 
-    const matchedBuilders: RequestExpander[] =
-      this.reqBodyBuilders
-        .filter(builder => builder.has(reqContentType))
-        .map(builder => <RequestExpander> builder.get(reqContentType));
+    // const matchedBuilders: RequestExpander[] =
+    //   this.reqBodyBuilders
+    //     .filter(builder => builder.has(reqContentType))
+    //     .map(builder => <RequestExpander> builder.get(reqContentType));
+
+    const matchedBuilders: RequestExpander[] = this.reqBodyBuilders.get(reqContentType);
 
     if (matchedBuilders.length === 1) {
       this.openBuilderDialog(matchedBuilders[0]);

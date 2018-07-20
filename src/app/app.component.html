@@ -1,3 +1,11 @@
-<!--<mint-http-client></mint-http-client>-->
+<mat-card>
+    <mint-http-client-tab #httpClientTab>
+    </mint-http-client-tab>
+</mat-card>
+<span class="app-action">
+    <button mat-fab (click)="addClient()">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>
 
-<mint-http-client [config]="config"></mint-http-client>
+<!-- <mint-http-client [config]="config"></mint-http-client> -->

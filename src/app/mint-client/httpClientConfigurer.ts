@@ -56,22 +56,38 @@ export class ClientExpansionRegistry {
   private readonly resBodyVeiwers = new Map<string, RequestExpander[]>();
 
   addHeaderBuilder(headerName: string, expansion: RequestExpander) {
-    this.headerBuilders.set(headerName, expansion);
+    if (!this.headerBuilders.has(headerName)) {
+      this.headerBuilders.set(headerName, new Array<RequestExpander>());
+    }
+
+    this.headerBuilders.get(headerName).push(expansion);
     return this;
   }
 
   addUrlParamBuilder(paramName: string, expansion: RequestExpander) {
-    this.urlParamBuilders.set(paramName, expansion);
+    if (!this.urlParamBuilders.has(paramName)) {
+      this.urlParamBuilders.set(paramName, new Array<RequestExpander>());
+    }
+
+    this.urlParamBuilders.get(paramName).push(expansion);
     return this;
   }
 
   addReqBodyBuilder(contentType: string, expansion: RequestExpander) {
-    this.reqBodyBuilders.set(contentType, expansion);
+    if (!this.reqBodyBuilders.has(contentType)) {
+      this.reqBodyBuilders.set(contentType, new Array<RequestExpander>());
+    }
+
+    this.reqBodyBuilders.get(contentType).push(expansion);
     return this;
   }
 
   addResBodyVeiwer(contentType: string, expansion: RequestExpander) {
-    this.resBodyVeiwers.set(contentType, expansion);
+    if (!this.resBodyVeiwers.has(contentType)) {
+      this.resBodyVeiwers.set(contentType, new Array<RequestExpander>());
+    }
+
+    this.resBodyVeiwers.get(contentType).push(expansion);
     return this;
   }
 

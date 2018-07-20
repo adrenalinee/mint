@@ -6,7 +6,9 @@ import 'rxjs/add/operator/map';
 import { NameValue, ResponseInfo } from './requestViews';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
-
+/**
+ * 
+ */
 @Injectable()
 export class HttpClientService {
 
@@ -45,24 +47,4 @@ export class HttpClientService {
             return responseInfo;
         }); // .catch(this.handleError);
     }
-
-    // handleError(response: Response): Observable<ResponseInfo> {
-    //     console.log(response);
-    //     if (response.type === ResponseType.Error) {
-    //         return Observable.throw('error!');
-    //     }
-    //
-    //     const responseInfo: ResponseInfo = new ResponseInfo();
-    //     responseInfo.status = response.status;
-    //     responseInfo.statusText = response.statusText;
-    //
-    //     if (response.headers != null) {
-    //         response.headers.keys().forEach(k => {
-    //             responseInfo.headers.push(NameValue.new(k, response.headers.get(k)));
-    //         });
-    //     }
-    //
-    //     responseInfo.body = response.text() === '' ? null : response.text();
-    //     return Observable.of(responseInfo);
-    // }
 }
