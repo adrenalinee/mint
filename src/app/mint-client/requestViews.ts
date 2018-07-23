@@ -40,19 +40,19 @@ export class RequestView {
   isOpenParams: boolean;
 
   /**
-   * 
+   *
    */
   paramTebSelectedIndex: number;
 
   reqBodyWrap: boolean;
 
   /**
-   * 
+   *
    */
   enableReqBodyBuilder: boolean;
 
   /**
-   * 
+   *
    */
   requestStatus: RequestStatus = RequestStatus.PreSend;
 
@@ -101,6 +101,11 @@ export class RequestInfo {
 
   duplicate(): RequestInfo {
     const request = new RequestInfo();
+    request.url = this.url;
+    request.method = this.method;
+    request.body = this.body;
+
+
 
     return request;
   }
@@ -115,6 +120,9 @@ export class ResponseInfo {
   body: string | null;
 }
 
+/**
+ *
+ */
 export class NameValue {
   name: string;
 
@@ -160,6 +168,12 @@ export class NameValue {
 
   isEmpty(): boolean {
     return this.name === '' && this.value === '';
+  }
+
+  duplicate(): NameValue {
+    const nameValue = new NameValue();
+
+    return nameValue;
   }
 }
 

@@ -1,13 +1,15 @@
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 // import { Response, ResponseType } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
+
 
 import { NameValue, ResponseInfo } from './requestViews';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 /**
- * 
+ *
  */
 @Injectable()
 export class HttpClientService {
@@ -29,7 +31,7 @@ export class HttpClientService {
             headers: headers,
             observe: 'response',
             responseType: 'text'
-        }).map((response: HttpResponse<Object>) => {
+        }).pipe(map((response: HttpResponse<Object>) => {
             console.log(response);
             const elapseTime = new Date().getTime() - startTime;
             const responseInfo: ResponseInfo = new ResponseInfo();
@@ -45,6 +47,6 @@ export class HttpClientService {
             responseInfo.body = response.body == null ? null : <string> response.body;
 
             return responseInfo;
-        }); // .catch(this.handleError);
+        })); // .catch(this.handleError);
     }
 }

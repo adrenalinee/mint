@@ -23,7 +23,7 @@ export class HttpClientTabComponent implements OnInit {
   /**
    * 현재 포커스를 가지고 있는 탭의 인덱스
    */
-  private selectedIndex = 0;
+  selectedIndex = 0;
 
   constructor(private snackBar: MatSnackBar) {
   }
@@ -58,7 +58,7 @@ export class HttpClientTabComponent implements OnInit {
     if (config == null) {
       config = HttpClientConfigs.createDefaultConfig();
     }
-    
+
     const requestModel = new RequestView();
     const addedIndex = this.clients.push(new SingleClient(config, requestModel, 'SandBox-' + this.tabCount++));
     if (focus) {

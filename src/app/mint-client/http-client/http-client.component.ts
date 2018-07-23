@@ -15,7 +15,7 @@ export class HttpClientComponent implements OnInit {
   @Input() requestView?: RequestView;
 
   @ViewChild(HttpResponseComponent) httpResponse: HttpResponseComponent;
-  
+
   requestExpansion: RequestExpansion;
 
   constructor() { }
@@ -53,6 +53,9 @@ export class HttpClientComponent implements OnInit {
 
     const request: RequestInfo = this.requestView.request;
     request.method = definedRequestInfo.method;
+
+    console.log(definedRequestInfo.method);
+
     request.body = definedRequestInfo.body;
     request.headers = definedRequestInfo.headers;
     request.queryParams = definedRequestInfo.queryParams;
