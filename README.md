@@ -35,7 +35,7 @@ Angular - https://angular.io
 
 Angular material - https://material.angular.io
 
-Angular Library Starter - https://github.com/shlomiassaf/angular-library-starter
+ngPackagr - https://github.com/dherges/ng-packagr
 
 
 # License
