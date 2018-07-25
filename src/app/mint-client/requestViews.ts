@@ -1,5 +1,3 @@
-// import { RequestExpander } from 'app/requestExpansion';
-
 import { RequestExpander } from './requestExpansions';
 import { isNull, isUndefined } from 'util';
 
@@ -92,7 +90,7 @@ export class RequestView {
 
 export class RequestInfo {
   url: string;
-  method = 'GET';
+  method;// = 'GET';
   queryParams = [new NameValue()];
   urlParams = [new NameValue()];
 
@@ -105,7 +103,11 @@ export class RequestInfo {
     request.method = this.method;
     request.body = this.body;
 
+    // TODO queryParams, urlParams, headers 복사..
 
+    request.queryParams = this.queryParams.map(nameValue => nameValue.duplicate());
+    request.urlParams = this.urlParams.map(nameValue => nameValue.duplicate());
+    request.headers = this.headers.map(nameValue => nameValue.duplicate());
 
     return request;
   }
@@ -172,6 +174,17 @@ export class NameValue {
 
   duplicate(): NameValue {
     const nameValue = new NameValue();
+    nameValue.name = this.name;
+    nameValue.value = this.value;
+    nameValue.FixedName = this.FixedName;
+    nameValue.FixedValue = this.FixedValue;
+    nameValue.enableBuilder = this.enableBuilder;
+    nameValue.showCloseButton = this.showCloseButton;
+    nameValue.enabled = this.enabled;
+
+
+
+
 
     return nameValue;
   }

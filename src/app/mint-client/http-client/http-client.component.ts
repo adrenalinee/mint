@@ -29,11 +29,9 @@ export class HttpClientComponent implements OnInit {
     if (this.config.useDefaultExpander) {
       HttpClientConfigs.applyDefaultExpansions(expansionRegistry);
     }
-
     if (this.config.useBasicExpander) {
       HttpClientConfigs.applyBasicExpander(expansionRegistry);
     }
-
     if (this.config.expansionRegister !== undefined) {
       this.config.expansionRegister(expansionRegistry);
     }
@@ -52,13 +50,20 @@ export class HttpClientComponent implements OnInit {
     }
 
     const request: RequestInfo = this.requestView.request;
-    request.method = definedRequestInfo.method;
-
-    console.log(definedRequestInfo.method);
-
-    request.body = definedRequestInfo.body;
-    request.headers = definedRequestInfo.headers;
-    request.queryParams = definedRequestInfo.queryParams;
-    request.urlParams = definedRequestInfo.urlParams;
+    if (request.method == null) {
+      request.method = definedRequestInfo.method;
+    }
+    if (request.body == null) {
+      request.body = definedRequestInfo.body;
+    }
+    if (request.headers.length <= 1) {
+      request.headers = definedRequestInfo.headers;
+    }
+    if (request.queryParams.length <= 1) {
+      request.queryParams = definedRequestInfo.queryParams;
+    }
+    if (request.urlParams.length <= 1) {
+      request.urlParams = definedRequestInfo.urlParams;
+    }
   }
 }
