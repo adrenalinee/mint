@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 import {
   MatButtonModule,
   // MatButtonToggleModule,
@@ -83,7 +83,7 @@ import { HttpClientTabComponent } from './http-client-tab/http-client-tab.compon
     CommonModule,
     FlexLayoutModule,
     FormsModule,
-    HttpModule,
+    // HttpModule,
     AceEditorModule,
     MatButtonModule,
     MatCheckboxModule,

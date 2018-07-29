@@ -90,7 +90,7 @@ export class RequestView {
 
 export class RequestInfo {
   url: string;
-  method;// = 'GET';
+  method; // = 'GET';
   queryParams = [new NameValue()];
   urlParams = [new NameValue()];
 

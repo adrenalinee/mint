@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatIconModule, MatButtonModule } from '@angular/material';
+import {MatCardModule, MatIconModule, MatButtonModule, MatToolbarModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatToolbarModule,
     HttpClientModule,
     MintClientModule
   ],

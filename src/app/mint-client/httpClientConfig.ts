@@ -82,7 +82,7 @@ export class DefinedRequestInfo {
 }
 
 /**
- * 
+ *
  */
 export class HttpClientConfigs {
   // private static configurer = new Array<HttpClientConfigurer>();

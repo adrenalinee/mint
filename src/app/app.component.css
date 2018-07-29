@@ -1,1 +1,22 @@
-.app-action { z-index: 100000; display: inline-block; position: fixed; bottom: 20px; right: 20px; }
+header {
+}
+.app-action {
+  z-index: 100000;
+  position: fixed;
+  right: 20px;
+  top: 165px;
+}
+.title {
+  text-align: center;
+  padding: 100px 0px 50px;
+}
+.nav {
+  text-align: center;
+  padding-bottom: 90px;
+}
+.clients {
+  max-width: 720px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+  margin: -48px auto 20px;
+  background-color: white;
+}
