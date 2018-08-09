@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { APP_BASE_HREF } from '@angular/common';
 import {MatCardModule, MatIconModule, MatButtonModule, MatToolbarModule} from '@angular/material';
 
 
@@ -27,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MintClientModule
   ],
-  providers: [],
+  providers: [{ provide: APP_BASE_HREF, useValue: 'mint' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
